@@ -59,6 +59,12 @@ Acknowledged and on the roadmap, but not yet shipped.
 | **Bug fixes & dead code removal** | Clean up known bugs and remove leftover dead code | In progress |
 | **Simplify over-complex areas** | Reduce unnecessary abstraction in areas that outgrew the problem | In progress |
 
+### Enforcement
+
+| Feature | Description | Status |
+|---|---|---|
+| **Forced DNS** | Lock the system to a chosen DNS provider with prebuilt options (CleanBrowsing, OpenDNS FamilyShield, etc.) or a custom one. Prevents switching to an unfiltered DNS to bypass blocking | Planned |
+
 ### UI
 
 | Feature | Description | Status |
