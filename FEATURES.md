@@ -77,7 +77,7 @@ Acknowledged and on the roadmap, but not yet shipped.
 | Feature | Description | Status |
 |---|---|---|
 | **Individual block delays** | Replace the single global delay with per-block delay settings so each block can have its own queue timer | Planned |
-| **Multi-confirmation queue** | Require multiple confirmations before a queued exception goes through, spaced apart by a minimum time you choose. Each confirmation is also a chance to cancel. For example: 3-day queued delay, 3 confirmations required, at least 8 hours apart. That's four separate moments where you have to actively decide this is what you want | Planned |
+| **Multi-confirmation queue** | Optional toggle on the Queued Delay lock. Require multiple confirmations before a queued exception goes through, spaced apart by a minimum time you choose. Each confirmation is also a chance to cancel. For example: 3-day queued delay, 3 confirmations required, at least 8 hours apart. That's four separate moments where you have to actively decide this is what you want | Planned |
 
 ---
 
