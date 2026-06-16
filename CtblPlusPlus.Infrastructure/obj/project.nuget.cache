@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "/y/pS3zjzEY=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Calibro1\\Downloads\\CTBL ++ Version 0.2.1.3\\CTBL ++ Version 0.2.7.5\\CtblPlusPlus.Infrastructure\\CtblPlusPlus.Infrastructure.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Calibro1\\.nuget\\packages\\microsoft.data.sqlite\\10.0.3\\microsoft.data.sqlite.10.0.3.nupkg.sha512",
+    "C:\\Users\\Calibro1\\.nuget\\packages\\microsoft.data.sqlite.core\\10.0.3\\microsoft.data.sqlite.core.10.0.3.nupkg.sha512",
+    "C:\\Users\\Calibro1\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.1.11\\sqlitepclraw.bundle_e_sqlite3.2.1.11.nupkg.sha512",
+    "C:\\Users\\Calibro1\\.nuget\\packages\\sqlitepclraw.core\\2.1.11\\sqlitepclraw.core.2.1.11.nupkg.sha512",
+    "C:\\Users\\Calibro1\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.1.11\\sqlitepclraw.lib.e_sqlite3.2.1.11.nupkg.sha512",
+    "C:\\Users\\Calibro1\\.nuget\\packages\\sqlitepclraw.provider.e_sqlite3\\2.1.11\\sqlitepclraw.provider.e_sqlite3.2.1.11.nupkg.sha512",
+    "C:\\Users\\Calibro1\\.nuget\\packages\\system.serviceprocess.servicecontroller\\10.0.3\\system.serviceprocess.servicecontroller.10.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
