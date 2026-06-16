@@ -59,6 +59,12 @@ Acknowledged and on the roadmap, but not yet shipped.
 | **Bug fixes & dead code removal** | Clean up known bugs and remove leftover dead code | In progress |
 | **Simplify over-complex areas** | Reduce unnecessary abstraction in areas that outgrew the problem | In progress |
 
+### UI
+
+| Feature | Description | Status |
+|---|---|---|
+| **Block folders** | Organize your blocks into folders and subfolders instead of a flat list. Group related blocks however you want | Planned |
+
 ---
 
 ## Shipped
