@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git --version)",
+      "Bash(gh --version)",
+      "Bash(git -C \"C:\\\\Users\\\\Calibro1\\\\Downloads\\\\CTBL ++ Version 0.2.1.3\\\\CTBL ++ Version 0.2.7.5\\\\CtblPlusPlus.WebUI\" commit -m \"Initial commit\")",
+      "Bash(rm \"C:\\\\Users\\\\Calibro1\\\\Downloads\\\\CTBL ++ Version 0.2.1.3\\\\CTBL ++ Version 0.2.7.5\\\\CtblPlusPlus.WebUI\\\\.git\\\\index.lock\")",
+      "Bash(git -C \"C:\\\\Users\\\\Calibro1\\\\Downloads\\\\CTBL ++ Version 0.2.1.3\\\\CTBL ++ Version 0.2.7.5\\\\CtblPlusPlus.WebUI\" add .)",
+      "Bash(git -C \"C:\\\\Users\\\\Calibro1\\\\Downloads\\\\CTBL ++ Version 0.2.1.3\\\\CTBL ++ Version 0.2.7.5\\\\CtblPlusPlus.WebUI\" add -A)",
+      "Bash(rm \"C:\\\\Users\\\\Calibro1\\\\Downloads\\\\CTBL ++ Version 0.2.1.3\\\\CTBL ++ Version 0.2.7.5\\\\CtblPlusPlus.WebUI\\\\.git\\\\index.lock\" && git -C \"C:\\\\Users\\\\Calibro1\\\\Downloads\\\\CTBL ++ Version 0.2.1.3\\\\CTBL ++ Version 0.2.7.5\\\\CtblPlusPlus.WebUI\" add -A 2>&1 | tail -3)",
+      "Bash(git -C \"C:\\\\Users\\\\Calibro1\\\\Downloads\\\\CTBL ++ Version 0.2.1.3\\\\CTBL ++ Version 0.2.7.5\\\\CtblPlusPlus.WebUI\" status --short)",
+      "PowerShell(Set-Location \"C:\\\\Users\\\\Calibro1\\\\Downloads\\\\CTBL ++ Version 0.2.1.3\\\\CTBL ++ Version 0.2.7.5\\\\CtblPlusPlus.WebUI\"; git add -A; $addExit = $LASTEXITCODE; Write-Host \"Add exit: $addExit\"; git status --short | Select-Object -First 5)",
+      "Bash(git add *)",
+      "Bash(echo \"Exit: $?\")"
+    ]
+  }
+}
