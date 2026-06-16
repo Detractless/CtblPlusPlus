@@ -32,7 +32,7 @@ See the [README](README.md) for full build details.
 This is a tamper-resistance tool, so security matters more than usual:
 
 - Don't introduce bypass vectors: if a change makes enforcement easier to circumvent, it won't be merged.
-- Found a bypass? Report it as an issue. If it's sensitive, say so and we'll coordinate a fix before details go public.
+- Found a bypass? Report it as an issue. If it's sensitive, say so and we'll prioritize it.
 
 ## Pull Requests
 
