@@ -1,4 +1,4 @@
-<p align="center"> <img src="assets/banner.svg" alt="CTBL++ — Cold Turkey Blocker, extended" width="100%"> </p> <p align="center"> <b>A community-built add-on for <a href="https://getcoldturkey.com/">Cold Turkey Blocker</a> that adds features the official app doesn't have.</b> </p> <p align="center">
+<p align="center"> <img src="assets/banner.svg" alt="CTBL++. Cold Turkey Blocker, extended" width="100%"> </p> <p align="center"> <b>A community-built add-on for <a href="https://getcoldturkey.com/">Cold Turkey Blocker</a> that adds features the official app doesn't have.</b> </p> <p align="center">
   <img src="https://img.shields.io/badge/platform-Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white" alt="Platform: Windows">
   <img src="https://img.shields.io/badge/.NET-10-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" alt=".NET 10">
   <img src="https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=csharp&logoColor=white" alt="C#">
@@ -75,7 +75,7 @@ Everything below is built, functional, and included in the current release.
 
 | Feature | Description |
 |---|---|
-| **Queued Delay** | Queue changes to a block instead of unlocking it first — no vulnerability window, no instant access for an impulse to act on |
+| **Queued Delay** | Queue changes to a block instead of unlocking it first. No vulnerability window, no instant access for an impulse to act on |
 
 ### Queue System
 
@@ -84,13 +84,13 @@ Everything below is built, functional, and included in the current release.
 | **Global delay** | A system-wide delay applied to all queued operations. Decreasing it is itself a queued operation, so you can't impulsively lower it |
 | **List action queue** | Add or remove websites and apps from a block's list through the delay queue instead of instantly |
 | **App control queue** | Allow, revoke, and toggle app control through the queue with the same delay protections |
-| **Tamper-proof queue** | Queue requests are cryptographically signed — editing the database directly won't bypass the delay. Injected entries are detected and rolled back automatically |
+| **Tamper-proof queue** | Queue requests are cryptographically signed. Editing the database directly won't bypass the delay. Injected entries are detected and rolled back automatically |
 
 ### Tamper Resistance
 
 | Feature | Description |
 |---|---|
-| **Dual-watchdog enforcement** | Two watchdog services monitor the Engine and each other, restart on death, and mark themselves as critical processes — killing one triggers a BSOD |
+| **Dual-watchdog enforcement** | Two watchdog services monitor the Engine and each other, restart on death, and mark themselves as critical processes. Killing one triggers a BSOD |
 | **File integrity protection** | Installed binaries are locked while running, verified against sealed hashes on a loop, and auto-restored from a secure vault if tampered with |
 | **System binary removal** | Tools that could be used to bypass enforcement (bcdedit, reagentc, msconfig, etc.) are monitored and removed from the system |
 
@@ -111,14 +111,14 @@ Everything below is built, functional, and included in the current release.
 | Feature | Description |
 |---|---|
 | **Application whitelist** | Discovers installed apps automatically and lets you allow or block them. When locked with Queued Delay, allowing a new app goes through the delay queue |
-| **Auto-discovery** | New applications are detected in real time as they're installed or launched — no manual registration |
+| **Auto-discovery** | New applications are detected in real time as they're installed or launched. No manual registration |
 | **Bulk allow / revoke** | Allow or revoke multiple applications at once |
 
 ### UI
 
 | Feature | Description |
 |---|---|
-| **Native Cold Turkey integration** | No separate window — CTBL++ features appear directly inside Cold Turkey's own interface |
+| **Native Cold Turkey integration** | No separate window. CTBL++ features appear directly inside Cold Turkey's own interface |
 | **Queued Delay lock editor** | Dedicated tab in the lock editor with pending unlock timers, list action countdowns, and cancel options |
 | **Enforcer toggles** | Per-enforcer on/off switches in Settings. Can't disable while a locked block is active without confirmation |
 | **Global delay controls** | Set the delay in hours and minutes, see pending decreases with a countdown, and cancel if needed |
@@ -128,5 +128,5 @@ Everything below is built, functional, and included in the current release.
 
 | Feature | Description |
 |---|---|
-| **One-click setup** | Single-file installer — download, run, done. No .NET runtime or dependencies needed |
+| **One-click setup** | Single-file installer. Download, run, done. No .NET runtime or dependencies needed |
 | **Prebuilt releases** | Grab the latest build from the [Releases](https://github.com/Detractless/CtblPlusPlus/releases) page without compiling anything |
