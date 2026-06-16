@@ -14,7 +14,7 @@
 
 Thanks for considering contributing! Developers, vibe coders, and people with ideas are all welcome; feedback and feature requests help just as much as code.
 
-## Source Access
+## Source Access (working on getting this hidden but functional)
 
 CTBL++ is MIT-licensed, but full source access has a 7-day delay. This isn't about gatekeeping: many people use this tool to work through habits they're actively trying to break, and publishing every enforcement detail the moment it's written would undercut that. The delay keeps the most sensitive internals out of easy reach while still giving every contributor full access in time.
 
