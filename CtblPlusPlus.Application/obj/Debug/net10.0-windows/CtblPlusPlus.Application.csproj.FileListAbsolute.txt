@@ -1,0 +1,48 @@
+C:\Users\Calibro1\Downloads\CTBL ++ Version 0.2.1.3\CTBL ++ Version 0.2.1.4\CtblPlusPlus.Application\obj\Debug\net10.0-windows\CtblPlusPlus.Application.csproj.AssemblyReference.cache
+C:\Users\Calibro1\Downloads\CTBL ++ Version 0.2.1.3\CTBL ++ Version 0.2.1.4\CtblPlusPlus.Application\obj\Debug\net10.0-windows\CtblPlusPlus.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Calibro1\Downloads\CTBL ++ Version 0.2.1.3\CTBL ++ Version 0.2.1.4\CtblPlusPlus.Application\obj\Debug\net10.0-windows\CtblPlusPlus.Application.AssemblyInfoInputs.cache
+C:\Users\Calibro1\Downloads\CTBL ++ Version 0.2.1.3\CTBL ++ Version 0.2.1.4\CtblPlusPlus.Application\obj\Debug\net10.0-windows\CtblPlusPlus.Application.AssemblyInfo.cs
+C:\Users\Calibro1\Downloads\CTBL ++ Version 0.2.1.3\CTBL ++ Version 0.2.1.4\CtblPlusPlus.Application\obj\Debug\net10.0-windows\CtblPlusPlus.Application.csproj.CoreCompileInputs.cache
+C:\Users\Calibro1\Downloads\CTBL ++ Version 0.2.1.3\CTBL ++ Version 0.2.1.4\CtblPlusPlus.Application\bin\Debug\net10.0-windows\CtblPlusPlus.Application.deps.json
+C:\Users\Calibro1\Downloads\CTBL ++ Version 0.2.1.3\CTBL ++ Version 0.2.1.4\CtblPlusPlus.Application\bin\Debug\net10.0-windows\CtblPlusPlus.Application.dll
+C:\Users\Calibro1\Downloads\CTBL ++ Version 0.2.1.3\CTBL ++ Version 0.2.1.4\CtblPlusPlus.Application\bin\Debug\net10.0-windows\CtblPlusPlus.Application.pdb
+C:\Users\Calibro1\Downloads\CTBL ++ Version 0.2.1.3\CTBL ++ Version 0.2.1.4\CtblPlusPlus.Application\bin\Debug\net10.0-windows\CtblPlusPlus.Domain.dll
+C:\Users\Calibro1\Downloads\CTBL ++ Version 0.2.1.3\CTBL ++ Version 0.2.1.4\CtblPlusPlus.Application\bin\Debug\net10.0-windows\CtblPlusPlus.Domain.pdb
+C:\Users\Calibro1\Downloads\CTBL ++ Version 0.2.1.3\CTBL ++ Version 0.2.1.4\CtblPlusPlus.Application\obj\Debug\net10.0-windows\CtblPlus.D85A8146.Up2Date
+C:\Users\Calibro1\Downloads\CTBL ++ Version 0.2.1.3\CTBL ++ Version 0.2.1.4\CtblPlusPlus.Application\obj\Debug\net10.0-windows\CtblPlusPlus.Application.dll
+C:\Users\Calibro1\Downloads\CTBL ++ Version 0.2.1.3\CTBL ++ Version 0.2.1.4\CtblPlusPlus.Application\obj\Debug\net10.0-windows\refint\CtblPlusPlus.Application.dll
+C:\Users\Calibro1\Downloads\CTBL ++ Version 0.2.1.3\CTBL ++ Version 0.2.1.4\CtblPlusPlus.Application\obj\Debug\net10.0-windows\CtblPlusPlus.Application.pdb
+C:\Users\Calibro1\Downloads\CTBL ++ Version 0.2.1.3\CTBL ++ Version 0.2.1.4\CtblPlusPlus.Application\obj\Debug\net10.0-windows\ref\CtblPlusPlus.Application.dll
+C:\Users\Calibro1\AppData\Local\Temp\ctbl_build_check\CtblPlusPlus.Application.deps.json
+C:\Users\Calibro1\AppData\Local\Temp\ctbl_build_check\CtblPlusPlus.Application.dll
+C:\Users\Calibro1\AppData\Local\Temp\ctbl_build_check\CtblPlusPlus.Application.pdb
+C:\Users\Calibro1\Downloads\CTBL ++ Version 0.2.1.3\CTBL ++ Version 0.2.4.3\CTBL ++ Version 0.2.1.4\CtblPlusPlus.Application\bin\Debug\net10.0-windows\CtblPlusPlus.Application.deps.json
+C:\Users\Calibro1\Downloads\CTBL ++ Version 0.2.1.3\CTBL ++ Version 0.2.4.3\CTBL ++ Version 0.2.1.4\CtblPlusPlus.Application\bin\Debug\net10.0-windows\CtblPlusPlus.Application.dll
+C:\Users\Calibro1\Downloads\CTBL ++ Version 0.2.1.3\CTBL ++ Version 0.2.4.3\CTBL ++ Version 0.2.1.4\CtblPlusPlus.Application\bin\Debug\net10.0-windows\CtblPlusPlus.Application.pdb
+C:\Users\Calibro1\Downloads\CTBL ++ Version 0.2.1.3\CTBL ++ Version 0.2.4.3\CTBL ++ Version 0.2.1.4\CtblPlusPlus.Application\bin\Debug\net10.0-windows\CtblPlusPlus.Domain.dll
+C:\Users\Calibro1\Downloads\CTBL ++ Version 0.2.1.3\CTBL ++ Version 0.2.4.3\CTBL ++ Version 0.2.1.4\CtblPlusPlus.Application\bin\Debug\net10.0-windows\CtblPlusPlus.Domain.pdb
+C:\Users\Calibro1\Downloads\CTBL ++ Version 0.2.1.3\CTBL ++ Version 0.2.4.3\CTBL ++ Version 0.2.1.4\CtblPlusPlus.Application\obj\Debug\net10.0-windows\CtblPlusPlus.Application.csproj.AssemblyReference.cache
+C:\Users\Calibro1\Downloads\CTBL ++ Version 0.2.1.3\CTBL ++ Version 0.2.4.3\CTBL ++ Version 0.2.1.4\CtblPlusPlus.Application\obj\Debug\net10.0-windows\CtblPlusPlus.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Calibro1\Downloads\CTBL ++ Version 0.2.1.3\CTBL ++ Version 0.2.4.3\CTBL ++ Version 0.2.1.4\CtblPlusPlus.Application\obj\Debug\net10.0-windows\CtblPlusPlus.Application.AssemblyInfoInputs.cache
+C:\Users\Calibro1\Downloads\CTBL ++ Version 0.2.1.3\CTBL ++ Version 0.2.4.3\CTBL ++ Version 0.2.1.4\CtblPlusPlus.Application\obj\Debug\net10.0-windows\CtblPlusPlus.Application.AssemblyInfo.cs
+C:\Users\Calibro1\Downloads\CTBL ++ Version 0.2.1.3\CTBL ++ Version 0.2.4.3\CTBL ++ Version 0.2.1.4\CtblPlusPlus.Application\obj\Debug\net10.0-windows\CtblPlusPlus.Application.csproj.CoreCompileInputs.cache
+C:\Users\Calibro1\Downloads\CTBL ++ Version 0.2.1.3\CTBL ++ Version 0.2.4.3\CTBL ++ Version 0.2.1.4\CtblPlusPlus.Application\obj\Debug\net10.0-windows\CtblPlus.D85A8146.Up2Date
+C:\Users\Calibro1\Downloads\CTBL ++ Version 0.2.1.3\CTBL ++ Version 0.2.4.3\CTBL ++ Version 0.2.1.4\CtblPlusPlus.Application\obj\Debug\net10.0-windows\CtblPlusPlus.Application.dll
+C:\Users\Calibro1\Downloads\CTBL ++ Version 0.2.1.3\CTBL ++ Version 0.2.4.3\CTBL ++ Version 0.2.1.4\CtblPlusPlus.Application\obj\Debug\net10.0-windows\refint\CtblPlusPlus.Application.dll
+C:\Users\Calibro1\Downloads\CTBL ++ Version 0.2.1.3\CTBL ++ Version 0.2.4.3\CTBL ++ Version 0.2.1.4\CtblPlusPlus.Application\obj\Debug\net10.0-windows\CtblPlusPlus.Application.pdb
+C:\Users\Calibro1\Downloads\CTBL ++ Version 0.2.1.3\CTBL ++ Version 0.2.4.3\CTBL ++ Version 0.2.1.4\CtblPlusPlus.Application\obj\Debug\net10.0-windows\ref\CtblPlusPlus.Application.dll
+C:\Users\Calibro1\Downloads\CTBL ++ Version 0.2.1.3\CTBL ++ Version 0.2.7.5\CtblPlusPlus.Application\bin\Debug\net10.0-windows\CtblPlusPlus.Application.deps.json
+C:\Users\Calibro1\Downloads\CTBL ++ Version 0.2.1.3\CTBL ++ Version 0.2.7.5\CtblPlusPlus.Application\bin\Debug\net10.0-windows\CtblPlusPlus.Application.dll
+C:\Users\Calibro1\Downloads\CTBL ++ Version 0.2.1.3\CTBL ++ Version 0.2.7.5\CtblPlusPlus.Application\bin\Debug\net10.0-windows\CtblPlusPlus.Application.pdb
+C:\Users\Calibro1\Downloads\CTBL ++ Version 0.2.1.3\CTBL ++ Version 0.2.7.5\CtblPlusPlus.Application\bin\Debug\net10.0-windows\CtblPlusPlus.Domain.dll
+C:\Users\Calibro1\Downloads\CTBL ++ Version 0.2.1.3\CTBL ++ Version 0.2.7.5\CtblPlusPlus.Application\bin\Debug\net10.0-windows\CtblPlusPlus.Domain.pdb
+C:\Users\Calibro1\Downloads\CTBL ++ Version 0.2.1.3\CTBL ++ Version 0.2.7.5\CtblPlusPlus.Application\obj\Debug\net10.0-windows\CtblPlusPlus.Application.csproj.AssemblyReference.cache
+C:\Users\Calibro1\Downloads\CTBL ++ Version 0.2.1.3\CTBL ++ Version 0.2.7.5\CtblPlusPlus.Application\obj\Debug\net10.0-windows\CtblPlusPlus.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Calibro1\Downloads\CTBL ++ Version 0.2.1.3\CTBL ++ Version 0.2.7.5\CtblPlusPlus.Application\obj\Debug\net10.0-windows\CtblPlusPlus.Application.AssemblyInfoInputs.cache
+C:\Users\Calibro1\Downloads\CTBL ++ Version 0.2.1.3\CTBL ++ Version 0.2.7.5\CtblPlusPlus.Application\obj\Debug\net10.0-windows\CtblPlusPlus.Application.AssemblyInfo.cs
+C:\Users\Calibro1\Downloads\CTBL ++ Version 0.2.1.3\CTBL ++ Version 0.2.7.5\CtblPlusPlus.Application\obj\Debug\net10.0-windows\CtblPlusPlus.Application.csproj.CoreCompileInputs.cache
+C:\Users\Calibro1\Downloads\CTBL ++ Version 0.2.1.3\CTBL ++ Version 0.2.7.5\CtblPlusPlus.Application\obj\Debug\net10.0-windows\CtblPlus.D85A8146.Up2Date
+C:\Users\Calibro1\Downloads\CTBL ++ Version 0.2.1.3\CTBL ++ Version 0.2.7.5\CtblPlusPlus.Application\obj\Debug\net10.0-windows\CtblPlusPlus.Application.dll
+C:\Users\Calibro1\Downloads\CTBL ++ Version 0.2.1.3\CTBL ++ Version 0.2.7.5\CtblPlusPlus.Application\obj\Debug\net10.0-windows\refint\CtblPlusPlus.Application.dll
+C:\Users\Calibro1\Downloads\CTBL ++ Version 0.2.1.3\CTBL ++ Version 0.2.7.5\CtblPlusPlus.Application\obj\Debug\net10.0-windows\CtblPlusPlus.Application.pdb
+C:\Users\Calibro1\Downloads\CTBL ++ Version 0.2.1.3\CTBL ++ Version 0.2.7.5\CtblPlusPlus.Application\obj\Debug\net10.0-windows\ref\CtblPlusPlus.Application.dll
