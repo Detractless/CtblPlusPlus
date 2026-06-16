@@ -20,31 +20,25 @@ Features the community has asked for. Vote by reacting to the linked issue, or [
 
 | Feature | Description |
 |---|---|
-| **Accountability partner lock** | Requires a second person to approve changes via code, link, or paired device |
-| **Escalating delay lock** | Consecutive unlock attempts increase the wait (e.g. 1h → 4h → 24h) |
-| **Commitment contract lock** | Ties block-breaking to a financial penalty via Beeminder, StickK, etc. |
+| | |
 
 ### Enforcement
 
 | Feature | Description |
 |---|---|
-| **VPN / DNS enforcement** | Detect and block bypass attempts through VPNs, DoH, or custom DNS |
-| **Virtual machine detection** | Detect if the user spun up a VM or sandbox to circumvent blocking |
-| **Safe mode enforcement** | Prevent or recover from booting into Safe Mode to disable services |
+| | |
 
 ### App Control
 
 | Feature | Description |
 |---|---|
-| **Portable app blocking** | Detect and block executables that run without installation |
-| **Browser profile enforcement** | Detect and block new browser profiles that bypass extension-based blocking |
+| | |
 
 ### UI
 
 | Feature | Description |
 |---|---|
-| **Queue history / audit log viewer** | Full history of queued actions, completions, cancellations, and tamper rollbacks |
-| **CTBL++ dashboard** | Enforcer status, watchdog health, queue depth, and last integrity check at a glance |
+| | |
 
 ---
 
