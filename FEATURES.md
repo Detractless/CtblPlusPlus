@@ -72,6 +72,12 @@ Acknowledged and on the roadmap, but not yet shipped.
 | **Block folders** | Organize your blocks into folders and subfolders instead of a flat list. Group related blocks however you want | Planned |
 | **Help tab** | A new tab between Blocks and Statistics with common Q&A and video tutorials to help new users get started | Planned |
 
+### Queue System
+
+| Feature | Description | Status |
+|---|---|---|
+| **Multi-confirmation queue** | Require multiple confirmations before a queued exception goes through, spaced apart by a minimum time you choose. Each confirmation is also a chance to cancel. For example: 3-day queued delay, 3 confirmations required, at least 8 hours apart. That's four separate moments where you have to actively decide this is what you want | Planned |
+
 ---
 
 ## Shipped
