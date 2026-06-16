@@ -1,0 +1,41 @@
+@font-face {
+  font-family: 'Open Sans';
+  font-weight: 300;
+  src: url('OpenSans-Light.eot');
+  src: url('OpenSans-Light.eot?#iefix') format('embedded-opentype'),
+       url('OpenSans-Light.woff') format('woff'),
+       url('OpenSans-Light.ttf')  format('truetype'),
+       url('OpenSans-Light.svg#svgFontName') format('svg');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-weight: 400;
+  src: url('OpenSans.eot');
+  src: url('OpenSans.eot?#iefix') format('embedded-opentype'),
+       url('OpenSans.woff') format('woff'),
+       url('OpenSans.ttf')  format('truetype'),
+       url('OpenSans.svg#svgFontName') format('svg');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-weight: 600;
+  src: url('OpenSans-Semibold.eot');
+  src: url('OpenSans-Semibold.eot?#iefix') format('embedded-opentype'),
+       url('OpenSans-Semibold.woff') format('woff'),
+       url('OpenSans-Semibold.ttf')  format('truetype'),
+       url('OpenSans-Semibold.svg#svgFontName') format('svg');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-weight: 700;
+  src: url('OpenSans-Bold.eot');
+  src: url('OpenSans-Bold.eot?#iefix') format('embedded-opentype'),
+       url('OpenSans-Bold.woff') format('woff'),
+       url('OpenSans-Bold.ttf')  format('truetype'),
+       url('OpenSans-Bold.svg#svgFontName') format('svg');
+}
+@font-face {
+  font-family: 'Antonio';
+  font-weight: 400;
+  src: url('Antonio-VariableFont_wght.ttf') format('truetype');
+}
