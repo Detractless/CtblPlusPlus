@@ -38,7 +38,7 @@ Features the community has asked for. Vote by reacting to the linked issue, or [
 
 | Feature | Description |
 |---|---|
-| | |
+| **Quick-view shortcut** | Hit a keyboard shortcut to see your active limits and scheduled blocks at a glance without opening the full app |
 
 ---
 
