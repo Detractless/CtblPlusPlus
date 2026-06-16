@@ -56,14 +56,14 @@ Acknowledged and on the roadmap, but not yet shipped.
 
 | Feature | Description | Status |
 |---|---|---|
-| **Local AI categorization** | Local LLM auto-categorizes sites, searches, and apps against your goals. Candidates: TurboQuant, Gemma 4 E2B, Lfm2.5 1.2B, Gemma 3 1B | Designing |
+| **Local AI categorization** | Local LLM auto-categorizes sites, searches, and apps against your goals and adds them to the right blocklist | Designing |
 
 ### Codebase
 
 | Feature | Description | Status |
 |---|---|---|
-| **Bug fixes & dead code removal** | Clean up known bugs and remove dead code from earlier iterations | In progress |
-| **Simplify over-complex areas** | Reduce unnecessary abstraction where the architecture outgrew the problem | In progress |
+| **Bug fixes & dead code removal** | Clean up known bugs and remove leftover dead code | In progress |
+| **Simplify over-complex areas** | Reduce unnecessary abstraction in areas that outgrew the problem | In progress |
 
 ---
 
@@ -75,80 +75,58 @@ Everything below is built, functional, and included in the current release.
 
 | Feature | Description |
 |---|---|
-| **Queued Delay** | Queue changes instead of unlocking first — no vulnerability window, no instant access for impulse |
-
-### Tamper Resistance
-
-| Feature | Description |
-|---|---|
-| **Engine + dual-watchdog** | Engine backed by Wd1/Wd2 — they cross-monitor, restart on death, and mark themselves critical (kill = BSOD) |
-| **HMAC-signed queue** | Every queue request is signed with HMAC-SHA256; the Engine validates before executing |
-| **DPAPI vault sealing** | HMAC key protected by Windows DPAPI (machine-scope, SYSTEM-only) + NTFS ACLs |
-| **NTFS ACL enforcement** | Periodically re-applies restrictive ACLs on install directory and vault, stripping all access except SYSTEM |
-| **Binary file locking** | Holds open file handles on all core binaries, preventing modification or deletion while running |
-| **SHA-256 integrity verification** | Periodically verifies binaries against a sealed hash manifest; tampered files auto-restore from vault |
-| **File system watchdog** | Real-time monitoring of high-risk directories; immediately deletes side-loaded target binaries |
-| **Scorched earth purge** | Scans System32/WinSxS for prohibited binaries, takes ownership from TrustedInstaller, and removes them |
-| **Website tamper remediation** | Detects queue entries injected directly into the DB (bypassing HMAC) and rolls them back |
-
-### Enforcement
-
-| Feature | Description |
-|---|---|
-| **Time enforcer** | Verifies system time against NTP, detects clock jumps, strips `SeSystemtimePrivilege` from non-system accounts |
-| **Factory reset enforcer** | Blocks Factory Reset and Advanced Startup via Group Policy registry keys and `reagentc.exe` disablement |
-| **Task manager enforcer** | Blocks Taskmgr, Process Explorer, Process Hacker, Resource Monitor, Regedit via IFEO hijacking |
-| **Account enforcer** | Blocks Windows Account Settings panels via Registry Policy + Settings app process termination |
-| **Privilege enforcer** | Strips `SeSystemtimePrivilege` from non-system accounts via `secedit` |
-| **Uninstaller enforcer** | Hides CTBL++ and Cold Turkey from Add/Remove Programs by removing uninstall registry keys |
-| **Persistence enforcer** | Self-healing — monitors installation state and auto-restores from vault on tamper |
-| **Browser enforcer** | Enforces extension install policies via registry for Chrome, Edge, and Brave |
+| **Queued Delay** | Queue changes to a block instead of unlocking it first — no vulnerability window, no instant access for an impulse to act on |
 
 ### Queue System
 
 | Feature | Description |
 |---|---|
-| **Queued delay unlock** | Queue a full block unlock with a configurable delay; block stays active until timer expires |
-| **Global delay** | System-wide delay for all queued ops; decreasing it is itself a queued operation |
-| **List action queue** | Add/remove websites and apps from a block's list through the delay queue |
-| **App control queue** | Allow, revoke, and toggle app control through the queue with delay protections |
-| **Queue security validation** | HMAC signature verification, replay attack checks, and structure validation before dispatch |
-| **Audit logging** | Every queue action recorded in a persistent SQLite audit log |
+| **Global delay** | A system-wide delay applied to all queued operations. Decreasing it is itself a queued operation, so you can't impulsively lower it |
+| **List action queue** | Add or remove websites and apps from a block's list through the delay queue instead of instantly |
+| **App control queue** | Allow, revoke, and toggle app control through the queue with the same delay protections |
+| **Tamper-proof queue** | Queue requests are cryptographically signed — editing the database directly won't bypass the delay. Injected entries are detected and rolled back automatically |
+
+### Tamper Resistance
+
+| Feature | Description |
+|---|---|
+| **Dual-watchdog enforcement** | Two watchdog services monitor the Engine and each other, restart on death, and mark themselves as critical processes — killing one triggers a BSOD |
+| **File integrity protection** | Installed binaries are locked while running, verified against sealed hashes on a loop, and auto-restored from a secure vault if tampered with |
+| **System binary removal** | Tools that could be used to bypass enforcement (bcdedit, reagentc, msconfig, etc.) are monitored and removed from the system |
+
+### Enforcement
+
+| Feature | Description |
+|---|---|
+| **Clock manipulation protection** | Verifies system time against NTP servers and detects clock jumps. Strips the time-change privilege from your account so you can't adjust the clock manually |
+| **Factory reset protection** | Blocks Windows Factory Reset and Advanced Startup Options so you can't wipe the machine to escape a block |
+| **Task manager protection** | Blocks Task Manager, Process Explorer, Process Hacker, Resource Monitor, and Registry Editor while enforcement is active |
+| **Account settings protection** | Blocks access to the Windows Account Settings panels so you can't create or switch to another user to get around blocks |
+| **Uninstall protection** | Hides CTBL++ and Cold Turkey from Add/Remove Programs |
+| **Self-healing** | If enforcement files are tampered with, they auto-restore from a secure vault |
+| **Browser extension enforcement** | Prevents removal of blocking browser extensions for Chrome, Edge, and Brave while a lock is active |
 
 ### App Control
 
 | Feature | Description |
 |---|---|
-| **Application whitelist** | Dedicated block that discovers apps and lets you allow/block them; Queued Delay routes allows through the queue |
-| **App discovery service** | Real-time detection via `FileSystemWatcher` + 2-minute polling fallback; Engine/Wd1/Wd2 auto-allowed |
-| **Bulk operations** | Allow or revoke multiple applications at once |
+| **Application whitelist** | Discovers installed apps automatically and lets you allow or block them. When locked with Queued Delay, allowing a new app goes through the delay queue |
+| **Auto-discovery** | New applications are detected in real time as they're installed or launched — no manual registration |
+| **Bulk allow / revoke** | Allow or revoke multiple applications at once |
 
 ### UI
 
 | Feature | Description |
 |---|---|
-| **Patched Cold Turkey interface** | No separate window — patches CT's own web front-end via webpack with timestamped backups |
-| **Queued Delay in lock editor** | Dedicated tab with pending unlock timers, list action countdowns, and cancel options |
-| **Enforcer toggles** | Per-enforcer switches in Settings; can't disable during a locked block without confirmation |
-| **Global delay config** | Hours/minutes inputs, pending-decrease countdown with ETA, and cancel button |
-| **Queue entries viewer** | Each block's modal shows pending actions with time remaining and cancel options |
-| **App whitelist tab** | Discovered apps with status dots, inline allow/revoke, and bulk operations |
+| **Native Cold Turkey integration** | No separate window — CTBL++ features appear directly inside Cold Turkey's own interface |
+| **Queued Delay lock editor** | Dedicated tab in the lock editor with pending unlock timers, list action countdowns, and cancel options |
+| **Enforcer toggles** | Per-enforcer on/off switches in Settings. Can't disable while a locked block is active without confirmation |
+| **Global delay controls** | Set the delay in hours and minutes, see pending decreases with a countdown, and cancel if needed |
+| **Pending actions viewer** | Each block shows its pending queued actions with time remaining and a cancel option |
 
 ### Installer
 
 | Feature | Description |
 |---|---|
-| **WPF + WebView2 setup wizard** | Graphical installer handling service registration, payload extraction, and CT detection |
-| **Single-file self-contained release** | No .NET runtime needed; prebuilt download on the Releases page |
-| **Build menu** | Interactive `ctbl.bat` for building, launching, publishing, and cleaning |
-
-### Infrastructure
-
-| Feature | Description |
-|---|---|
-| **Local REST API** | Engine hosts HTTP on `127.0.0.1:58123` with JSONP; the patched UI talks exclusively through this |
-| **SQLite persistence** | Queue, settings, app registry, and audit log via dedicated repositories with DB lock retry |
-| **PID broker** | Inter-process identity resolution between Engine and watchdogs |
-| **Watchdog heartbeat** | Periodic health signal for fast failure detection |
-| **Internet time source** | NTP-based ground truth for clock tampering detection |
-| **Clean architecture** | Four-layer separation: Domain → Application → Infrastructure → Engine |
+| **One-click setup** | Single-file installer — download, run, done. No .NET runtime or dependencies needed |
+| **Prebuilt releases** | Grab the latest build from the [Releases](https://github.com/Detractless/CtblPlusPlus/releases) page without compiling anything |
