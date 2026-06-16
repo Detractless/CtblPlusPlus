@@ -32,7 +32,7 @@ Cold Turkey is one of the best blocking tools out there, but there are features 
 </tr>
 <tr>
   <td><b>Local AI categorization</b><br><sub><code>planned</code></sub></td>
-  <td>A local AI feature that automatically categorizes sites, searches, and apps against your stated goals and adds them to the right blocklist without you having to manage it manually. Considering using TurboQuant, Gemma 4 E2B, Lfm2.5 1.2B or Gemma 3 1B</td>
+  <td>A local AI feature that automatically categorizes sites, searches, and apps against your stated goals and adds them to the right blocklist without you having to manage it manually. Considering using TurboQuant, Gemma 4 E2B, Lfm2.5 1.2B or Gemma 3 1B, also -> scratch-blocks</td>
 </tr>
 </table>
 
