@@ -1,4 +1,4 @@
-<p align="center"> <img src="assets/banner.svg" alt="CTBL++ — Cold Turkey Blocker, extended" width="100%"> </p> <p align="center"> <b>A community-built add-on for <a href="https://getcoldturkey.com/">Cold Turkey Blocker</a> that adds features the official app doesn't have.</b> </p> <p align="center">
+<p align="center"> <img src="assets/banner.svg" alt="CTBL++. Cold Turkey Blocker, extended" width="100%"> </p> <p align="center"> <b>A community-built add-on for <a href="https://getcoldturkey.com/">Cold Turkey Blocker</a> that adds features the official app doesn't have.</b> </p> <p align="center">
   <img src="https://img.shields.io/badge/platform-Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white" alt="Platform: Windows">
   <img src="https://img.shields.io/badge/.NET-10-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" alt=".NET 10">
   <img src="https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=csharp&logoColor=white" alt="C#">
@@ -10,137 +10,137 @@
   <img src="https://img.shields.io/badge/stars-2-eac54f?style=for-the-badge&logo=github&logoColor=white" alt="Stars">
 </p>
 
-> [!IMPORTANT]
-> CTBL++ **requires the paid version of Cold Turkey Blocker.** It is not a crack, bypass, or a way to get paid features for free; it runs *alongside* Cold Turkey and extends it. CTBL++ is an independent community project and is **not affiliated with or endorsed by** the Cold Turkey developer.
+---
+
+## Requested
+
+Features the community has asked for. Vote by reacting to the linked issue, or [open a new one](https://github.com/Detractless/CtblPlusPlus/issues).
+
+### Lock Type
+
+| Feature | Description |
+|---|---|
+| | |
+
+### Enforcement
+
+| Feature | Description |
+|---|---|
+| | |
+
+### App Control
+
+| Feature | Description |
+|---|---|
+| | |
+
+### UI
+
+| Feature | Description |
+|---|---|
+| | |
 
 ---
 
-Cold Turkey is one of the best blocking tools out there, but there are features the developer has said they don't plan to build. CTBL++ fills that gap. It runs alongside Cold Turkey and extends it with new lock types, enforcement mechanics, and features the community wants.
+## Planned
 
----
+Acknowledged and on the roadmap, but not yet shipped.
 
-## MVP Features
+### AI
 
-<table>
-<tr>
-  <td width="190"><b>Queued Delay lock</b><br><sub><code>shipped</code></sub></td>
-  <td>Cold Turkey normally requires a block to be <i>off</i> before you can change it — its most vulnerable moment and the easiest point to relapse. The Queued Delay lock type removes that moment entirely: instead of unlocking to make a change, you <b>queue</b> the change and it executes after a delay you chose <i>in advance</i>. There's nothing to re-lock and no instant access for an impulse to act on.</td>
-</tr>
-<tr>
-  <td><b>Tamper resistance</b><br><sub><code>shipped</code></sub></td>
-  <td>A background Engine service backed by two cross-monitoring watchdogs (Wd1 / Wd2). They watch the Engine and each other, restart on death, and mark themselves critical, making the enforcement layer hard to simply kill.</td>
-</tr>
-<tr>
-  <td><b>Local AI categorization</b><br><sub><code>planned</code></sub></td>
-  <td>A local AI feature that automatically categorizes sites, searches, and apps against your stated goals and adds them to the right blocklist without you having to manage it manually. Considering using TurboQuant, Gemma 4 E2B, Lfm2.5 1.2B or Gemma 3 1B, also -> scratch-blocks</td>
-</tr>
-</table>
-
-For the full list of planned and shipped improvements, see [`FEATURES.md`](FEATURES.md).
-
----
-
-## Getting started
-
-> **Status:** CTBL++ is in active beta. Grab the prebuilt single-file installer from the [Releases](https://github.com/Detractless/CtblPlusPlus/releases) page, or build from source as described below.
-
-### Prerequisites
-
-- **Windows** (the solution targets `net10.0-windows`)
-- **Cold Turkey Blocker (paid version)**, installed at its default location (`C:\Program Files\Cold Turkey`)
-- [**.NET 10 SDK**](https://dotnet.microsoft.com/download)
-- [**Node.js**](https://nodejs.org/) (used to build the patched web UI via webpack)
-- An **Administrator** terminal (CTBL++ installs Windows services and patches files under `Program Files`)
-
-### Build
-
-The repo ships an interactive build menu; there is no `.sln`, so each project is built individually.
-
-```bat
-:: from the repo root, in an Administrator terminal
-ctbl.bat
-```
-
-```
- ================================================
-  CTBL++
- ================================================
-  [1] Build all projects      <- builds Engine + Wd1 + Wd2, repackages Payload.zip, builds the Installer
-  [2] Launch Installer
-  [3] Launch Engine (console mode)
-  [4] Publish single-file installer (Release, self-contained)
-  [5] Clean project for GitHub (remove bin/obj)
-  [0] Exit
-```
-
-Pick **[1] Build all projects**, then **[2] Launch Installer** to run the setup wizard.
-
-### Patch the Cold Turkey UI
-
-The CTBL++ interface is delivered by patching Cold Turkey's own web front-end (there is no separate window). To build and deploy the UI patch:
-
-```powershell
-# self-elevates to Administrator; backs up the original web folder first
-.\Deploy.ps1
-```
-
-This runs the webpack build and replaces `C:\Program Files\Cold Turkey\web` with the patched UI, keeping a timestamped backup (`web.bak_<date>`) so you can roll back. Restart Cold Turkey for changes to take effect.
-
----
-
-## Architecture
-
-CTBL++ is a **multi-project .NET 10 (Windows)** solution. The UI is delivered by patching Cold Turkey's own web interface, and all real work happens in a background service that the UI talks to over a local REST API.
-
-| Project | Type | Role |
+| Feature | Description | Status |
 |---|---|---|
-| **CtblPlusPlus.Core** | Class library (headless) | Shared core: queue, persistence, security, lockdown, system & app control. Referenced by every other project. |
-| **CtblPlusPlus.Engine** | Windows Service | The only process that does real work. Hosts the repositories, queue dispatcher, enforcer/lockdown battery, and the local REST API on `http://127.0.0.1:58123`. |
-| **CtblPlusPlus.Wd1 / Wd2** | Windows Services | Watchdogs. Monitor the Engine and each other, restart on death, mark self critical. |
-| **CtblPlusPlus.Installer** | WPF + WebView2 | The setup wizard. Embeds the published payload and ships the Cold Turkey installer. |
+| **Local AI categorization** | Local LLM auto-categorizes sites, searches, and apps against your goals and adds them to the right blocklist | Designing |
 
-```
-CtblPlusPlus.Core            (lowest layer, references no other project)
-   ▲           ▲        ▲           ▲
-   │           │        │           │
- Engine       Wd1      Wd2      Installer     (each references Core only)
-```
+### Codebase
 
-The patched UI talks to the Engine over HTTP against `http://127.0.0.1:58123/api/...`.
+| Feature | Description | Status |
+|---|---|---|
+| **Bug fixes & dead code removal** | Clean up known bugs and remove leftover dead code | In progress |
+| **Simplify over-complex areas** | Reduce unnecessary abstraction in areas that outgrew the problem | In progress |
 
----
+### Enforcement
 
-## Project status & roadmap
+| Feature | Description | Status |
+|---|---|---|
+| **Forced DNS** | Lock the system to a chosen DNS provider with prebuilt options (CleanBrowsing, OpenDNS FamilyShield, etc.) or a custom one. Prevents switching to an unfiltered DNS to bypass blocking | Planned |
 
-The core architecture is in place. The project is currently transitioning **away from a standalone desktop UI toward patching Cold Turkey's interface directly.** Current focus:
+### UI
 
-- [x] Queued Delay lock type
-- [x] Engine + dual-watchdog enforcement
-- [x] Move from standalone window → patched Cold Turkey web UI
-- [ ] Fix known bugs and remove dead code
-- [ ] Finish incomplete parts of the core feature set
-- [ ] Simplify over-complex areas
-- [ ] Local AI categorization of sites / searches / apps
-- [x] Prebuilt installer releases
+| Feature | Description | Status |
+|---|---|---|
+| **Block folders** | Organize your blocks into folders and subfolders instead of a flat list. Group related blocks however you want | Planned |
+| **Help tab** | A new tab between Blocks and Statistics with common Q&A and video tutorials to help new users get started | Planned |
 
----
+### Queue System
 
-## Get involved
-
-CTBL++ is in active development and **looking for collaborators**: coders, vibe coders, and people with ideas are all welcome. Even if you can't write code, **feature requests and feedback are genuinely useful.**
-
-- [Open an issue](https://github.com/Detractless/CtblPlusPlus/issues): bugs, ideas, feature requests
-- [Start a discussion](https://github.com/Detractless/CtblPlusPlus/discussions): questions and design talk
-- Fork, build (see [Getting started](#getting-started)), and open a pull request
+| Feature | Description | Status |
+|---|---|---|
+| **Individual block delays** | Replace the single global delay with per-block delay settings so each block can have its own queue timer | Planned |
+| **Multi-confirmation queue** | Optional toggle on the Queued Delay lock. Require multiple confirmations before a queued exception goes through, spaced apart by a minimum time you choose. Each confirmation is also a chance to cancel. For example: 3-day queued delay, 3 confirmations required, at least 8 hours apart. That's four separate moments where you have to actively decide this is what you want | Planned |
 
 ---
 
-## License
+## Shipped
 
-Released under the [MIT License](LICENSE). Free to use, modify, and distribute with attribution.
+Everything below is built, functional, and included in the current release.
 
----
+### Lock Type
 
-<p align="center">
-  <sub>CTBL++ is an independent community project and is not affiliated with or endorsed by the Cold Turkey developer.</sub>
-</p>
+| Feature | Description |
+|---|---|
+| **Queued Delay** | Queue changes to a block instead of unlocking it first. No vulnerability window, no instant access for an impulse to act on |
+
+### Queue System
+
+| Feature | Description |
+|---|---|
+| **Global delay** | A system-wide delay applied to all queued operations. Decreasing it is itself a queued operation, so you can't impulsively lower it |
+| **List action queue** | Add or remove websites and apps from a block's list through the delay queue instead of instantly |
+| **App control queue** | Allow, revoke, and toggle app control through the queue with the same delay protections |
+| **Tamper-proof queue** | Queue requests are cryptographically signed. Editing the database directly won't bypass the delay. Injected entries are detected and rolled back automatically |
+
+### Tamper Resistance
+
+| Feature | Description |
+|---|---|
+| **Dual-watchdog enforcement** | Two watchdog services monitor the Engine and each other, restart on death, and mark themselves as critical processes. Killing one triggers a BSOD |
+| **File integrity protection** | Installed binaries are locked while running, verified against sealed hashes on a loop, and auto-restored from a secure vault if tampered with |
+| **System binary removal** | Tools that could be used to bypass enforcement (bcdedit, reagentc, msconfig, etc.) are monitored and removed from the system |
+
+### Enforcement
+
+| Feature | Description |
+|---|---|
+| **Clock manipulation protection** | Verifies system time against NTP servers and detects clock jumps. Strips the time-change privilege from your account so you can't adjust the clock manually |
+| **Factory reset protection** | Blocks Windows Factory Reset and Advanced Startup Options so you can't wipe the machine to escape a block |
+| **Task manager protection** | Blocks Task Manager, Process Explorer, Process Hacker, Resource Monitor, and Registry Editor while enforcement is active |
+| **Account settings protection** | Blocks access to the Windows Account Settings panels so you can't create or switch to another user to get around blocks |
+| **Uninstall protection** | Hides CTBL++ and Cold Turkey from Add/Remove Programs |
+| **Self-healing** | If enforcement files are tampered with, they auto-restore from a secure vault |
+| **Browser extension enforcement** | Prevents removal of blocking browser extensions for Chrome, Edge, and Brave while a lock is active |
+
+### App Control
+
+| Feature | Description |
+|---|---|
+| **Application whitelist** | Discovers installed apps automatically and lets you allow or block them. When locked with Queued Delay, allowing a new app goes through the delay queue |
+| **Auto-discovery** | New applications are detected in real time as they're installed or launched. No manual registration |
+| **Bulk allow / revoke** | Allow or revoke multiple applications at once |
+
+### UI
+
+| Feature | Description |
+|---|---|
+| **Native Cold Turkey integration** | No separate window. CTBL++ features appear directly inside Cold Turkey's own interface |
+| **Queued Delay lock editor** | Dedicated tab in the lock editor with pending unlock timers, list action countdowns, and cancel options |
+| **Enforcer toggles** | Per-enforcer on/off switches in Settings. Can't disable while a locked block is active without confirmation |
+| **Global delay controls** | Set the delay in hours and minutes, see pending decreases with a countdown, and cancel if needed |
+| **Pending actions viewer** | Each block shows its pending queued actions with time remaining and a cancel option |
+
+### Installer
+
+| Feature | Description |
+|---|---|
+| **One-click setup** | Single-file installer. Download, run, done. No .NET runtime or dependencies needed |
+| **Prebuilt releases** | Grab the latest build from the [Releases](https://github.com/Detractless/CtblPlusPlus/releases) page without compiling anything |
