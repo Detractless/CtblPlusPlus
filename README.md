@@ -28,12 +28,6 @@ For the full list of planned and shipped improvements, see [`FEATURES.md`](FEATU
 
 ---
 
-## Who this is for
-
-People who feel like Cold Turkey's current options aren't quite enough. If you've ever wished you could set **stricter rules** than the app currently allows, or just want **more control** over how your blocks behave — this is that project.
-
----
-
 ## Getting started
 
 > **Status:** CTBL++ is in active beta. Grab the prebuilt single-file installer from the [Releases](https://github.com/Detractless/CtblPlusPlus/releases) page, or build from source as described below.
@@ -57,11 +51,13 @@ ctbl.bat
 
 ```
  ================================================
-  CTBL++ v0.2.1.2
+  CTBL++
  ================================================
   [1] Build all projects      <- builds Engine + Wd1 + Wd2, repackages Payload.zip, builds the Installer
   [2] Launch Installer
   [3] Launch Engine (console mode)
+  [4] Publish single-file installer (Release, self-contained)
+  [5] Clean project for GitHub (remove bin/obj)
   [0] Exit
 ```
 
