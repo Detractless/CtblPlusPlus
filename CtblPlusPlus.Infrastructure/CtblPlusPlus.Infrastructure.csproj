@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <AssemblyName>CtblPlusPlus.Infrastructure</AssemblyName>
+    <Nullable>enable</Nullable>
+    <NoWarn>CS8600;CS8604;CS8618;CS8625</NoWarn>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <!-- WindowsDesktop.App supplies DPAPI, ACLs, Windows identity, EventLog, registry,
+         and Windows services — all used by the infrastructure implementations here. -->
+    <UseWindowsForms>true</UseWindowsForms>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="10.0.3" />
+    <PackageReference Include="System.ServiceProcess.ServiceController" Version="10.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CtblPlusPlus.Application\CtblPlusPlus.Application.csproj" />
+    <ProjectReference Include="..\CtblPlusPlus.Domain\CtblPlusPlus.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
