@@ -1,0 +1,365 @@
+﻿/* ============================================================
+   BASE / GLOBAL STYLES
+   Extracted from custom.css - applies to entire application
+   ============================================================ */
+html {
+	height: 100%;
+	overflow: hidden;
+}
+body {
+	overflow: hidden;
+	-moz-user-select: -moz-none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	cursor: default !important;
+	font-size: 14px !important; /* IE moves text in textbox with odd number */
+	height: 100%;
+}
+ol > li {
+	list-style: disc;
+}
+button {
+	min-width: 75px;
+	margin-left: 15px;
+	padding: 5px 15px;
+	border: none !important;
+	border-radius: 5px;
+	font-weight: bold;
+	outline: none;
+}
+input:-ms-input-placeholder { 
+	color: #ccc !important;
+}
+input::-ms-input-placeholder {
+	color: #ccc !important;
+}
+input::-ms-clear {
+	display: none;
+}
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+	min-height: 0px;
+}
+select {
+	cursor: pointer;
+	height: 30px;
+}
+select:disabled {
+	cursor: default;
+}
+input:not([type=radio]):not([type=checkbox]) {
+	height: 30px;
+}
+input[type=checkbox] {
+	cursor: pointer;
+}
+input[type=checkbox]:disabled, input[type=radio]:disabled, input[type="password"]:disabled, input[type="text"]:disabled, select:disabled, textarea:disabled {
+	cursor: default;
+	opacity: 0.5;
+}
+input[type=checkbox]:disabled ~ label {
+	cursor: default;
+	opacity: 0.5;
+}
+input[type=radio]:disabled ~ label {
+	cursor: default;
+	opacity: 0.5;
+}
+input[type="text"]:disabled ~ label {
+	cursor: default;
+	opacity: 0.5;
+}
+.again {
+	display: inline-table;
+}
+.again input {
+	display: block;
+	float: left;
+	margin-top: 15px;
+}
+.again label {
+	float: left;
+	cursor: pointer;
+	margin-top: 11px;
+}
+.input-group.date input {
+	cursor: pointer;
+}
+.input-group.date input:disabled {
+	cursor: default;
+}
+.no-select {
+	-moz-user-select: -moz-none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+.hidden {
+	display: none;
+}
+.bold {
+	font-weight: bold;
+}
+.green {
+	color: #65a30d;
+}
+.red {
+	color: #ef4444;
+}
+.list-link.green:hover {
+	color: #57801e;
+}
+.pro-cursor {
+	cursor: not-allowed !important;
+}
+.not-allowed-tab-li {
+	border-bottom: 0px !important;
+	opacity: 0.5;
+}
+.not-allowed-tab-li:hover {
+	border-bottom: 0px !important;
+}
+.not-allowed-tab {
+	cursor: default !important;
+}
+.not-allowed-tab:hover {
+	cursor: default !important;
+}
+.form-body i {
+	width: 16px;
+	text-align: center;
+}
+.no-blocks {
+	height: 280px;
+	display: none;
+}
+.center {
+	text-align: center !important;
+}
+.float-left {
+	float: left;
+}
+.float-right {
+	float: right;
+}
+.right {
+	text-align: right !important;
+}
+.left {
+	text-align: left !important;
+}
+.page-title ul {
+	margin-top: 15px;
+}
+.page-title > .nav-tabs {
+	border: none;
+}
+.table-row {
+	margin: 0px !important;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+select, input[type='text'], textarea {
+	border-style: solid;
+	border-width: 1px;
+}
+select option:checked {
+	background: #3b82f6;
+}
+select option:selected {
+	background: #3b82f6;
+}
+.center select, .center input[type='text'] {
+	width: 100%;
+	text-align: center;
+	margin-bottom: 10px;
+	scrollbar-width: none;
+	border-radius: 5px;
+	padding: 4px;
+	height: 32px;
+}
+.center select option {
+	text-align: center !important;
+}
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+	cursor: default;
+}
+.row-spacer {
+	margin-top: 15px;
+}
+.truncate-overview-text {	
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+body {
+	font-family: "Open Sans", sans-serif;
+	padding: 0px !important;
+	margin: 0px !important;
+	direction: ltr;
+}
+@-ms-viewport {
+	width: device-width;
+}
+@-o-viewport {
+	width: device-width;
+}
+@viewport {
+	width: device-width;
+}
+@-ms-viewport {
+	width: auto !important;
+}
+a {
+	text-shadow: none;
+}
+a:focus, a:hover, a:active {
+	outline: 0;
+}
+a:hover {
+	cursor: pointer;
+}
+hr {
+	margin: 20px 0;
+	border: 0;
+	border-bottom: 0;
+}
+.bold {
+	font-weight: 700 !important;
+}
+.uppercase {
+	text-transform: uppercase !important;
+}
+.margin-bottom-10 {
+	margin-bottom: 10px !important;
+}
+[class*=" fa-"]:not(.fa-stack) {
+	display: inline-block;
+	font-size: 14px;
+	line-height: 14px !important;
+	-webkit-font-smoothing: antialiased;
+}
+html {
+	height: 100%;
+	overflow: hidden;
+}
+body {
+	overflow: hidden;
+	-moz-user-select: -moz-none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	cursor: default !important;
+	font-size: 14px !important; /* IE moves text in textbox with odd number */
+	height: 100%;
+}
+ol > li {
+	list-style: disc;
+}
+button {
+	min-width: 75px;
+	margin-left: 15px;
+	padding: 5px 15px;
+	border: none !important;
+	border-radius: 5px;
+	font-weight: bold;
+	outline: none;
+}
+input:-ms-input-placeholder { 
+	color: #ccc !important;
+}
+input::-ms-input-placeholder {
+	color: #ccc !important;
+}
+input::-ms-clear {
+	display: none;
+}
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+	min-height: 0px;
+}
+select {
+	cursor: pointer;
+	height: 30px;
+}
+select:disabled {
+	cursor: default;
+}
+input:not([type=radio]):not([type=checkbox]) {
+	height: 30px;
+}
+input[type=checkbox] {
+	cursor: pointer;
+}
+input[type=checkbox]:disabled, input[type=radio]:disabled, input[type="password"]:disabled, input[type="text"]:disabled, select:disabled, textarea:disabled {
+	cursor: default;
+	opacity: 0.5;
+}
+input[type=checkbox]:disabled ~ label {
+	cursor: default;
+	opacity: 0.5;
+}
+input[type=radio]:disabled ~ label {
+	cursor: default;
+	opacity: 0.5;
+}
+input[type="text"]:disabled ~ label {
+	cursor: default;
+	opacity: 0.5;
+}
+.again {
+	display: inline-table;
+}
+.again input {
+	display: block;
+	float: left;
+	margin-top: 15px;
+}
+.again label {
+	float: left;
+	cursor: pointer;
+	margin-top: 11px;
+}
+.input-group.date input {
+	cursor: pointer;
+}
+.input-group.date input:disabled {
+	cursor: default;
+}
+.form-body i {
+	width: 16px;
+	text-align: center;
+}
+.no-blocks {
+	height: 280px;
+	display: none;
+}
+.table-row {
+	margin: 0px !important;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+select, input[type='text'], textarea {
+	border-style: solid;
+	border-width: 1px;
+}
+select option:checked {
+	background: #3b82f6;
+}
+select option:selected {
+	background: #3b82f6;
+}
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+	cursor: default;
+}
+/* CSS Transition */
+/*.jqTimespaceAnimated {
+	transition: all 1.2s cubic-bezier(0.29, 0.575, 0.465, 1);
+}*/
+.jqTimepsaceContainer .jqTimespaceLeft {
+	left: 0;
+}
+
+#root { height: 100%; }

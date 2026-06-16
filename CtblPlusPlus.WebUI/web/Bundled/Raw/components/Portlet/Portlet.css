@@ -1,0 +1,90 @@
+.portlet {
+	margin-top: 0px;
+	margin-bottom: 25px;
+	padding: 0px 20px 0px 20px;
+}
+.portlet > .portlet-title:before, .portlet > .portlet-title:after {
+	content: " ";
+	display: table;
+}
+.portlet > .portlet-title:after {
+	clear: both;
+}
+.portlet > .portlet-title > .caption {
+	float: left;
+	font-size: 18px;
+	line-height: 18px;
+	padding: 10px 0;
+}
+.portlet > .portlet-body {
+	clear: both;
+}
+
+
+.portlet > .portlet-title > .nav-tabs {
+	float: left !important;
+}
+
+.portlet > .portlet-title button {
+	font-size: 14px;
+}
+
+.portlet > .portlet-title > .portlet-button {
+	margin-top: -10px;
+}
+
+.portlet .portlet-title p, .portlet .portlet-body label p.informative-feature-text, #dialog-paywall p.informative-feature-text {
+	margin-top: 5px;
+	font-size: 10px;
+	margin-bottom: 0px;
+	opacity: 0.5;
+	font-family: "Open Sans", "Segoe UI", Arial;
+	text-transform: none;
+}
+
+.portlet .portlet-title p i, .portlet .portlet-body label p.informative-feature-text i {
+	font-size: 10px;
+	opacity: 0.5;
+}
+
+.portlet-body {
+	margin-bottom: 10px;
+}
+
+
+
+
+.portlet > .portlet-title > .nav-tabs {
+	float: left !important;
+}
+
+.portlet > .portlet-title button {
+	font-size: 14px;
+}
+
+.portlet > .portlet-title > .portlet-button {
+	margin-top: -10px;
+}
+
+.portlet .portlet-title p, .portlet .portlet-body label p.informative-feature-text, #dialog-paywall p.informative-feature-text {
+	margin-top: 5px;
+	font-size: 10px;
+	margin-bottom: 0px;
+	opacity: 0.5;
+	font-family: "Open Sans", "Segoe UI", Arial;
+	text-transform: none;
+}
+
+.portlet .portlet-title p i, .portlet .portlet-body label p.informative-feature-text i {
+	font-size: 10px;
+	opacity: 0.5;
+}
+
+#dialog-paywall p.informative-feature-text {
+	margin-top: 10px;
+}
+
+.portlet-body {
+	margin-bottom: 10px;
+}
+

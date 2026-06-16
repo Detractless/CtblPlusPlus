@@ -1,0 +1,481 @@
+[
+  {
+    "index": 1,
+    "fileName": "services/ColdTurkeyAPI.js",
+    "lineCount": 1
+  },
+  {
+    "index": 0,
+    "fileName": "store/AppState.js",
+    "lineCount": 30
+  },
+  {
+    "index": 2,
+    "fileName": "utils/formatters.js",
+    "lineCount": 178
+  },
+  {
+    "index": 3,
+    "fileName": "utils/timeMath.js",
+    "lineCount": 61
+  },
+  {
+    "index": 4,
+    "fileName": "utils/urlValidation.js",
+    "lineCount": 57
+  },
+  {
+    "index": 1,
+    "fileName": "pages/SettingsLogic.js",
+    "startLine": 1,
+    "endLine": 234,
+    "lineCount": 234,
+    "topLevelNodes": 27,
+    "labels": [
+      "settings",
+      "allowances",
+      "schedule",
+      "lockedBlockList",
+      "unlockedBlocks",
+      "passwordChecked",
+      "passwordStrict",
+      "lastRefreshedMinute",
+      "specialSeconds",
+      "firstResizeEvent",
+      "scheduleModalOpenedOnDay",
+      "windowWidth",
+      "windowHeight",
+      "currentTheme",
+      "ForceSettingsUpdate",
+      "focusLost",
+      "ready_call",
+      "addRemoveRoundedCornerOnBody",
+      "ignoreChartDateChange",
+      "statsBlockedWebStart",
+      "statsBlockedWebEnd",
+      "statsBlockedAppStart",
+      "statsBlockedAppEnd",
+      "statsWebStart",
+      "statsWebEnd",
+      "statsAppStart",
+      "statsAppEnd"
+    ]
+  },
+  {
+    "index": 2,
+    "fileName": "components/AppEvents.js",
+    "startLine": 235,
+    "endLine": 825,
+    "lineCount": 591,
+    "topLevelNodes": 1,
+    "labels": [
+      "addStaticEvents"
+    ]
+  },
+  {
+    "index": 3,
+    "fileName": "components/ThemeManager.js",
+    "startLine": 826,
+    "endLine": 1319,
+    "lineCount": 494,
+    "topLevelNodes": 14,
+    "labels": [
+      "updateTheme",
+      "switchTheme",
+      "updateWeekStart",
+      "showExtensionHelp",
+      "showUnblockTabHelp",
+      "showNotificationHelp",
+      "showZoomHelp",
+      "showPomodoroHelp",
+      "showAllowanceHelp",
+      "showRewardHelp",
+      "showSessionsHelp",
+      "showTimeRangeHelp",
+      "showScheduleHelp",
+      "showAutostartWindowHelp"
+    ]
+  },
+  {
+    "index": 4,
+    "fileName": "components/ExtensionInstallModal.js",
+    "startLine": 1320,
+    "endLine": 1785,
+    "lineCount": 466,
+    "topLevelNodes": 10,
+    "labels": [
+      "showExtensionInstall",
+      "ForceExtensionInstall",
+      "updateBrowserList",
+      "passwordCheck",
+      "addRemovePayWallEvents",
+      "showPayWall",
+      "showUpgradeModal",
+      "showTrialModal",
+      "deleteProSettings",
+      "showHideUpdateButton"
+    ]
+  },
+  {
+    "index": 5,
+    "fileName": "components/TrialManager.js",
+    "startLine": 1786,
+    "endLine": 2275,
+    "lineCount": 490,
+    "topLevelNodes": 10,
+    "labels": [
+      "startTrial",
+      "upgradeResult",
+      "showPasswordCleared",
+      "showPasswordSet",
+      "setPassword",
+      "hideSelected",
+      "hideAllContent",
+      "unselectMenu",
+      "capitalizeFirstLetter",
+      "showEmptyCalendarReminder"
+    ]
+  },
+  {
+    "index": 6,
+    "fileName": "components/LockReminderModal.js",
+    "startLine": 2276,
+    "endLine": 2364,
+    "lineCount": 89,
+    "topLevelNodes": 4,
+    "labels": [
+      "showNoLockSetReminder",
+      "updateReminders",
+      "isTodayButAfterNow",
+      "isToday"
+    ]
+  },
+  {
+    "index": 7,
+    "fileName": "pages/OverviewPage.js",
+    "startLine": 2365,
+    "endLine": 3163,
+    "lineCount": 799,
+    "topLevelNodes": 1,
+    "labels": [
+      "updateOverview"
+    ]
+  },
+  {
+    "index": 8,
+    "fileName": "components/BlockOrderToggle.js",
+    "startLine": 3164,
+    "endLine": 3369,
+    "lineCount": 206,
+    "topLevelNodes": 8,
+    "labels": [
+      "emojiToText",
+      "createTextTable",
+      "sortByIndex",
+      "getClosestTimeRange",
+      "mergeConsecutiveRanges",
+      "getHumanDate",
+      "getAutostartText",
+      "toggleBlocksOrder"
+    ]
+  },
+  {
+    "index": 9,
+    "fileName": "pages/BlocksPage.js",
+    "startLine": 3371,
+    "endLine": 3866,
+    "lineCount": 496,
+    "topLevelNodes": 1,
+    "labels": [
+      "updateBlocks"
+    ]
+  },
+  {
+    "index": 10,
+    "fileName": "pages/StatsPage.js",
+    "startLine": 3867,
+    "endLine": 3924,
+    "lineCount": 58,
+    "topLevelNodes": 2,
+    "labels": [
+      "updateStats",
+      "updateCharts"
+    ]
+  },
+  {
+    "index": 11,
+    "fileName": "pages/SettingsPage.js",
+    "startLine": 3926,
+    "endLine": 4717,
+    "lineCount": 792,
+    "topLevelNodes": 1,
+    "labels": [
+      "updateSettings"
+    ]
+  },
+  {
+    "index": 12,
+    "fileName": "components/FrozenListEditor.js",
+    "startLine": 4718,
+    "endLine": 5159,
+    "lineCount": 442,
+    "topLevelNodes": 2,
+    "labels": [
+      "editFrozenList",
+      "editFrozenTimer"
+    ]
+  },
+  {
+    "index": 13,
+    "fileName": "components/FrozenAutostartEditor.js",
+    "startLine": 5160,
+    "endLine": 5591,
+    "lineCount": 432,
+    "topLevelNodes": 4,
+    "labels": [
+      "editFrozenAutostartTimer",
+      "refreshAllowances",
+      "resetPomodoro",
+      "requestUnlock"
+    ]
+  },
+  {
+    "index": 14,
+    "fileName": "components/UnlockDelayModal.js",
+    "startLine": 5593,
+    "endLine": 5973,
+    "lineCount": 381,
+    "topLevelNodes": 7,
+    "labels": [
+      "requestUnlockDelay",
+      "startDelayUnlock",
+      "cancelDelayUnlock",
+      "requestUnlockPassword",
+      "requestUnlockRandomText",
+      "startDelayBreak",
+      "cancelDelayBreak"
+    ]
+  },
+  {
+    "index": 15,
+    "fileName": "components/RandomTextBreakModal.js",
+    "startLine": 5975,
+    "endLine": 6224,
+    "lineCount": 250,
+    "topLevelNodes": 6,
+    "labels": [
+      "requestBreakRandomText",
+      "cancelBreakRandomText",
+      "findFirstDiff",
+      "replaceAt",
+      "blockTabClick",
+      "editBreakSchedule"
+    ]
+  },
+  {
+    "index": 16,
+    "fileName": "pages/ScheduleEditorPage.js",
+    "startLine": 6226,
+    "endLine": 6540,
+    "lineCount": 315,
+    "topLevelNodes": 1,
+    "labels": [
+      "editSchedule"
+    ]
+  },
+  {
+    "index": 17,
+    "fileName": "pages/BreakEditorPage.js",
+    "startLine": 6542,
+    "endLine": 7851,
+    "lineCount": 1310,
+    "topLevelNodes": 1,
+    "labels": [
+      "editBreak"
+    ]
+  },
+  {
+    "index": 19,
+    "fileName": "pages/LockEditorPage.js",
+    "startLine": 7916,
+    "endLine": 8913,
+    "lineCount": 998,
+    "topLevelNodes": 1,
+    "labels": [
+      "editLock"
+    ]
+  },
+  {
+    "index": 20,
+    "fileName": "components/AutostartEditor.js",
+    "startLine": 8914,
+    "endLine": 9386,
+    "lineCount": 473,
+    "topLevelNodes": 5,
+    "labels": [
+      "editAutostart",
+      "scrollUpIfNeeded",
+      "scrollDownIfNeeded",
+      "scrollUpIfNeededApp",
+      "scrollDownIfNeededApp"
+    ]
+  },
+  {
+    "index": 21,
+    "fileName": "pages/ListEditorPage.js",
+    "startLine": 9387,
+    "endLine": 9846,
+    "lineCount": 460,
+    "topLevelNodes": 1,
+    "labels": [
+      "editList"
+    ]
+  },
+  {
+    "index": 22,
+    "fileName": "pages/AppListEditor.js",
+    "startLine": 9848,
+    "endLine": 10229,
+    "lineCount": 382,
+    "topLevelNodes": 6,
+    "labels": [
+      "addApplicationExe",
+      "addApplicationFolder",
+      "showApplicationWin10Dialog",
+      "addApplicationWin10",
+      "showApplicationTitleDialog",
+      "addApplicationTitle"
+    ]
+  },
+  {
+    "index": 23,
+    "fileName": "pages/UserListEditor.js",
+    "startLine": 10230,
+    "endLine": 10709,
+    "lineCount": 480,
+    "topLevelNodes": 7,
+    "labels": [
+      "editUsers",
+      "showAddUsers",
+      "addUser",
+      "removeUsers",
+      "showAddNetworks",
+      "addNetwork",
+      "removeNetworks"
+    ]
+  },
+  {
+    "index": 24,
+    "fileName": "pages/ListNameEditor.js",
+    "startLine": 10710,
+    "endLine": 11203,
+    "lineCount": 494,
+    "topLevelNodes": 4,
+    "labels": [
+      "editListName",
+      "duplicateList",
+      "deleteLists",
+      "deleteList"
+    ]
+  },
+  {
+    "index": 25,
+    "fileName": "pages/StatsEnabler.js",
+    "startLine": 11205,
+    "endLine": 11701,
+    "lineCount": 497,
+    "topLevelNodes": 10,
+    "labels": [
+      "ensureStatsEnabled",
+      "getLockDurationWarningText",
+      "toTitleCase",
+      "toggleBlock",
+      "disableDeviceBlock",
+      "toggleBlockFeature",
+      "changeBlockMode",
+      "togglePasswordLockFeature",
+      "togglePasswordUnlockFeature",
+      "changeBlockFeature"
+    ]
+  },
+  {
+    "index": 26,
+    "fileName": "pages/StatsToggle.js",
+    "startLine": 11702,
+    "endLine": 12168,
+    "lineCount": 467,
+    "topLevelNodes": 17,
+    "labels": [
+      "toggleStatisticsFeature",
+      "deleteStats",
+      "toHtml",
+      "fromHtml",
+      "addUrl",
+      "lastCustomSelectedIndex",
+      "customSelect",
+      "customSelectEdit",
+      "removeEntry",
+      "selectList",
+      "deselectList",
+      "selectUsersList",
+      "deselectUsersList",
+      "selectNetworksList",
+      "deselectNetworksList",
+      "updateRandomTextDisplay",
+      "randomString"
+    ]
+  },
+  {
+    "index": 27,
+    "fileName": "pages/ListImportLogic.js",
+    "startLine": 12170,
+    "endLine": 12637,
+    "lineCount": 468,
+    "topLevelNodes": 10,
+    "labels": [
+      "validateAndCleanUrl",
+      "importSearches",
+      "importUrlContaining",
+      "importAdult",
+      "importList",
+      "showListTooLargeError",
+      "addList",
+      "importApplications",
+      "exportList",
+      "exportBlocks"
+    ]
+  },
+  {
+    "index": 28,
+    "fileName": "pages/ImportBlocks.js",
+    "startLine": 12638,
+    "endLine": 13081,
+    "lineCount": 444,
+    "topLevelNodes": 23,
+    "labels": [
+      "importBlocks",
+      "showImportBlocksInvalid",
+      "showImportURLsInvalid",
+      "showImportAppsInvalid",
+      "save",
+      "escapeRegExp",
+      "makeTitleWithBlockName",
+      "shortenOverviewBlockName",
+      "dist",
+      "minutesOfDay",
+      "formatAMPM",
+      "format24",
+      "getMaxZ",
+      "emptystatement",
+      "trimEnd_assign",
+      "normalizeOnlyHiddenChars_assign",
+      "normalizePassword_assign",
+      "normalizeCustomText_assign",
+      "prepend",
+      "zeroDate",
+      "addDays_assign",
+      "redraw_assign",
+      "scrollEnd_assign"
+    ]
+  }
+]

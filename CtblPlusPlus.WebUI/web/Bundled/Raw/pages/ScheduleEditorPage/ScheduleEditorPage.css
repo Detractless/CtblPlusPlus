@@ -1,0 +1,411 @@
+/* ============================================================
+   SCHEDULE EDITOR / jqTimeSpace PLUGIN OVERRIDES
+   Extracted from custom.css - .jqTimesp* overrides and schedule styles
+   ============================================================ */
+
+#dialog-edit-schedule input {
+	margin-left: 0px;
+}
+#dialog-edit-schedule .edit-schedule-option-text {
+	padding-top: 10px;
+}
+#edit-schedule-show-all {
+	margin-bottom: 0px;
+}
+#dialog-edit-scheduled-block select {
+	border-radius: 5px;
+	padding: 4px;
+	padding-left: 10px;
+	width: 125px;
+}
+#dialog-edit-scheduled-block a {
+	display: inline-block;
+	padding-top: 5px;
+	margin-bottom: 20px;
+	font-weight: bold;
+}
+#dialog-edit-scheduled-block a:hover {
+	text-decoration: none;
+}
+#dialog-edit-scheduled-block label {
+	width: 100%;
+	text-align: center;
+	padding-top: 6px;
+}
+#dialog-edit-scheduled-block .edit-schedule-checkbox {
+	display: inline;
+	padding-right: 10px;
+}
+#dialog-edit-scheduled-block .edit-schedule-checkbox label {
+	margin-right: 10px;
+	float: left;
+	width: auto;
+	cursor: pointer;
+}
+#dialog-edit-scheduled-block .edit-schedule-checkbox input {
+	float: left;
+	margin-top: 10px;
+}
+#dialog-edit-scheduled-block .edit-schedule-checkbox input:disabled ~ label {
+	cursor: default;
+}
+
+/* jqTimespace plugin overrides */
+.jqTimepsaceContainer .jqTimespaceLeft { left: 0; }
+.jqTimepsaceContainer .jqTimespaceRight { right: 0; }
+.jqTimepsaceContainer .jqTimespaceLine {
+	z-index: 3;
+	position: absolute;
+	box-sizing: border-box;
+	top: 0;
+	left: 0px;
+	margin: 0;
+	padding: 0;
+	width: 2px;
+	height: 100%;
+	background: #ef4444;
+}
+.jqTimepsaceContainer aside {
+	position: relative;
+	left: 0;
+	margin: 0;
+	padding: 0;
+	line-break: strict;
+}
+.jqTimepsaceContainer .jqTimespaceTitleClamp {
+	z-index: 5;
+	display: block;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+	opacity: 0;
+}
+.jqTimepsaceContainer header h1,
+.jqTimepsaceContainer header time,
+.jqTimepsaceContainer header .jqTimespaceDummySpan {
+	display: block;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0.5rem 0;
+}
+.jqTimepsaceContainer header time {
+	padding: 0.2rem 0 0.2rem 0.1rem;
+	font-size: 8px;
+	opacity: 0.6;
+}
+.jqTimepsaceContainer header h1 { font-size: 1.2rem; }
+.jqTimepsaceContainer aside section {
+	z-index: 1;
+	display: flex;
+	position: relative;
+	top: 0;
+	min-height: 100%;
+}
+.jqTimepsaceContainer aside .jqTimespaceColumn {
+	box-sizing: border-box;
+	padding-bottom: 20px;
+}
+.jqTimepsaceContainer .jqTimespaceEvent {
+	z-index: 2;
+	position: relative;
+	box-sizing: border-box;
+	margin: 1rem 0 0 0;
+	padding: 0;
+	text-align: left;
+}
+.jqTimepsaceContainer .jqTimespaceEventRev { text-align: right; }
+.jqTimepsaceContainer .jqTimespaceEventBorder {
+	z-index: 1;
+	position: absolute;
+	top: 0;
+	width: 1px;
+	height: 100%;
+}
+.jqTimespaceEvent p span { position: relative; }
+.jqTimespaceEventRev p { border-radius: 0.6rem 0 0 0.6rem; }
+.jqTimespaceDisplay > div {
+	margin: 0;
+	padding: 1.5rem;
+	overflow: auto;
+}
+.jqTimespaceDisplay h1 {
+	margin: 0;
+	padding: 0.5rem;
+	text-align: left;
+	font-size: 1.4rem;
+}
+.jqTimespaceDisplay .jqTimespaceDisplayTime {
+	display: flex;
+	position: relative;
+	padding-bottom: 0.5rem;
+	align-items: center;
+	font-size: 1.1rem;
+}
+.jqTimespaceDisplay .jqTimespaceDisplayLeft,
+.jqTimespaceDisplay .jqTimespaceDisplayRight {
+	width: 0.9rem;
+	text-align: center;
+	font-weight: bold;
+	cursor: pointer;
+	display: none !important;
+}
+.jqTimespaceDisplay .jqTimespaceDisplayLeft { margin-left: 0.5rem; }
+.jqTimespaceDisplay .jqTimespaceDisplayRight { margin-left: 1.2rem; }
+.jqTimespaceDisplay section {
+	margin: 0;
+	padding: 0;
+	max-width: 70%;
+}
+.jqTimespaceDisplay section:not(:empty) {
+	padding: 0.8rem 0.5rem 0.5rem 0.5rem;
+}
+.schedule-disable {
+	opacity: 0.5;
+	pointer-events: none;
+}
+
+.schedule-overlapping-event {
+	background-image: linear-gradient(45deg, #27272A 38.64%, #ef4444 38.64%, #ef4444 50%, #27272A 50%, #27272A 88.64%, #ef4444 88.64%, #ef4444 100%);
+	background-size: 31.11px 31.11px;
+}
+
+.schedule-other-block {
+	opacity: 0.5;
+	cursor: default !important;
+}
+
+.jqTimepsaceContainer .jqTimespaceRight {
+	right: 0;
+}
+
+.jqTimepsaceContainer .jqTimespaceLine {
+	z-index: 3;
+	position: absolute;
+	box-sizing: border-box;
+	top: 0;
+	left: 0px;
+	margin: 0;
+	padding: 0;
+	width: 2px;
+	height: 100%;
+	background: #ef4444;
+}
+
+.jqTimepsaceContainer aside {
+	position: relative;
+	left: 0;
+	margin: 0;
+	padding: 0;
+	line-break: strict;
+}
+
+.jqTimepsaceContainer .jqTimespaceTitleClamp {
+	z-index: 5;
+	display: block;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+	opacity: 0;
+}
+
+.jqTimepsaceContainer header h1,
+.jqTimepsaceContainer header time,
+.jqTimepsaceContainer header .jqTimespaceDummySpan {
+	display: block;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0.5rem 0;
+}
+
+.jqTimepsaceContainer header time {
+	padding: 0.2rem 0 0.2rem 0.1rem;
+	font-size: 8px;
+	opacity: 0.6;
+}
+
+.jqTimepsaceContainer header h1 {
+	font-size: 1.2rem;
+}
+
+.jqTimepsaceContainer aside section {
+	z-index: 1;
+	display: flex;
+	position: relative;
+	top: 0;
+	min-height: 100%;
+}
+
+.jqTimepsaceContainer aside .jqTimespaceColumn {
+	box-sizing: border-box;
+	padding-bottom: 20px;
+}
+
+.jqTimepsaceContainer .jqTimespaceEvent {
+	z-index: 2;
+	position: relative;
+	box-sizing: border-box;
+	margin: 1rem 0 0 0;
+	padding: 0;
+	text-align: left;
+}
+
+.jqTimepsaceContainer .jqTimespaceEventRev {
+	text-align: right;
+}
+
+.jqTimepsaceContainer .jqTimespaceEventBorder {
+	z-index: 1;
+	position: absolute;
+	top: 0;
+	width: 1px;
+	height: 100%;
+}
+
+.jqTimespaceEvent p span {
+	position: relative;
+}
+
+.jqTimespaceEventRev p {
+	border-radius: 0.6rem 0 0 0.6rem;
+}
+
+.jqTimespaceDisplay > div {
+	margin: 0;
+	padding: 1.5rem;
+	overflow: auto;
+}
+
+.jqTimespaceDisplay h1 {
+	margin: 0;
+	padding: 0.5rem;
+	text-align: left;
+	font-size: 1.4rem;
+}
+
+.jqTimespaceDisplay .jqTimespaceDisplayTime {
+	display: flex;
+	position: relative;
+	padding-bottom: 0.5rem;
+	align-items: center;
+	font-size: 1.1rem;
+}
+
+.jqTimespaceDisplay .jqTimespaceDisplayLeft,
+.jqTimespaceDisplay .jqTimespaceDisplayRight {
+	width: 0.9rem;
+	text-align: center;
+	font-weight: bold;
+	cursor: pointer;
+	display: none !important;
+}
+
+.jqTimespaceDisplay .jqTimespaceDisplayLeft {
+	margin-left: 0.5rem;
+}
+
+.jqTimespaceDisplay .jqTimespaceDisplayRight {
+	margin-left: 1.2rem;
+}
+
+.jqTimespaceDisplay section {
+	margin: 0;
+	padding: 0;
+	max-width: 70%;
+}
+
+.jqTimespaceDisplay section:not(:empty) {
+	padding: 0.8rem 0.5rem 0.5rem 0.5rem;
+}
+
+#dialog-edit-schedule input {
+	margin-left: 0px;
+}
+
+#dialog-edit-schedule .edit-schedule-option-text {
+	padding-top: 10px;
+}
+
+#edit-schedule-show-all {
+	margin-bottom: 0px;
+}
+
+#dialog-edit-scheduled-block select {
+	border-radius: 5px;
+	padding: 4px;
+	padding-left: 10px;
+	width: 125px;
+}
+
+#dialog-edit-scheduled-block a {
+	display: inline-block;
+	padding-top: 5px;
+	margin-bottom: 20px;
+	font-weight: bold;
+}
+
+#dialog-edit-scheduled-block a:hover {
+	text-decoration: none;
+}
+
+#dialog-edit-scheduled-block label {
+	width: 100%;
+	text-align: center;
+	padding-top: 6px;
+}
+
+#dialog-edit-scheduled-block .edit-schedule-checkbox {
+	display: inline;
+	padding-right: 10px;
+}
+
+#dialog-edit-scheduled-block .edit-schedule-checkbox label {
+	margin-right: 10px;
+	float: left;
+	width: auto;
+	cursor: pointer;
+}
+
+#dialog-edit-scheduled-block .edit-schedule-checkbox input {
+	float: left;
+	margin-top: 10px;
+}
+
+#dialog-edit-scheduled-block .edit-schedule-checkbox input:disabled ~ label {
+	cursor: default;
+}
+
+#dialog-edit-schedule-error-overlap {
+	display: none;
+}
+
+#dialog-edit-schedule-error-new-week {
+	display: none;
+}
+
+#dialog-edit-schedule {
+	display: none;
+}
+
+#dialog-edit-scheduled-block {
+	display: none;
+}
+
+#dialog-schedule-help {
+	display: none;
+}
+
+
+.schedule-disable {
+	opacity: 0.5;
+	pointer-events: none;
+}
+
+.schedule-overlapping-event {
+	background-image: linear-gradient(45deg, #27272A 38.64%, #ef4444 38.64%, #ef4444 50%, #27272A 50%, #27272A 88.64%, #ef4444 88.64%, #ef4444 100%);
+	background-size: 31.11px 31.11px;
+}
+
+.schedule-other-block {
+	opacity: 0.5;
+	cursor: default !important;
+}

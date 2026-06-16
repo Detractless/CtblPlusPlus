@@ -1,0 +1,24 @@
+.note {
+	margin: 0 0 20px 0;
+	padding: 15px 30px 15px 15px;
+	border-left: 5px solid #4cae4c;
+}
+.note h4 {
+	margin-top: 0;
+}
+.note p {
+	font-size: 13px;
+}
+.note p:last-child {
+	margin-bottom: 0;
+}
+.note.note-info {
+	background-color: #eef7fb;
+	border-color: #a6e1ec;
+	color: #31708f;
+}
+.note.note-warning {
+	background-color: #fcf8e3;
+	border-color: #f5d89e;
+	color: #8a6d3b;
+}

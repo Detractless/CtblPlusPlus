@@ -1,0 +1,47 @@
+#dialog-paywall { display: none; }
+#dialog-upgrade { display: none; }
+#dialog-upgrade-trial-start { display: none; }
+#dialog-upgrade-trial-reminder { display: none; }
+#dialog-upgrade-pass { display: none; }
+#dialog-upgrade-fail { display: none; }
+#dialog-upgrade-update { display: none; }
+#dialog-paywall p.informative-feature-text {
+	margin-top: 10px;
+}
+
+#upgrade-key {
+	width: 300px;
+	text-align: center;
+	border-radius: 5px;
+	padding: 4px;
+	padding-left: 10px;
+}
+
+#dialog-paywall {
+	display: none;
+}
+
+#dialog-upgrade {
+	display: none;
+}
+
+#dialog-upgrade-trial-start {
+	display: none;
+}
+
+#dialog-upgrade-trial-reminder {
+	display: none;
+}
+
+#dialog-upgrade-pass {
+	display: none;
+}
+
+#dialog-upgrade-fail {
+	display: none;
+}
+
+#dialog-upgrade-update {
+	display: none;
+}
+
