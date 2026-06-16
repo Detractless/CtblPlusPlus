@@ -10,7 +10,7 @@
   <img src="https://img.shields.io/badge/stars-2-eac54f?style=for-the-badge&logo=github&logoColor=white" alt="Stars">
 </p>
 
-# Contributing
+## Contributing
 
 Thanks for considering contributing! Developers, vibe coders, and people with ideas are all welcome; feedback and feature requests help just as much as code.
 
