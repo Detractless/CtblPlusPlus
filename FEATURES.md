@@ -70,6 +70,7 @@ Acknowledged and on the roadmap, but not yet shipped.
 | Feature | Description | Status |
 |---|---|---|
 | **Block folders** | Organize your blocks into folders and subfolders instead of a flat list. Group related blocks however you want | Planned |
+| **Help tab** | A new tab between Blocks and Statistics with common Q&A and video tutorials to help new users get started | Planned |
 
 ---
 
