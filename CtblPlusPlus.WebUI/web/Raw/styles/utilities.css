@@ -1,0 +1,93 @@
+.no-select {
+	-moz-user-select: -moz-none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.hidden {
+	display: none;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.green {
+	color: #65a30d;
+}
+
+.red {
+	color: #ef4444;
+}
+
+.list-link.green:hover {
+	color: #57801e;
+}
+
+.pro-cursor {
+	cursor: not-allowed !important;
+}
+
+.not-allowed-tab-li {
+	border-bottom: 0px !important;
+	opacity: 0.5;
+}
+
+.not-allowed-tab-li:hover {
+	border-bottom: 0px !important;
+}
+
+.not-allowed-tab {
+	cursor: default !important;
+}
+
+.not-allowed-tab:hover {
+	cursor: default !important;
+}
+
+.center {
+	text-align: center !important;
+}
+
+.float-left {
+	float: left;
+}
+
+.float-right {
+	float: right;
+}
+
+.right {
+	text-align: right !important;
+}
+
+.left {
+	text-align: left !important;
+}
+
+.center select, .center input[type='text'] {
+	width: 100%;
+	text-align: center;
+	margin-bottom: 10px;
+	scrollbar-width: none;
+	border-radius: 5px;
+	padding: 4px;
+	height: 32px;
+}
+
+.center select option {
+	text-align: center !important;
+}
+
+.row-spacer {
+	margin-top: 15px;
+}
+
+.truncate-overview-text {	
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
