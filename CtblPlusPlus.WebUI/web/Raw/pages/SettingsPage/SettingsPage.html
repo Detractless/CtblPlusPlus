@@ -1,0 +1,778 @@
+﻿				<div class="page-title">
+					<ul class="nav nav-tabs">
+						<li class="active">
+							<a href="#settings-preferences" data-toggle="tab" draggable="false"> <i class="fa fa-adjust"></i> Preferences </a>
+						</li>
+						<li class="">
+							<a href="#settings-blocking" data-toggle="tab" draggable="false"> <i class="fa fa-shield"></i> Block Strictness </a>
+						</li>
+						<li class="">
+							<a href="#settings-notifications" data-toggle="tab" draggable="false"> <i class="fa fa-bell"></i> Notifications </a>
+						</li>
+						<li class="">
+							<a href="#settings-statistics" data-toggle="tab" draggable="false"> <i class="fa fa-pie-chart"></i> Statistics </a>
+						</li>
+						<li class="">
+							<a href="#settings-password" class="pro-cursor" data-toggle="tab" draggable="false" id="settings-password-tab"> <i class="fa fa-minus-circle"></i> Password </a>
+						</li>
+						<li class="">
+							<a href="#settings-ctblplusplus" data-toggle="tab" draggable="false" id="settings-ctblplusplus-tab"> <i class="fa fa-plus-square"></i> CTBL ++ </a>
+						</li>
+					</ul>
+				</div>
+				<div class="page-body">
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="tab-content">
+								<div class="tab-pane active" id="settings-preferences">
+									<div class="portlet">
+										<div class="portlet-title">
+											Display &amp; Formatting
+										</div>
+										<div class="portlet-body">
+											<form action="#" class="form-horizontal">
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">App theme</label>
+													<div class="col-sm-12">
+														<select id="settings_theme" autocomplete="off">
+															<option value="system">System</option>
+															<option value="light">Light</option>
+															<option value="dark">Dark</option>
+														</select>
+														<a class="help-link" onclick="showZoomHelp();">Looking to change the text size?</a>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">First day of the week</label>
+													<div class="col-sm-12">
+														<select id="settings_firstDayOfWeek" autocomplete="off">
+															<option value="saturday">Saturday</option>
+															<option value="sunday" selected>Sunday</option>
+															<option value="monday">Monday</option>
+														</select>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Use 24-hour time</label>
+													<div class="col-sm-12">
+														<label class="toggle">
+															<input id="settings_show24hour" type="checkbox">
+															<div data-off="1pm" data-on="13:00"></div>
+														</label>
+													</div>
+												</div>
+											</form>
+										</div>
+										<div class="portlet-title">
+											Functionality
+										</div>
+										<div class="portlet-body">
+											<form action="#" class="form-horizontal">
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Move the interface to the system menu when closing the window</label>
+													<div class="col-sm-12">
+														<label class="toggle">
+															<input id="settings_closeToTray" type="checkbox">
+															<div data-off="No" data-on="Yes"></div>
+														</label>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Show <span class="bold">device blocks</span> in the system menu</label>
+													<div class="col-sm-12">
+														<label class="toggle">
+															<input id="settings_frozenTurkeyMode" type="checkbox">
+															<div data-off="No" data-on="Yes"></div>
+														</label>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Show <span class="bold">autostart</span> options when disabling a block, if not already set</label>
+													<div class="col-sm-12">
+														<label class="toggle">
+															<input id="settings_showAutostart" type="checkbox">
+															<div data-off="No" data-on="Yes"></div>
+														</label>
+													</div>
+												</div>
+											</form>
+										</div>
+										<div class="portlet-title">
+											Ease of Use &amp; Hints
+										</div>
+										<div class="portlet-body">
+											<form action="#" class="form-horizontal">
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Show the <span class="bold">extension error</span> dialog when launching the interface if an extension is missing</label>
+													<div class="col-sm-12">
+														<label class="toggle">
+															<input id="settings_showExtensionWarning" type="checkbox">
+															<div data-off="No" data-on="Yes"></div>
+														</label>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Show the <span class="bold">editing breaks of scheduled blocks</span> dialog explaining how to edit breaks for scheduled blocks</label>
+													<div class="col-sm-12">
+														<label class="toggle">
+															<input id="settings_showEditBreakSchedule" type="checkbox">
+															<div data-off="No" data-on="Yes"></div>
+														</label>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Show a <span class="bold">no locks set</span> hint when no locks are set on any enabled block</label>
+													<div class="col-sm-12">
+														<label class="toggle">
+															<input id="settings_showNoLockSet" type="checkbox">
+															<div data-off="No" data-on="Yes"></div>
+														</label>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Show a <span class="bold">empty schedule</span> hint when no blocks are added to a scheduled block</label>
+													<div class="col-sm-12">
+														<label class="toggle">
+															<input id="settings_showNoSchedule" type="checkbox">
+															<div data-off="No" data-on="Yes"></div>
+														</label>
+													</div>
+												</div>
+											</form>
+										</div>
+										<div class="portlet-title">
+											Startup Options
+										</div>
+										<div class="portlet-body">
+											<form action="#" class="form-horizontal">
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Launch the Cold Turkey Blocker interface on Windows startup
+														<p class="informative-feature-text"><i class="fa fa-info-circle" aria-hidden="true"></i> This doesn't impact your blocks. Your blocks will still start (and stop) without the interface being open.</p>
+													</label>
+													<div class="col-sm-12">
+														<label class="toggle">
+															<input id="settings_openStartup" type="checkbox">
+															<div data-off="No" data-on="Yes"></div>
+														</label>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Move the interface to the system menu on Windows startup
+														<p class="informative-feature-text"><i class="fa fa-info-circle" aria-hidden="true"></i> Requires the above setting to be enabled.</p>
+													</label>
+													<div class="col-sm-12">
+														<label class="toggle">
+															<input id="settings_openStartupTray" type="checkbox">
+															<div data-off="No" data-on="Yes"></div>
+														</label>
+													</div>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane" id="settings-blocking">
+									<div class="portlet">
+										<div class="portlet-title">
+											Block Strictness
+											<p><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> You can't disable or change these settings during a locked block.</p>
+										</div>
+										<div class="portlet-body">
+											<form action="#" class="form-horizontal">
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Action to take when blocking apps </label>
+													<div class="col-sm-12">
+														<select id="settings_blockMode" autocomplete="off">
+															<option value="exit">Force close</option>
+															<option value="minimize">Minimize (if possible)</option>
+														</select>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Block <span class="bold">inactive browser tabs</span> for blocked websites</label>
+													<div class="col-sm-12">
+														<label class="toggle">
+															<input id="settings_blockInactive" type="checkbox"/>
+															<div data-off="Off" data-on="On"></div>
+														</label>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Block <span class="bold">embedded content</span> from blocked websites</label>
+													<div class="col-sm-12">
+														<label class="toggle">
+															<input id="settings_blockEmbedded" type="checkbox"/>
+															<div data-off="Off" data-on="On"></div>
+														</label>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Block the <span class="bold">split view</span> feature in your browser</label>
+													<div class="col-sm-12">
+														<label class="toggle">
+															<input id="settings_blockSplit" type="checkbox"/>
+															<div data-off="Off" data-on="On"></div>
+														</label>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Block the <span class="bold">Pause for a Cause</span> feature on the block page</label>
+													<div class="col-sm-12">
+														<label class="toggle">
+															<input id="settings_blockCharity" type="checkbox"/>
+															<div data-off="Off" data-on="On"></div>
+														</label>
+													</div>
+												</div>
+												<div class="form-group">
+													<div class="control-label col-sm-12 left">
+														<a class="help-link" onclick="showUnblockTabHelp();">Looking to remove the Unblock button on the block page?</a>
+													</div>
+												</div>
+											</form>
+										</div>
+										<div class="portlet-title">
+											Break Strictness
+											<p><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> You can't disable this setting while a locked block has an allowance or reward break.</p>
+										</div>
+										<div class="portlet-body">
+											<form action="#" class="form-horizontal">
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Count <span class="bold">inactive tabs</span> and <span class="bold">background apps</span> towards your allowance and reward</label>
+													<div class="col-sm-12">
+														<label class="toggle">
+															<input id="settings_statsStrict" type="checkbox"/>
+															<div data-off="No" data-on="Yes"></div>
+														</label>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Show the <span class="bold">block page</span> before visiting a website limited by a usage based break
+														<p class="informative-feature-text"><i class="fa fa-info-circle" aria-hidden="true"></i> Your break can be started by clicking the <span class="bold">Unblock</span> button on the block page.</p>
+													</label>
+													<div class="col-sm-12">
+														<label class="toggle">
+															<input id="settings_blockAllowance" type="checkbox"/>
+															<div data-off="No" data-on="Yes"></div>
+														</label>
+													</div>
+												</div>
+											</form>
+										</div>
+										<div class="portlet-title">
+											Bypass Prevention
+											<p><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> You can't disable or change these settings during a locked block.</p>
+										</div>
+										<div class="portlet-body">
+											<form action="#" class="form-horizontal">
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Block <span class="bold">unsupported browsers</span> when a block is active and contains websites</label>
+													<div class="col-sm-12">
+														<label class="toggle">
+															<input id="settings_blockUnsupported" type="checkbox"/>
+															<div data-off="Off" data-on="On"></div>
+														</label>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Block <span class="bold">Windows Task Manager</span> when a block is active</label>
+													<div class="col-sm-12">
+														<label class="toggle">
+															<input id="settings_blockTaskManager" type="checkbox"/>
+															<div data-off="Off" data-on="On"></div>
+														</label>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Block <span class="bold">Windows Time settings</span> when a block is enabled</label>
+													<div class="col-sm-12">
+														<label class="toggle">
+															<input id="settings_blockTimeChange" type="checkbox"/>
+															<div data-off="Off" data-on="On"></div>
+														</label>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Block <span class="bold">Windows Account settings</span> when a block is enabled</label>
+													<div class="col-sm-12">
+														<label class="toggle">
+															<input id="settings_blockUserChange" type="checkbox"/>
+															<div data-off="Off" data-on="On"></div>
+														</label>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Block the <span class="bold">Cold Turkey Blocker installer</span> when a block is enabled
+														<p class="informative-feature-text"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Enabling this setting is not recommended unless a bypass is found. It will prevent app updates. The uninstaller is already blocked during locked blocks.</p>
+													</label>
+													<div class="col-sm-12">
+														<label class="toggle">
+															<input id="settings_blockInstaller" type="checkbox"/>
+															<div data-off="Off" data-on="On"></div>
+														</label>
+													</div>
+												</div>
+											</form>
+										</div>
+										<div class="portlet-title">
+											Advanced Extension Settings
+											<p><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> You can't disable or change these settings during a locked block.</p>
+										</div>
+										<div class="portlet-body">
+											<form action="#" class="form-horizontal">
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Force <span class="bold">Allow access to file URLs</span> extension permissions in Chromium based browsers
+														<p class="informative-feature-text"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Enabling this setting is not recommended unless a bypass is found. It may block .pdf files opened by your browser.</p>
+													</label>
+													<div class="col-sm-12">
+														<label class="toggle">
+															<input id="settings_forceAllowFile" type="checkbox"/>
+															<div data-off="Off" data-on="On"></div>
+														</label>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Seconds given to re-enable browser extensions if disabled or removed</label>
+													<div class="col-sm-12">
+														<input id="settings_extensionGracePeriod" onfocus="this.oldvalue = this.value;" type="text" maxlength="2" autocomplete="off"> second(s)
+													</div>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane" id="settings-notifications">
+									<div class="portlet">
+										<div class="portlet-title">
+											Block Notifications
+										</div>
+										<div class="portlet-body">
+											<form action="#" class="form-horizontal">
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Show notifications when an app is blocked</label>
+													<div class="col-sm-12">
+														<label class="toggle">
+															<input id="settings_notifyBlock" type="checkbox"/>
+															<div data-off="No" data-on="Yes"></div>
+														</label>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Show notifications when a timer lock ends</label>
+													<div class="col-sm-12">
+														<label class="toggle">
+															<input id="settings_notifyDone" type="checkbox"/>
+															<div data-off="No" data-on="Yes"></div>
+														</label>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Show notifications when a time range lock starts and ends</label>
+													<div class="col-sm-12">
+														<label class="toggle">
+															<input id="settings_notifyDoneRange" type="checkbox"/>
+															<div data-off="No" data-on="Yes"></div>
+														</label>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Show notifications when a delay lock ends</label>
+													<div class="col-sm-12">
+														<label class="toggle">
+															<input id="settings_notifyDoneDelay" type="checkbox"/>
+															<div data-off="No" data-on="Yes"></div>
+														</label>
+													</div>
+												</div>
+											</form>
+										</div>
+										<div class="portlet-title">
+											Schedule Notifications
+										</div>
+										<div class="portlet-body">
+											<form action="#" class="form-horizontal">
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Show notifications when a scheduled block starts</label>
+													<div class="col-sm-12">
+														<label class="toggle">
+															<input id="settings_notifyStart" type="checkbox"/>
+															<div data-off="No" data-on="Yes"></div>
+														</label>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Show notifications when a scheduled block ends</label>
+													<div class="col-sm-12">
+														<label class="toggle">
+															<input id="settings_notifyEnd" type="checkbox"/>
+															<div data-off="No" data-on="Yes"></div>
+														</label>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Show warnings before a scheduled block starts </label>
+													<div class="col-sm-12">
+														<label class="toggle">
+															<input id="settings_notifyWarning" type="checkbox"/>
+															<div data-off="No" data-on="Yes"></div>
+														</label>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Minutes of advance warning before the scheduled block starts
+														<p class="informative-feature-text"><i class="fa fa-info-circle" aria-hidden="true"></i> Requires the above setting to be enabled. Use commas for multiple warnings.</p>
+													</label>
+													<div class="col-sm-12">
+														<input id="settings_notifyWarningPeriod" type="text" autocomplete="off"><label> minute(s) </label>
+													</div>
+												</div>
+											</form>
+										</div>
+										<div class="portlet-title">
+											Break Notifications
+										</div>
+										<div class="portlet-body">
+											<form action="#" class="form-horizontal">
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Show notifications when a pomodoro break starts and ends</label>
+													<div class="col-sm-12">
+														<label class="toggle">
+															<input id="settings_notifyBreak" type="checkbox"/>
+															<div data-off="No" data-on="Yes"></div>
+														</label>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Show notifications when a delay break starts</label>
+													<div class="col-sm-12">
+														<label class="toggle">
+															<input id="settings_notifyDelayStart" type="checkbox"/>
+															<div data-off="No" data-on="Yes"></div>
+														</label>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Show notifications when a delay or random text break ends</label>
+													<div class="col-sm-12">
+														<label class="toggle">
+															<input id="settings_notifyBreakEnd" type="checkbox"/>
+															<div data-off="No" data-on="Yes"></div>
+														</label>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Show notifications when an allowance or reward runs out</label>
+													<div class="col-sm-12">
+														<label class="toggle">
+															<input id="settings_notifyAllowance" type="checkbox"/>
+															<div data-off="No" data-on="Yes"></div>
+														</label>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Show warnings before an allowance or reward runs out
+														</label>
+													<div class="col-sm-12">
+														<label class="toggle">
+															<input id="settings_notifyWarningAllowance" type="checkbox"/>
+															<div data-off="No" data-on="Yes"></div>
+														</label>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Minutes of advance warning before the allowance or reward runs out
+														<p class="informative-feature-text"><i class="fa fa-info-circle" aria-hidden="true"></i> Requires the above setting to be enabled. Use commas for multiple warnings.</p>
+													</label>
+													<div class="col-sm-12">
+														<input id="settings_notifyAllowancePeriod" type="text" autocomplete="off"><label> minute(s) </label>
+													</div>
+												</div>
+											</form>
+										</div>
+										<div class="portlet-title">
+											Autostart Notifications
+										</div>
+										<div class="portlet-body">
+											<form action="#" class="form-horizontal">
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Show notifications when a block autostarts</label>
+													<div class="col-sm-12">
+														<label class="toggle">
+															<input id="settings_notifyAutostart" type="checkbox"/>
+															<div data-off="No" data-on="Yes"></div>
+														</label>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Show warnings before a block autostarts </label>
+													<div class="col-sm-12">
+														<label class="toggle">
+															<input id="settings_notifyWarningAutostart" type="checkbox"/>
+															<div data-off="No" data-on="Yes"></div>
+														</label>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Minutes of advance warning before the block autostarts
+														<p class="informative-feature-text"><i class="fa fa-info-circle" aria-hidden="true"></i> Requires the above setting to be enabled. Use commas for multiple warnings.</p>
+													</label>
+													<div class="col-sm-12">
+														<input id="settings_notifyWarningAutostartPeriod" type="text" autocomplete="off"><label> minute(s) </label>
+													</div>
+												</div>
+											</form>
+										</div>
+										<div class="portlet-title">
+											Notification Style
+										</div>
+										<div class="portlet-body">
+											<form action="#" class="form-horizontal">
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Show notifications as popup windows when a break starts and when giving advance warnings </label>
+													<div class="col-sm-12">
+														<label class="toggle">
+															<input id="settings_notifyIntense" type="checkbox"/>
+															<div data-off="No" data-on="Yes"></div>
+														</label>
+													</div>
+												</div>
+											</form>
+										</div>
+										<div class="portlet-title">
+											Help
+										</div>
+										<div class="portlet-body">
+											<form action="#" class="form-horizontal">
+												<div class="form-group">
+													<div class="control-label col-sm-12 left">
+														<a class="help-link" onclick="showNotificationHelp();">Having problems seeing or hearing notifications?</a>
+													</div>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane" id="settings-statistics">
+									<div class="portlet">
+										<div class="portlet-title">
+											Statistics
+											<p><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> You can't disable or change these settings while a block is using a usage based break.</p>
+										</div>
+										<div class="portlet-body">
+											<p>Statistics are required to use allowances, rewards and sessions as breaks. All statistics collected are locally stored on your hard drive. Cold Turkey Blocker will <span class="bold">never</span> transmit your settings or statistics off of this device.</p>
+											<form action="#" class="form-horizontal">
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Enable statistics</label>
+													<div class="col-sm-12">
+														<label class="toggle">
+															<input id="settings_statsEnabled" type="checkbox"/>
+															<div data-off="Off" data-on="On"></div>
+														</label>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Enable statistics in incognito mode
+														<p class="informative-feature-text"><i class="fa fa-info-circle" aria-hidden="true"></i> Requires the above setting to be enabled.</p>
+													</label>
+													<div class="col-sm-12">
+														<label class="toggle">
+															<input id="settings_statsEnabledIncognito" type="checkbox"/>
+															<div data-off="Off" data-on="On"></div>
+														</label>
+													</div>
+												</div>
+											</form>
+										</div>
+										<div class="portlet-title">
+											Delete Statistics
+											<p><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> You can't delete your statistics while a locked block has an allowance, reward or session break.</p>
+										</div>
+										<div class="portlet-body">
+											<form action="#" class="form-horizontal">
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Click the following button to delete <span class="bold">all</span> website and app statistics.</label>
+													<div class="col-sm-12">
+														<button id="settings_deleteStats" class="btn-red btn-table" onclick="deleteStats(); return false;"><i class="fa fa-trash"></i> Delete </button>
+													</div>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane" id="settings-password">
+									<div class="portlet">
+										<div class="portlet-title">
+											Set Settings Password
+										</div>
+										<div class="portlet-body">
+											<form class="form-horizontal">
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Enter password
+														<p class="informative-feature-text"><i class="fa fa-info-circle" aria-hidden="true"></i> This password is case-sensitive. Set a <span class="bold">blank</span> password to <span class="bold">disable</span> the settings password.</p>
+													</label>
+													<div class="col-sm-12">
+														<input class="allow-right-click" id="settings_password1" type="password">
+													</div>
+													<label class="control-label col-sm-12 left">Confirm password </label>
+													<div class="col-sm-12">
+														<input class="allow-right-click" id="settings_password2" type="password">
+													</div>
+													<div class="col-sm-12">
+														<button id="settings_password_btn" type="button" class="btn-green"> Set </button>
+													</div>
+												</div>
+											</form>
+										</div>
+										<div class="portlet-title">
+											Lock and Unlock Blocks
+											<p><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> You can't enable these settings during a locked block or if the settings password isn't set.</p>
+										</div>
+										<div class="portlet-body">
+											<form class="form-horizontal">
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Allow the settings password to unlock all blocks
+														<p class="informative-feature-text"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> You still won't be able to unlock an active device block if your user is affected by the block.</p>
+													</label>
+													<div class="col-sm-12">
+														<label class="toggle">
+															<input id="settings_passwordStrict-unlock" type="checkbox"/>
+															<div data-off="Off" data-on="On"></div>
+														</label>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Lock all blocks with the settings password</label>
+													<div class="col-sm-12">
+														<label class="toggle">
+															<input id="settings_passwordStrict-lock" type="checkbox"/>
+															<div data-off="Off" data-on="On"></div>
+														</label>
+													</div>
+												</div>
+											</form>
+										</div>
+										<div class="portlet-title">
+											Restrict Access and Features
+										</div>
+										<div class="portlet-body">
+											<form class="form-horizontal">
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Require the settings password to access these tabs</label>
+													<div class="col-sm-12">
+														<div class="settings-checkbox">
+															<input type="checkbox" id="settings_passwordStrict-dashboard"><label for="settings_passwordStrict-dashboard">&nbsp;Dashboard</label>
+														</div>
+														<div class="settings-checkbox">
+															<input type="checkbox" id="settings_passwordStrict-blocks"><label for="settings_passwordStrict-blocks">&nbsp;Blocks</label>
+														</div>
+														<div class="settings-checkbox">
+															<input type="checkbox" id="settings_passwordStrict-stats"><label for="settings_passwordStrict-stats">&nbsp;Statistics</label>
+														</div>
+														<div class="settings-checkbox">
+															<input type="checkbox" checked disabled><label>&nbsp;Settings (always required)</label>
+														</div>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">In addition to restricting the Blocks tab, prevent other ways of</label>
+													<div class="col-sm-12">
+														<div class="settings-checkbox">
+															<input type="checkbox" id="settings_passwordStrict-newblocks"><label for="settings_passwordStrict-newblocks">&nbsp;starting blocks</label>
+														</div>
+														<div class="settings-checkbox">
+															<input type="checkbox" id="settings_passwordStrict-newwebs"><label for="settings_passwordStrict-newwebs">&nbsp;editing blocks</label>
+														</div>
+													</div>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane" id="settings-ctblplusplus">
+									<div class="portlet">
+										<div class="portlet-title">
+											Global Exception Delay
+										</div>
+										<div class="portlet-body">
+											<form action="#" class="form-horizontal">
+												<div class="form-group">
+													<label class="control-label col-sm-12 left">Delay Duration
+														<p class="informative-feature-text"><i class="fa fa-info-circle" aria-hidden="true"></i> Increasing the delay takes effect immediately. Decreasing the delay will be subject to the current delay period before it takes effect.</p>
+													</label>
+													<div class="col-sm-12" style="margin-top: 10px;">
+														<input id="settings_globalDelayHours" type="text" autocomplete="off"> <label> hour(s) </label>
+														&nbsp;&nbsp;
+														<input id="settings_globalDelayMinutes" type="text" autocomplete="off"> <label> minute(s) </label>
+													</div>
+													<div class="col-sm-12" style="margin-top: 15px;">
+														<button id="settings_updateGlobalDelay_btn" type="button" class="btn-green"> Update Global Delay </button>
+													</div>
+													<div class="col-sm-12" style="margin-top: 10px;">
+														<div id="settings_globalDelayPending" style="display: none;" class="informative-feature-text">
+															<i class="fa fa-clock-o" aria-hidden="true"></i> <span id="settings_globalDelayPendingText"></span> <button id="settings_globalDelayCancel_btn" type="button" class="btn-red" style="margin-left: 6px;"> Cancel </button>
+														</div>
+													</div>
+												</div>
+											</form>
+										</div>
+									</div>
+									<div class="portlet">
+										<div class="portlet-title">
+											System Enforcers
+											<p id="ctbl_enforcers_lock_warning" style="display: none;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> You can't disable these settings during a locked block.</p>
+										</div>
+										<div class="portlet-body">
+											<form action="#" class="form-horizontal">
+												<div class="form-group">
+													<label class="control-label col-sm-12 left"><span class="bold">Time Enforcer</span> &mdash; detects clock tampering via NTP sync and high-water mark</label>
+													<div class="col-sm-12">
+														<label class="toggle">
+															<input id="ctbl_enforcer_time" type="checkbox"/>
+															<div data-off="Off" data-on="On"></div>
+														</label>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="control-label col-sm-12 left"><span class="bold">Factory Reset Protection</span> &mdash; blocks Windows reset and advanced startup</label>
+													<div class="col-sm-12">
+														<label class="toggle">
+															<input id="ctbl_enforcer_factoryReset" type="checkbox"/>
+															<div data-off="Off" data-on="On"></div>
+														</label>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="control-label col-sm-12 left"><span class="bold">System Tool Protection</span> &mdash; blocks Task Manager, Process Explorer, Registry Editor, etc.</label>
+													<div class="col-sm-12">
+														<label class="toggle">
+															<input id="ctbl_enforcer_taskManager" type="checkbox"/>
+															<div data-off="Off" data-on="On"></div>
+														</label>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="control-label col-sm-12 left"><span class="bold">Account Protection</span> &mdash; hides Windows Account settings panels</label>
+													<div class="col-sm-12">
+														<label class="toggle">
+															<input id="ctbl_enforcer_account" type="checkbox"/>
+															<div data-off="Off" data-on="On"></div>
+														</label>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="control-label col-sm-12 left"><span class="bold">Privilege Enforcement</span> &mdash; strips time-change privilege from non-system accounts</label>
+													<div class="col-sm-12">
+														<label class="toggle">
+															<input id="ctbl_enforcer_privilege" type="checkbox"/>
+															<div data-off="Off" data-on="On"></div>
+														</label>
+													</div>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
