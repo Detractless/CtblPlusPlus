@@ -1,0 +1,56 @@
+
+#dialog-edit-device-block {
+	display: none;
+}
+
+#dialog-settings-password-error-blank {
+	display: none;
+}
+
+#dialog-settings-enable-statistics {
+	display: none;
+}
+
+#dialog-settings-enable-statistics-lock {
+	display: none;
+}
+
+#dialog-settings-delete-statistics {
+	display: none;
+}
+
+#dialog-settings-toggle-locked-password-warning {
+	display: none;
+}
+
+#dialog-settings-toggle-locked-block-warning {
+	display: none;
+}
+
+#dialog-settings-change-locked-block-warning {
+	display: none;
+}
+
+#dialog-settings-mode-locked-block-warning {
+	display: none;
+}
+
+#dialog-settings-password-set {
+	display: none;
+}
+
+#dialog-settings-password-cleared {
+	display: none;
+}
+
+#dialog-settings-password-error-match {
+	display: none;
+}
+
+#dialog-settings-password-error-invalid {
+	display: none;
+}
+
+#dialog-settings-toggle-locked-statistics-warning {
+	display: none;
+}
