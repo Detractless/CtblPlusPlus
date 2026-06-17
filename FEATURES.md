@@ -20,8 +20,8 @@ Features the community has asked for. Vote by reacting to the linked issue, or [
 
 | Feature | Description |
 |---|---|
-| **Reading gate** | Unlock a block by reading aloud from a book, paragraph, or quote. Tracks your place so you can turn pages and continue where you left off. Meet your reading quota to unlock. Supports PDFs, DOCX, EPUB, and plain pasted text |
-| **Exercise gate** | Unlock a block by completing a physical exercise like pushups, pullups, or squats. Choose the exercise, number of sets, and reps per set, verifies via webcam |
+| **Reading gate** | Unlock a block by reading aloud from a book, paragraph, or quote. Tracks your place so you can turn pages and continue where you left off. Meet your reading quota to unlock. Supports PDFs, DOCX, EPUB, and plain pasted text. Verifies actions via local diction engine.|
+| **Exercise gate** | Unlock a block by completing a physical exercise like pushups, pullups, or squats. Choose the exercise, number of sets, and reps per set. Verifies actions via webcam with tensor or another body tracking system. Local only. |
 
 ### Enforcement
 
