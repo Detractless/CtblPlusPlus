@@ -30,10 +30,10 @@ Post in the pinned access issue. The Action verifies that the GitHub account pos
 
 | Scenario | You comment | Action replies | Timing |
 |---|---|---|---|
-| You don't have access and want it | `[Username]::Request Full Access` | `[Username]::Countdown Started - Access scheduled for [Date]` | Immediate |
-| You requested access but want to cancel before it's granted | `[Username]::Forget Access` | `[Username]::Countdown Cancelled` | Immediate |
-| You have access but no longer want it | `[Username]::Forget Access` | `[Username]::Access Revoked` | Immediate |
-| You're granted access after the 7-day wait | (automatic) | `[Username]::Access Granted [Date]` | Next scan |
+| You don't have full access and want it | `[Username]::Request Full Access` | `[Username]::Countdown Started - Access scheduled for [Date]` | Immediate |
+| You requested full access but want to cancel before it's granted | `[Username]::Forget Full Access` | `[Username]::Countdown Cancelled` | Immediate |
+| You have full access but no longer want it | `[Username]::Forget Full Access` | `[Username]::Access Revoked` | Immediate |
+| You're granted full access after the 7-day wait | Nothing, it's automatic. | `[Username]::Access Granted [Date]` | Next scan |
 
 ### Notes
 
