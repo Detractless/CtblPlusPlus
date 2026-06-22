@@ -22,7 +22,7 @@ Access is managed through a single GitHub issue: **[Source Access Requests](#)**
 
 ### How it works
 
-A GitHub Action scans that issue every 2 hours. It reads comments matching a specific format, verifies the commenter's GitHub identity, and grants or revokes submodule access automatically. Every request, grant, and cancellation is logged in the thread with a timestamp. No DMs, no manual steps.
+The Action has two triggers. When a matching comment is posted, it fires immediately to acknowledge. Separately, it scans the issue every 2 hours to check who is due for access and handles the actual granting and revoking. Every request, grant, and cancellation is logged in the thread with a timestamp. No DMs, no manual steps.
 
 ### Requesting access
 
@@ -32,7 +32,13 @@ Post a comment in the access issue in this exact format:
 [YourUsername]::Request Full Access
 ```
 
-The Action will verify that the GitHub account that posted the comment matches the username in the comment. After 7 days it will reply:
+The Action will verify that the GitHub account that posted the comment matches the username in the comment, then reply immediately:
+
+```
+[YourUsername]::Countdown Started - Access scheduled for [Date]
+```
+
+After 7 days the next scheduled scan will grant access and reply:
 
 ```
 [YourUsername]::Access Granted [Date]
