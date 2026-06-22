@@ -1,4 +1,4 @@
-<p align="center"> <img src="assets/banner.svg" alt="CTBL++ — Cold Turkey Blocker, extended" width="100%"> </p> <p align="center"> <b>A community-built add-on for <a href="https://getcoldturkey.com/">Cold Turkey Blocker</a> that adds features the official app doesn't have.</b> </p> <p align="center">
+<p align="center"> <img src="assets/banner.svg" alt="CTBL++ - Cold Turkey Blocker, extended" width="100%"> </p> <p align="center"> <b>A community-built add-on for <a href="https://getcoldturkey.com/">Cold Turkey Blocker</a> that adds features the official app doesn't have.</b> </p> <p align="center">
   <img src="https://img.shields.io/badge/platform-Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white" alt="Platform: Windows">
   <img src="https://img.shields.io/badge/.NET-10-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" alt=".NET 10">
   <img src="https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=csharp&logoColor=white" alt="C#">
@@ -12,17 +12,17 @@
 
 ## Contributing
 
-Thanks for considering contributing. Developers, vibe coders, and people with ideas are all welcome — feedback and feature requests help just as much as code.
+Thanks for considering contributing. Developers, vibe coders, and people with ideas are all welcome; feedback and feature requests help just as much as code.
 
 ## Source Access
 
-CTBL++ is MIT-licensed. Most of the repo is fully open. Sensitive enforcement internals — watchdogs and vault sealing — live in a private submodule. Public clones see an empty folder there; authorized contributors get the full thing.
+CTBL++ is MIT-licensed. Most of the repo is fully open. Sensitive enforcement internals (watchdogs and vault sealing) live in a private submodule. Public clones see an empty folder there; authorized contributors get the full thing.
 
 Access is managed through a single GitHub issue: **[Source Access Requests](#)** *(link to the pinned issue)*.
 
 ### How it works
 
-A GitHub Action scans that issue every 2 hours. It reads comments matching a specific format, verifies the commenter's GitHub identity, and grants or revokes submodule access automatically. Every request, grant, and cancellation is logged in the thread with a timestamp — no DMs, no manual steps.
+A GitHub Action scans that issue every 2 hours. It reads comments matching a specific format, verifies the commenter's GitHub identity, and grants or revokes submodule access automatically. Every request, grant, and cancellation is logged in the thread with a timestamp. No DMs, no manual steps.
 
 ### Requesting access
 
@@ -53,7 +53,7 @@ If access hasn't been granted yet, the countdown stops. If you already have acce
 ### Notes
 
 - The 7-day window exists because many people use CTBL++ to work through habits they're actively trying to break. Keeping enforcement internals slightly out of immediate reach is intentional.
-- The Action validates identity server-side — it won't act on a comment where the GitHub login doesn't match the username in the text.
+- The Action validates identity server-side. It won't act on a comment where the GitHub login doesn't match the username in the text.
 - If the Action doesn't respond within a few hours, open a separate issue.
 
 ## Setup
