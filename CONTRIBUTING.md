@@ -22,7 +22,7 @@ Access is managed through a single GitHub issue: **[Source Access Requests](#)**
 
 ### How it works
 
-The Action has two triggers. When a matching comment is posted, it fires immediately to acknowledge. Separately, it scans the issue every 2 hours to check who is due for access and handles the actual granting and revoking. Every request, grant, and cancellation is logged in the thread with a timestamp. No DMs, no manual steps.
+The Action has two triggers. It fires immediately on any matching comment to acknowledge, cancel, or revoke. The only thing it waits on is the 7-day grant, which a scheduled scan checks every 2 hours. Every request, grant, and cancellation is logged in the thread with a timestamp. No DMs, no manual steps.
 
 ### Requesting access
 
@@ -54,7 +54,17 @@ Post a comment in the same issue:
 [YourUsername]::Forget Access
 ```
 
-If access hasn't been granted yet, the countdown stops. If you already have access, it's removed. Either way the Action replies to confirm.
+The Action replies immediately. If the countdown is still running, it stops and replies:
+
+```
+[YourUsername]::Countdown Cancelled
+```
+
+If you already have access, it's removed and replies:
+
+```
+[YourUsername]::Access Revoked
+```
 
 ### Notes
 
