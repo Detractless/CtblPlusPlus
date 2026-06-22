@@ -24,47 +24,16 @@ Access is managed through a single GitHub issue: **[Source Access Requests](#)**
 
 The Action has two triggers. It fires immediately on any matching comment to acknowledge, cancel, or revoke. The only thing it waits on is the 7-day grant, which a scheduled scan checks every 2 hours. Every request, grant, and cancellation is logged in the thread with a timestamp. No DMs, no manual steps.
 
-### Requesting access
+### Comment reference
 
-Post a comment in the access issue in this exact format:
+Post in the pinned access issue. The Action verifies that the GitHub account posting the comment matches the username in the text.
 
-```
-[YourUsername]::Request Full Access
-```
-
-The Action will verify that the GitHub account that posted the comment matches the username in the comment, then reply immediately:
-
-```
-[YourUsername]::Countdown Started - Access scheduled for [Date]
-```
-
-After 7 days the next scheduled scan will grant access and reply:
-
-```
-[YourUsername]::Access Granted [Date]
-```
-
-And add you to the private submodule repo.
-
-### Cancelling or revoking access
-
-Post a comment in the same issue:
-
-```
-[YourUsername]::Forget Access
-```
-
-The Action replies immediately. If the countdown is still running, it stops and replies:
-
-```
-[YourUsername]::Countdown Cancelled
-```
-
-If you already have access, it's removed and replies:
-
-```
-[YourUsername]::Access Revoked
-```
+| You comment | Situation | Action replies | Timing |
+|---|---|---|---|
+| `[Username]::Request Full Access` | | `[Username]::Countdown Started - Access scheduled for [Date]` | Immediate |
+| `[Username]::Forget Access` | Countdown running | `[Username]::Countdown Cancelled` | Immediate |
+| `[Username]::Forget Access` | Access already granted | `[Username]::Access Revoked` | Immediate |
+| (automatic) | 7 days elapsed | `[Username]::Access Granted [Date]` | Next scan |
 
 ### Notes
 
