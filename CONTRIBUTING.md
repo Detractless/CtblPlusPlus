@@ -28,12 +28,12 @@ The Action has two triggers. It fires immediately on any matching comment to ack
 
 Post in the pinned access issue. The Action verifies that the GitHub account posting the comment matches the username in the text.
 
-| You comment | Situation | Action replies | Timing |
+| Scenario | You comment | Action replies | Timing |
 |---|---|---|---|
-| `[Username]::Request Full Access` | | `[Username]::Countdown Started - Access scheduled for [Date]` | Immediate |
-| `[Username]::Forget Access` | Countdown running | `[Username]::Countdown Cancelled` | Immediate |
-| `[Username]::Forget Access` | Access already granted | `[Username]::Access Revoked` | Immediate |
-| (automatic) | 7 days elapsed | `[Username]::Access Granted [Date]` | Next scan |
+| You don't have access and want it | `[Username]::Request Full Access` | `[Username]::Countdown Started - Access scheduled for [Date]` | Immediate |
+| You requested access but want to cancel before it's granted | `[Username]::Forget Access` | `[Username]::Countdown Cancelled` | Immediate |
+| You have access but no longer want it | `[Username]::Forget Access` | `[Username]::Access Revoked` | Immediate |
+| You're granted access after the 7-day wait | (automatic) | `[Username]::Access Granted [Date]` | Next scan |
 
 ### Notes
 
