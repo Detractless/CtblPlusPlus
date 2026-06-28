@@ -86,7 +86,6 @@ This is a tamper-resistance tool, so security matters more than usual.
 - One logical change per PR.
 - Build and test manually before submitting (`ctbl.bat`).
 - Explain what changed and how to test it. Flag anything touching watchdogs, the vault, or HMAC signing.
-- Use [Conventional Commits](https://www.conventionalcommits.org/) (e.g. `fix(engine): ...`, `feat(ui): ...`).
 
 ## AI Agent Skills
 
