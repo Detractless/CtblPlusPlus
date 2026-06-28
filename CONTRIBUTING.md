@@ -16,7 +16,12 @@ Thanks for considering contributing. Developers, vibe coders, and people with id
 
 ## Source Access
 
-CTBL++ is MIT-licensed. Most of the repo is fully open. Sensitive enforcement internals (watchdogs and vault sealing) live in a private submodule. Public clones see an empty folder there; authorized contributors get the full thing.
+CTBL++ is MIT-licensed and split across two repos:
+
+- **Public repo** — everything except the sensitive enforcement internals.
+- **Private repo** — watchdogs, vault sealing, and HMAC signing. Authorized contributors get access to this separately.
+
+Public clones build and run without the private repo for most work. Changes touching watchdogs, the vault, or HMAC signing require private repo access before you can build or test locally.
 
 Access is managed through a single GitHub issue: **[Source Access Requests](#)** *(link to the pinned issue)*.
 
@@ -46,16 +51,20 @@ Post in the pinned access issue. The Action verifies that the GitHub account pos
 Requires Windows, .NET 10 SDK, Node.js, Cold Turkey Blocker (paid), and an Admin terminal.
 
 ```bash
-git clone --recursive https://github.com/Detractless/CtblPlusPlus.git
+git clone https://github.com/Detractless/CtblPlusPlus.git
 cd CtblPlusPlus
 ctbl.bat
 ```
 
-If you cloned without `--recursive` and have submodule access, run:
+### Adding private source (authorized contributors only)
 
-```bash
-git submodule update --init --recursive
+Once you have access to the private repo, clone it separately and place the folder named `Place_Me_In_Root_of_CtblPlusPlus-Main` inside the root of your `CtblPlusPlus` clone. Then open `ctbl.bat` and run:
+
 ```
+[5] Split / Combine → [2] Combine
+```
+
+This copies the private source files into the right locations in the project tree. After that, run `[1] Build` as normal.
 
 See the [README](README.md) for full build details.
 
@@ -63,7 +72,7 @@ See the [README](README.md) for full build details.
 
 - Bug fixes and security hardening are always welcome.
 - For new features, open an issue first so we can align on scope.
-- Changes touching watchdogs, the vault, or HMAC signing require full source access before you can build or test locally.
+- Changes touching watchdogs, the vault, or HMAC signing require private repo access before you can build or test locally.
 
 ## Security
 
