@@ -89,7 +89,7 @@ This is a tamper-resistance tool, so security matters more than usual.
 
 ## AI Agent Skills
 
-This project is developed with AI-assisted workflows. Skill files live in `.agents/*.md`; load the relevant one before using an agent to contribute.
+This project is developed with AI-assisted workflows. Skill files live in `.agents/*.md`; take a look at a relevant skill before using an agent to contribute.
 
 ## License
 
