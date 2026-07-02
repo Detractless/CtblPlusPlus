@@ -11,7 +11,7 @@ if (-not $isAdmin) {
     exit
 }
 
-$ScriptsDir = Join-Path -Path $PSScriptRoot -ChildPath "Unobfuscated_Backup\web\Scripts"
+$ScriptsDir = Join-Path -Path $PSScriptRoot -ChildPath "CtblPlusPlus.WebUI\web\Scripts"
 
 Write-Host "Building project via Webpack..."
 Push-Location -Path $ScriptsDir
@@ -24,7 +24,7 @@ if ($LASTEXITCODE -ne 0) {
 }
 Pop-Location
 
-$SourceDir = Join-Path -Path $PSScriptRoot -ChildPath "Unobfuscated_Backup\web\Bundled"
+$SourceDir = Join-Path -Path $PSScriptRoot -ChildPath "CtblPlusPlus.WebUI\web\Bundled"
 
 if (-not (Test-Path -Path $SourceDir)) {
     Write-Error "Source directory not found: $SourceDir"
