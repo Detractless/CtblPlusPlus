@@ -2,7 +2,7 @@
 setlocal enabledelayedexpansion
 
 :: ================================================================
-::  CTBL++ v0.2.1.2 — Build and Launch
+::  CTBL++ v0.2.1.2 — Build / Manage
 :: ================================================================
 
 set "ROOT=%~dp0"
@@ -12,11 +12,12 @@ echo.
 echo  ================================================
 echo   CTBL++ v0.2.1.2
 echo  ================================================
-echo   [1] Build all projects
-echo   [2] Launch Installer
-echo   [3] Launch Engine (console mode)
-echo   [4] Publish single-file installer (Release, self-contained)
-echo   [5] Clean project for GitHub (remove bin/obj)
+echo   [1] Build           -- compile all projects
+echo   [2] Installer       -- launch the Installer
+echo   [3] Engine          -- launch Engine in console mode
+echo   [4] Publish         -- single-file release build
+echo   [5] Split / Combine -- manage private source files
+echo   [6] Clean           -- remove bin\obj for GitHub
 echo   [0] Exit
 echo  ================================================
 echo.
@@ -26,7 +27,8 @@ if "%choice%"=="1" goto build
 if "%choice%"=="2" goto launch_installer
 if "%choice%"=="3" goto launch_engine
 if "%choice%"=="4" goto publish_installer
-if "%choice%"=="5" goto clean
+if "%choice%"=="5" goto split_combine_menu
+if "%choice%"=="6" goto clean
 if "%choice%"=="0" exit /b 0
 echo  Invalid option.
 goto menu
@@ -206,6 +208,139 @@ for %%P in (
 popd
 echo.
 echo  CLEAN COMPLETE — bin\ and obj\ removed from all 7 .NET projects.
+echo.
+pause
+goto menu
+
+:: ================================================================
+:split_combine_menu
+:: ================================================================
+echo.
+echo  ================================================
+echo   Split / Combine
+echo  ================================================
+echo   [1] Split   -- export private source to Place_Me_In_Root_of_CtblPlusPlus-Main\
+echo   [2] Combine -- import private source from Place_Me_In_Root_of_CtblPlusPlus-Main\
+echo   [0] Back
+echo  ================================================
+echo.
+set /p sc_choice="  Select option: "
+
+if "%sc_choice%"=="1" goto split
+if "%sc_choice%"=="2" goto combine
+if "%sc_choice%"=="0" goto menu
+echo  Invalid option.
+goto split_combine_menu
+
+:: ================================================================
+:split
+:: ================================================================
+echo.
+echo  [SPLIT] This will copy all private source files into Place_Me_In_Root_of_CtblPlusPlus-Main\
+echo  (one level up from this folder), then DELETE them from this tree.
+echo.
+echo  After Split:
+echo    - Push Place_Me_In_Root_of_CtblPlusPlus-Main\ to the private GitHub repo.
+echo    - Push this folder to the public GitHub repo.
+echo    - To resume dev work, place Place_Me_In_Root_of_CtblPlusPlus-Main\ in
+echo      this project root and run Combine.
+echo.
+set /p confirm="  Type YES to proceed: "
+if /i not "%confirm%"=="YES" (
+    echo  Cancelled.
+    pause
+    goto menu
+)
+
+set "PRIV=%ROOT%..\Place_Me_In_Root_of_CtblPlusPlus-Main"
+
+echo.
+echo  Copying private files to %PRIV%...
+
+set "FILES=CtblPlusPlus.Domain\Models\AppControlConstants.cs CtblPlusPlus.Domain\Security\QueueSignaturePayload.cs CtblPlusPlus.Application\Queue\QueueSecurityValidator.cs CtblPlusPlus.Application\Queue\WebsiteTamperRemediator.cs CtblPlusPlus.Infrastructure\Communication\PidBroker.cs CtblPlusPlus.Infrastructure\Security\DpapiHmacProvider.cs CtblPlusPlus.Infrastructure\Security\InstallManifest.cs CtblPlusPlus.Infrastructure\Security\VaultRecoveryService.cs CtblPlusPlus.Infrastructure\Security\WatchdogHeartbeat.cs CtblPlusPlus.Infrastructure\Security\Lockdown\AclHelper.cs CtblPlusPlus.Infrastructure\Security\Lockdown\BinaryFileLockService.cs CtblPlusPlus.Infrastructure\Security\Lockdown\FileSystemWatchdogService.cs CtblPlusPlus.Infrastructure\Security\Lockdown\IntegrityVerificationService.cs CtblPlusPlus.Infrastructure\Security\Lockdown\LockdownConstants.cs CtblPlusPlus.Infrastructure\Security\Lockdown\ScorchedEarthPurgeService.cs CtblPlusPlus.Infrastructure\Security\Lockdown\VaultAclEnforcementService.cs CtblPlusPlus.Infrastructure\Enforcers\AccountEnforcer.cs CtblPlusPlus.Infrastructure\Enforcers\BrowserEnforcer.cs CtblPlusPlus.Infrastructure\Enforcers\FactoryResetEnforcer.cs CtblPlusPlus.Infrastructure\Enforcers\PersistenceEnforcer.cs CtblPlusPlus.Infrastructure\Enforcers\PrivilegeEnforcer.cs CtblPlusPlus.Infrastructure\Enforcers\TaskManagerEnforcer.cs CtblPlusPlus.Infrastructure\Enforcers\TimeEnforcer.cs CtblPlusPlus.Infrastructure\Enforcers\UninstallerEnforcer.cs CtblPlusPlus.Infrastructure\System\NativeMethods.cs CtblPlusPlus.Infrastructure\System\WindowsServiceMonitor.cs CtblPlusPlus.Infrastructure\System\WindowsSystemEnforcementService.cs CtblPlusPlus.Engine\Program.cs CtblPlusPlus.Wd1\Program.cs CtblPlusPlus.Wd2\Program.cs CtblPlusPlus.Installer\InstallationOrchestrator.cs"
+
+for %%F in (%FILES%) do (
+    set "SRC=%ROOT%%%F"
+    set "DST=%PRIV%\%%F"
+    for %%D in ("!DST!") do (
+        if not exist "%%~dpD" mkdir "%%~dpD"
+    )
+    if exist "!SRC!" (
+        copy /Y "!SRC!" "!DST!" >nul
+    ) else (
+        echo    SKIPPED ^(not found^): %%F
+    )
+)
+
+echo  Copy complete. Removing private files from public tree...
+echo.
+
+for %%F in (%FILES%) do (
+    if exist "%ROOT%%%F" del /f /q "%ROOT%%%F"
+)
+if exist "%ROOT%CtblPlusPlus.Infrastructure\Communication" rmdir /s /q "%ROOT%CtblPlusPlus.Infrastructure\Communication"
+if exist "%ROOT%CtblPlusPlus.Infrastructure\Enforcers" rmdir /s /q "%ROOT%CtblPlusPlus.Infrastructure\Enforcers"
+
+echo  SPLIT COMPLETE.
+echo.
+echo  Next steps:
+echo    1. Push Place_Me_In_Root_of_CtblPlusPlus-Main\ to your private GitHub repo.
+echo    2. Push this folder to the public GitHub repo.
+echo    3. To resume dev work: place Place_Me_In_Root_of_CtblPlusPlus-Main\ in
+echo       this project root, then run Combine.
+echo.
+pause
+goto menu
+
+:: ================================================================
+:combine
+:: ================================================================
+echo.
+set "DROP=%ROOT%Place_Me_In_Root_of_CtblPlusPlus-Main"
+if not exist "%DROP%" (
+    echo  [!] Folder not found:
+    echo      %DROP%
+    echo.
+    echo  Place the private source folder as "Place_Me_In_Root_of_CtblPlusPlus-Main"
+    echo  inside this project root, then try again.
+    echo.
+    pause
+    goto split_combine_menu
+)
+
+echo  [COMBINE] Copying private source files from
+echo    %DROP%
+echo  into the project tree...
+echo.
+
+for %%P in (
+    CtblPlusPlus.Domain
+    CtblPlusPlus.Application
+    CtblPlusPlus.Infrastructure
+    CtblPlusPlus.Engine
+    CtblPlusPlus.Wd1
+    CtblPlusPlus.Wd2
+    CtblPlusPlus.Installer
+) do (
+    if exist "%DROP%\%%P\" (
+        echo  ------------------------------------------
+        echo  Copying %%P...
+        echo  ------------------------------------------
+        robocopy "%DROP%\%%P" "%ROOT%%%P" /E /IS /IT /NJH /NJS
+        if errorlevel 8 (
+            echo  WARNING: Error copying %%P
+        ) else (
+            echo  OK: %%P done.
+        )
+        echo.
+    ) else (
+        echo  SKIPPED ^(not found^): %%P
+    )
+)
+
+echo.
+echo  COMBINE COMPLETE — private files are in place.
+echo  Run [1] Build to compile.
 echo.
 pause
 goto menu
