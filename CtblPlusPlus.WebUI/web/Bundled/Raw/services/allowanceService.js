@@ -1,1 +1,0 @@
-import{AppState}from"../store/AppState";export var AllowanceService={getAllowances:function(){try{return JSON.parse(window.external.SendAllowanceUpdate())}catch(e){return console.error("Failed to parse AppState.allowances from external API",e),{}}},getTrayText:function(e){window.external&&"function"==typeof window.external.GetTrayText&&window.external.GetTrayText(e)}};

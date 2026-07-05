@@ -1,1 +1,0 @@
-var registeredLockTypes=[];export function registerLockType(e){registeredLockTypes.push(e)}export function findLockType(e,r){for(var t=0;t<registeredLockTypes.length;t++)if(registeredLockTypes[t].matches(e,r))return registeredLockTypes[t];return null}

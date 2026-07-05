@@ -1,6 +1,0 @@
-/*!
- * jQuery Timespace Plugin
- * Author: Michael S. Howard
- * Email: codingadvent@gmail.com
- * License: MIT
- */
