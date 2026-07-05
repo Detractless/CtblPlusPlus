@@ -35,6 +35,9 @@ module.exports = {
   resolve: {
     extensions: ['.js'],
   },
+  performance: {
+    hints: false,
+  },
   plugins: [
     new CopyPlugin({
       patterns: [
