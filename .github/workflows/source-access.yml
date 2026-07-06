@@ -133,7 +133,7 @@ jobs:
               const current = state[username] || { status: 'none' };
 
               if (command === 'Request Full Access') {
-                if (current.status === 'pending') return core.info('Countdown already running; ignoring duplicate.');
+                if (current.status === 'pending') return reply(`[${username}]::Countdown Already Running - Access scheduled for ${fmtDate(current.scheduledFor)}`);
                 if (current.status === 'granted' || await hasCollaboratorAccess(username)) {
                   return reply(`[${username}]::Access Already Granted`);
                 }
