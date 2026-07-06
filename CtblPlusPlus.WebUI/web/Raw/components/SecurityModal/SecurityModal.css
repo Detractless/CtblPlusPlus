@@ -1,0 +1,37 @@
+#dialog-password { display: none; }
+#dialog-randomText { display: none; }
+#dialog-delay { display: none; }
+#dialog-edit-randomText-error-invalid-char { display: none; }
+#dialog-edit-randomText-error-invalid-empty { display: none; }
+#dialog-settings-password-error-blank { display: none; }
+#dialog-settings-password-set { display: none; }
+#dialog-settings-password-cleared { display: none; }
+#dialog-settings-password-error-match { display: none; }
+#dialog-settings-password-error-invalid { display: none; }
+#dialog-password-text {
+	width: 100%;
+	text-align: center;
+	border-radius: 5px;
+	margin-top: 15px;
+	padding: 4px;
+	padding-left: 8px;
+}
+#dialog-randomText-label {
+	width: 100%;
+	text-align: left;
+	margin-top: 15px;
+	padding: 7px;
+	height: 120px;
+	overflow-y: scroll;
+	word-wrap: break-word;
+}
+#dialog-randomText-text {
+	border-radius: 5px;
+	width: 100%;
+	text-align: left;
+	padding: 5px;
+	margin-left: 1px;
+	height: 120px;
+	overflow-y: scroll;
+	word-wrap: break-word;
+}

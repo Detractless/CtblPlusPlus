@@ -1,0 +1,322 @@
+﻿				<div class="page-title">
+					<ul class="nav nav-tabs">
+						<li class="active">
+							<a id="stats-tab-blocked" href="#stats-blocked" data-toggle="tab" draggable="false"> <i class="fa fa-shield"></i> Block Statistics</a>
+						</li>
+						<li class="">
+							<a id="stats-tab-websites" href="#stats-websites" data-toggle="tab" draggable="false"> <i class="fa fa-globe"></i> Website Statistics</a>
+						</li>
+						<li class="">
+							<a id="stats-tab-apps" href="#stats-apps" data-toggle="tab" draggable="false"> <i class="fa fa-window-maximize"></i> App Statistics</a>
+						</li>
+					</ul>
+				</div>
+				<div class="page-body">
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="tab-content">
+								<div class="tab-pane active" id="stats-blocked">
+									<div class="portlet">
+										<div class="portlet-title">
+											Time with Active Blocks
+											<div class="float-right portlet-button">
+												<div class="btn-group">
+													<button class="dropdown-toggle btn-grey btn-no-min" type="button" data-toggle="dropdown" aria-expanded="false"> <i class="fa fa-bars" aria-hidden="true"></i> </button>
+													<ul class="dropdown-menu dropdown-menu-right pull-right" role="menu">
+														<li>
+															<a onclick="exportStats('stats-blocked-time-chart');"> <i class="fa fa-upload" aria-hidden="true"></i> Export to CSV file... </a>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+										<div class="portlet-body stats-content">
+											<div class="form-group">
+												<select class="col-sm-3" id="stats-blocked-web-timeframe" value="week" autocomplete="off">
+													<option value="week">This week</option>
+													<option value="last-week">Last week</option>
+													<option value="month">This month</option>
+													<option value="last-month">Last month</option>
+													<option value="7-days">Last 7 days</option>
+													<option value="30-days">Last 30 days</option>
+													<option value="custom">These dates</option>
+												</select>
+												<div class="col-sm-8">
+													<div class="col-sm-5">
+														<div class="input-group date" id="stats-blocked-web-timeframe-start">
+															<input type="text" class="form-control" value="" autocomplete="off"/>
+															<span class="input-group-addon">
+																<span class="fa fa-calendar"></span>
+															</span>
+														</div>
+													</div>
+													<div class="col-sm-1 center to"> to </div>
+													<div class="col-sm-5">
+														<div class="input-group date" id="stats-blocked-web-timeframe-end">
+															<input type="text" class="form-control" value="" autocomplete="off"/>
+															<span class="input-group-addon">
+																<span class="fa fa-calendar"></span>
+															</span>
+														</div>
+													</div>
+													<div class="col-sm-1 center"> 
+														<button class="btn-green" onclick="stats.updateStatsTimeBlocked();"><i class="fa fa-refresh"></i>&nbsp;Refresh</button>
+													</div>
+												</div>
+											</div>
+											<div class="col-sm-12">
+												<div id="stats-blocked-web">
+													<div id="stats-blocked-time-chart" class="chart">
+													</div>
+													<div id="stats-blocked-time-legend" class="chart-legend">
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="portlet">
+										<div class="portlet-title">
+											Number of Blocks Triggered
+											<div class="float-right portlet-button">
+												<div class="btn-group">
+													<button class="dropdown-toggle btn-grey btn-no-min" type="button" data-toggle="dropdown" aria-expanded="false"> <i class="fa fa-bars" aria-hidden="true"></i> </button>
+													<ul class="dropdown-menu dropdown-menu-right pull-right" role="menu">
+														<li>
+															<a onclick="exportStats('stats-blocked-number-chart');"> <i class="fa fa-upload" aria-hidden="true"></i> Export to CSV file... </a>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+										<div class="portlet-body stats-content">
+											<div class="form-group">
+												<select class="col-sm-3" id="stats-blocked-app-timeframe" value="week" autocomplete="off">
+													<option value="week">This week</option>
+													<option value="last-week">Last week</option>
+													<option value="month">This month</option>
+													<option value="last-month">Last month</option>
+													<option value="7-days">Last 7 days</option>
+													<option value="30-days">Last 30 days</option>
+													<option value="custom">These dates</option>
+												</select>
+												<div class="col-sm-8">
+													<div class="col-sm-5">
+														<div class="input-group date" id="stats-blocked-app-timeframe-start">
+															<input type="text" class="form-control" value="" autocomplete="off"/>
+															<span class="input-group-addon">
+																<span class="fa fa-calendar"></span>
+															</span>
+														</div>
+													</div>
+													<div class="col-sm-1 center to"> to </div>
+													<div class="col-sm-5">
+														<div class="input-group date" id="stats-blocked-app-timeframe-end">
+															<input type="text" class="form-control" value="" autocomplete="off"/>
+															<span class="input-group-addon">
+																<span class="fa fa-calendar"></span>
+															</span>
+														</div>
+													</div>
+													<div class="col-sm-1 center">
+														<button class="btn-green" onclick="stats.updateStatsNumberBlocked();"><i class="fa fa-refresh"></i>&nbsp;Refresh</button>
+													</div>
+												</div>
+											</div>
+											<div class="col-sm-12">
+												<div id="stats-blocked-app">
+													<div id="stats-blocked-number-chart" class="chart">
+													</div>
+													<div id="stats-blocked-legend" class="chart-legend">
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane" id="stats-websites">
+									<div class="portlet">
+										<div class="portlet-title">
+											Time Spent Using Websites
+											<div class="float-right portlet-button">
+												<div class="btn-group">
+													<button class="dropdown-toggle btn-grey btn-no-min" type="button" data-toggle="dropdown" aria-expanded="false"> <i class="fa fa-bars" aria-hidden="true"></i> </button>
+													<ul class="dropdown-menu dropdown-menu-right pull-right" role="menu">
+														<li>
+															<a onclick="exportStats('stats-web-chart');"> <i class="fa fa-upload" aria-hidden="true"></i> Export to CSV file... </a>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+										<div class="portlet-body stats-content">
+											<div class="row">
+												<div class="col-sm-12">
+													<select class="col-sm-3" id="stats-web-timeframe" value="week" autocomplete="off">
+														<option value="week">This week</option>
+														<option value="last-week">Last week</option>
+														<option value="month">This month</option>
+														<option value="last-month">Last month</option>
+														<option value="7-days">Last 7 days</option>
+														<option value="30-days">Last 30 days</option>
+														<option value="custom">These dates</option>
+													</select>
+													<div class="col-sm-8">
+														<div class="col-sm-5">
+															<div class="input-group date" id="stats-web-timeframe-start">
+																<input type="text" class="form-control" value="" autocomplete="off"/>
+																<span class="input-group-addon">
+																	<span class="fa fa-calendar"></span>
+																</span>
+															</div>
+														</div>
+														<div class="col-sm-1 center to"> to </div>
+														<div class="col-sm-5">
+															<div class="input-group date" id="stats-web-timeframe-end">
+																<input type="text" class="form-control" value="" autocomplete="off"/>
+																<span class="input-group-addon">
+																	<span class="fa fa-calendar"></span>
+																</span>
+															</div>
+														</div>
+														<div class="col-sm-1 user">
+															<select id="stats-web-users" autocomplete="off"></select>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="row row-spacer">
+												<div class="col-sm-12">
+													<select class="col-sm-3" id="stats-web-type" value="top5" autocomplete="off">
+														<option value="top5">Top 5</option>
+														<option value="top10">Top 10</option>
+														<option value="search-domain">Search domain</option>
+													</select>
+													<div class="col-sm-8 form-spacer">
+														<div id="stats-web-blocks" class="col-sm-11">
+															<select id="stats-web-block-list" value="all" class="col-sm-12" autocomplete="off"></select>
+														</div>
+														<div id="stats-web-search" class="col-sm-11" style="display: none;">
+															<input id="stats-web-search-text" type="text" class="col-sm-12" value="" autocomplete="off"/>
+														</div>
+														<div class="col-sm-1 center">
+															<button class="btn-green" onclick="stats.updateStatsWeb();"><i class="fa fa-refresh"></i>&nbsp;Refresh</button>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-sm-12">
+													<div id="stats-web">
+														<div id="stats-web-chart" class="chart-lg">
+														</div>
+														<div id="stats-web-legend" class="chart-legend">
+														</div>
+														<div id="chart-legend-button-show">
+															<button class="btn-grey" onclick="stats.toggleOthersWeb();stats.updateStatsWeb();">Show all other websites</button>
+														</div>
+														<div id="chart-legend-button-hide">
+															<button class="btn-grey" onclick="stats.toggleOthersWeb();stats.updateStatsWeb();">Hide all other websites</button>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane" id="stats-apps">
+									<div class="portlet">
+										<div class="portlet-title">
+											Time Spent Using Apps
+											<div class="float-right portlet-button">
+												<div class="btn-group">
+													<button class="dropdown-toggle btn-grey btn-no-min" type="button" data-toggle="dropdown" aria-expanded="false"> <i class="fa fa-bars" aria-hidden="true"></i> </button>
+													<ul class="dropdown-menu dropdown-menu-right pull-right" role="menu">
+														<li>
+															<a onclick="exportStats('stats-app-chart');"> <i class="fa fa-upload" aria-hidden="true"></i> Export to CSV file... </a>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+										
+										<div class="portlet-body stats-content">
+											<div class="row">
+												<div class="col-sm-12">
+													<select class="col-sm-3" id="stats-app-timeframe" value="week" autocomplete="off">
+														<option value="week">This week</option>
+														<option value="last-week">Last week</option>
+														<option value="month">This month</option>
+														<option value="last-month">Last month</option>
+														<option value="7-days">Last 7 days</option>
+														<option value="30-days">Last 30 days</option>
+														<option value="custom">These dates</option>
+													</select>
+													<div class="col-sm-8">
+														<div class="col-sm-5">
+															<div class="input-group date" id="stats-app-timeframe-start">
+																<input type="text" class="form-control" value="" autocomplete="off"/>
+																<span class="input-group-addon">
+																	<span class="fa fa-calendar"></span>
+																</span>
+															</div>
+														</div>
+														<div class="col-sm-1 center to"> to </div>
+														<div class="col-sm-5">
+															<div class="input-group date" id="stats-app-timeframe-end">
+																<input type="text" class="form-control" value="" autocomplete="off"/>
+																<span class="input-group-addon">
+																	<span class="fa fa-calendar"></span>
+																</span>
+															</div>
+														</div>
+														<div class="col-sm-1 user">
+															<select class="col-sm-12" id="stats-app-users" autocomplete="off"></select>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="row row-spacer">
+												<div class="col-sm-12">
+													<select class="col-sm-3" id="stats-app-type" value="top5" autocomplete="off">
+														<option value="top5">Top 5</option>
+														<option value="top10">Top 10</option>
+														<option value="search-name">Search file name</option>
+														<option value="search-title">Search title</option>
+													</select>
+													<div class="col-sm-8 form-spacer">
+														<div id="stats-app-blocks" class="col-sm-11">
+															<select id="stats-app-block-list" value="all" class="col-sm-12" autocomplete="off">
+															</select>
+														</div>
+														<div id="stats-app-search" class="col-sm-11" style="display: none;">
+															<input id="stats-app-search-text" type="text" class="col-sm-12" value="" autocomplete="off"/>
+														</div>
+														<div class="col-sm-1 center">
+															<button class="btn-green" onclick="stats.updateStatsApp();"><i class="fa fa-refresh"></i>&nbsp;Refresh</button>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-sm-12">
+													<div id="stats-app">
+														<div id="stats-app-chart" class="chart-lg">
+														</div>
+														<div id="stats-app-legend" class="chart-legend">
+														</div>
+														<div id="chart-legend-button-app-show">
+															<button class="btn-grey" onclick="stats.toggleOthersApp();stats.updateStatsApp();">Show all other apps</button>
+														</div>
+														<div id="chart-legend-button-app-hide">
+															<button class="btn-grey" onclick="stats.toggleOthersApp();stats.updateStatsApp();">Hide all other apps</button>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>

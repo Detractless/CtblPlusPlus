@@ -1,0 +1,87 @@
+			<div id="dialog-paywall">
+				<div class="row">
+					<hr>
+					<div class="col-sm-5">
+						<img draggable="false" class="img-responsive" src="assets/global/img/doallthethings.png"/>
+					</div>
+					<div class="col-sm-7">
+						<p>Unfortunately, this feature is reserved for pro users.</p><p>Please consider upgrading to pro to do all the things!</p>
+					</div>
+					<div class="col-sm-12">
+						<p class="informative-feature-text">Image by Allie Brosh, 2010, "This is Why I'll Never be an Adult" hyperboleandahalf.blogspot.com</p>
+					</div>
+				</div>
+				<hr>
+			</div>
+
+			<div id="dialog-upgrade">
+				<div class="portlet">
+					<div class="portlet-title">
+						Why Upgrade?
+					</div>
+					<div class="portlet-body">
+						<p>Thanks for considering going to pro. If you choose to upgrade, you'll help an independent developer keep this product under active development! <a class="dialog-link" onclick="window.external.StoryButton();">Read about my story.</a></p>
+						<p>A <span class="bold">one time</span> purchase lets you use the pro features on all Windows and macOS devices you personally own with free updates, forever.</p>
+						<button onclick="window.external.UpgradeButton();" class="btn-green" type="button">Buy</button>
+					</div>
+					<div class="portlet-title trialed">
+						Free Trial
+					</div>
+					<div class="portlet-body trialed">
+						<p>Not sure if you want to upgrade? Give the pro features a try for <span class="bold">7 days</span>, absolutely free. Don't worry, only the pro settings will be deleted if you don't upgrade by the end of your trial.</p>
+						<button onclick="startTrial();" class="btn-green" type="button">Start trial</button>
+					</div>
+					<div class="portlet-title">
+						Upgrade Now
+					</div>
+					<div class="portlet-body">
+						<p>After purchasing pro, you should receive an email containing your product key. It should have been sent to the address you used during checkout, or the one used by PayPal.</p>
+						<input id="upgrade-key" type="text" class="allow-right-click" maxLength="24" placeholder="Paste your product key, then click activate..." autocomplete="off">
+						<button id="upgrade-button" onclick="upgradeResult(window.external.CheckProductKey($('#upgrade-key').val()));" class="btn-green" type="button"> Activate</button>
+					</div>
+				</div>
+				<hr>
+			</div>
+
+			<div id="dialog-upgrade-trial-start">
+				<hr>
+				<div class="portlet-body">
+					<p>After clicking the "Start Trial" button, you'll be given access to all pro features for 7 days. You can only activate the trial once.</p>
+					<p>Please note that only settings that require the pro version will be deleted if you don't upgrade by the end of your trial.</p>
+				</div>
+				<hr>
+			</div>
+
+			<div id="dialog-upgrade-trial-reminder">
+				<hr>
+				<div class="portlet-body">
+					<div id="dialog-upgrade-trial-reminder-body"></div>
+				</div>
+				<hr>
+			</div>
+
+			<div id="dialog-upgrade-pass">
+				<hr>
+				<div class="portlet-body">
+					<p>Thank you for purchasing Cold Turkey Blocker Pro! This installation is now fully licensed.</p>
+				</div>
+				<hr>
+			</div>
+
+			<div id="dialog-upgrade-fail">
+				<hr>
+				<div class="portlet-body">
+					<p>The key you provided is not a valid product key for Cold Turkey Blocker Pro.</p>
+					<p>If you purchased a valid product key, please make sure your device is connected to the internet and that there isn't a firewall or proxy blocking access to getcoldturkey.com</p>
+				</div>
+				<hr>
+			</div>
+
+			<div id="dialog-upgrade-update">
+				<hr>
+				<div class="portlet-body">
+					<p>The key you provided needs to be updated to the new 24 character product key format.</p>
+					<p>Please request a new one by going to https://getcoldturkey.com/support and providing your 6 character key for a free upgrade.</p>
+				</div>
+				<hr>
+			</div>

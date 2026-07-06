@@ -1,0 +1,41 @@
+#blocks-list, #frozen-block {
+	display: block;
+	margin-top: -6px;
+}
+.block-card {
+	margin-bottom: 15px !important;
+	margin-top: 15px !important;
+	margin-left: 0px !important;
+	margin-right: 0px !important;
+	padding: 15px;
+	border-radius: 5px;
+}
+.block-toolbar {
+	margin-left: 10px;
+	top: -2px;
+	position: relative;
+}
+.block-card .hover-button {
+	opacity: 0;
+}
+.block-card:hover .hover-button {
+	opacity: 1;
+}
+.autostart {
+	margin-right: 8px;
+	top: -5px;
+	position: relative;
+}
+.autostart-button {
+	right: 92px;
+	top: 17px;
+	position: relative;
+}
+.blocklist-tabs { 
+	height: 40px !important;
+}
+.block-card .toggle {
+	margin: 0px;
+	margin-right: 30px;
+	margin-top: 3px;
+}

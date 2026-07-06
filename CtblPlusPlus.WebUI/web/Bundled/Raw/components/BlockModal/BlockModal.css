@@ -1,0 +1,278 @@
+#dialog-reset-pomodoro { display: none; }
+#dialog-edit-block { display: none; }
+#dialog-edit-device-block { display: none; }
+#dialog-edit-blocks-import-url-invalid { display: none; }
+#dialog-edit-blocks-import-apps-invalid { display: none; }
+#dialog-edit-block-import-searches { display: none; }
+#dialog-edit-block-import-urls-containing { display: none; }
+#dialog-edit-block-import-adult { display: none; }
+#dialog-edit-block-phrase-invalid { display: none; }
+#dialog-edit-block-app-win10 { display: none; }
+#dialog-edit-block-app-title { display: none; }
+#dialog-edit-block-starting-locked-warning { display: none; }
+#dialog-edit-block-error-too-large { display: none; }
+#dialog-edit-block-error-exception-conflict { display: none; }
+#dialog-edit-block-error-delete-conflict { display: none; }
+#dialog-edit-block-exe-invalid { display: none; }
+#dialog-edit-block-folder-invalid { display: none; }
+#dialog-edit-block-title-invalid { display: none; }
+#dialog-edit-users-custom-empty { display: none; }
+#dialog-edit-users { display: none; }
+#dialog-add-users { display: none; }
+#dialog-add-networks { display: none; }
+#dialog-edit-block-name { display: none; }
+#dialog-edit-block-name-invalid { display: none; }
+#dialog-edit-block-name-duplicate { display: none; }
+#dialog-edit-block-delete { display: none; }
+#dialog-edit-block-delete-denied { display: none; }
+#dialog-edit-blocks-delete { display: none; }
+#dialog-edit-schedule-error-overlap { display: none; }
+#dialog-edit-schedule-error-new-week { display: none; }
+#dialog-edit-schedule { display: none; }
+#dialog-edit-scheduled-block { display: none; }
+#dialog-edit-break { display: none; }
+#dialog-edit-break-allowance-help { display: none; }
+#dialog-edit-break-reward-help { display: none; }
+#dialog-edit-break-sessions-help { display: none; }
+#dialog-edit-break-pomodoro-help { display: none; }
+#dialog-edit-break-error-allowance { display: none; }
+#dialog-edit-break-error-pomodoro { display: none; }
+#dialog-edit-break-error-randomText-invalid { display: none; }
+#dialog-edit-break-error-randomText-break-invalid { display: none; }
+#dialog-edit-break-error-delay-break-invalid { display: none; }
+#dialog-edit-break-error-delay { display: none; }
+#dialog-edit-break-error-sessions { display: none; }
+#dialog-edit-break-error-reward { display: none; }
+#dialog-edit-autostart { display: none; }
+#dialog-edit-autostart-starting-locked-warning { display: none; }
+#dialog-edit-autostart-timer-error-invalid { display: none; }
+#dialog-edit-autostart-timer-end-error-invalid { display: none; }
+#dialog-edit-autostart-lock-error-invalid { display: none; }
+#dialog-edit-autostart-window-help { display: none; }
+#dialog-edit-autostart-window-invalid { display: none; }
+#dialog-blocks-import { display: none; }
+#dialog-blocks-import-invalid { display: none; }
+#dialog-frozen-timer { display: none; }
+#dialog-frozen-autostart-timer { display: none; }
+#dialog-edit-lock { display: none; }
+#dialog-edit-lock-networks-empty { display: none; }
+#dialog-edit-lock-delay-error-invalid { display: none; }
+#dialog-edit-lock-schedule-error-invalid { display: none; }
+#dialog-edit-lock-randomText-error-invalid { display: none; }
+#dialog-edit-lock-time-range-help { display: none; }
+#dialog-edit-block-scheduled-break-warning { display: none; }
+#dialog-edit-lock-password-error-match { display: none; }
+#dialog-edit-lock-password-error-invalid { display: none; }
+#dialog-edit-lock-timer-error-invalid { display: none; }
+#dialog-edit-lock-window-invalid { display: none; }
+#dialog-edit-lock-window-invalid-range { display: none; }
+#dialog-edit-lock-starting-blocked-warning { display: none; }
+#dialog-edit-settings-starting-blocked-warning { display: none; }
+#dialog-settings-toggle-locked-password-warning { display: none; }
+#dialog-settings-toggle-locked-block-warning { display: none; }
+#dialog-settings-change-locked-block-warning { display: none; }
+#dialog-settings-mode-locked-block-warning { display: none; }
+#dialog-settings-toggle-locked-statistics-warning { display: none; }
+#dialog-edit-block-name-text {
+	width: 100%;
+	text-align: center;
+	border-radius: 5px;
+	margin-top: 15px;
+	padding: 4px;
+	padding-left: 10px;
+}
+#dialog-edit-block-app-title-text {
+	width: 100%;
+	text-align: center;
+	border-radius: 5px;
+	margin-top: 15px;
+	padding: 4px;
+	padding-left: 10px;
+}
+#dialog-edit-block-import-searches-text {
+	width: 100%;
+	text-align: center;
+	border-radius: 5px;
+	margin-top: 15px;
+	padding: 4px;
+	padding-left: 10px;
+}
+#dialog-edit-block-import-urls-containing-text {
+	width: 100%;
+	text-align: center;
+	border-radius: 5px;
+	margin-top: 15px;
+	padding: 4px;
+	padding-left: 10px;
+}
+#dialog-edit-users input {
+	margin-left: 0px;
+}
+.dialog-edit-block-app-win10-static-height {
+	height: 400px;
+	overflow-y: auto;
+}
+
+.dialog-edit-add-top-margin {
+	margin-top: 5px;
+}
+
+.dialog-edit-add-bottom-margin {
+	margin-bottom: 15px;
+}
+
+#dialog-edit-block-name-text {
+	width: 100%;
+	text-align: center;
+	border-radius: 5px;
+	margin-top: 15px;
+	padding: 4px;
+	padding-left: 10px;
+}
+
+#dialog-edit-block-app-title-text {
+	width: 100%;
+	text-align: center;
+	border-radius: 5px;
+	margin-top: 15px;
+	padding: 4px;
+	padding-left: 10px;
+}
+
+#dialog-edit-block-import-searches-text {
+	width: 100%;
+	text-align: center;
+	border-radius: 5px;
+	margin-top: 15px;
+	padding: 4px;
+	padding-left: 10px;
+}
+
+#dialog-edit-block-import-urls-containing-text {
+	width: 100%;
+	text-align: center;
+	border-radius: 5px;
+	margin-top: 15px;
+	padding: 4px;
+	padding-left: 10px;
+}
+
+.dialog-edit-block-app-win10-static-width {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+#dialog-edit-block {
+	display: none;
+}
+
+#dialog-edit-blocks-import-url-invalid {
+	display: none;
+}
+
+#dialog-edit-blocks-import-apps-invalid {
+	display: none;
+}
+
+#dialog-edit-block-import-searches {
+	display: none;
+}
+
+#dialog-edit-block-import-urls-containing {
+	display: none;
+}
+
+#dialog-edit-block-import-adult {
+	display: none;
+}
+
+#dialog-edit-block-phrase-invalid {
+	display: none;
+}
+
+#dialog-edit-block-app-win10 {
+	display: none;
+}
+
+#dialog-edit-block-app-title {
+	display: none;
+}
+
+#dialog-edit-block-starting-locked-warning {
+	display: none;
+}
+
+#dialog-edit-block-error-too-large {
+	display: none;
+}
+
+#dialog-edit-block-error-exception-conflict {
+	display: none;
+}
+
+#dialog-edit-block-error-delete-conflict {
+	display: none;
+}
+
+#dialog-edit-block-exe-invalid {
+	display: none;
+}
+
+#dialog-edit-block-folder-invalid {
+	display: none;
+}
+
+#dialog-edit-block-title-invalid {
+	display: none;
+}
+
+#dialog-edit-block-name {
+	display: none;
+}
+
+#dialog-edit-block-name-invalid {
+	display: none;
+}
+
+#dialog-edit-block-name-duplicate {
+	display: none;
+}
+
+#dialog-edit-block-delete {
+	display: none;
+}
+
+#dialog-edit-block-delete-denied {
+	display: none;
+}
+
+#dialog-edit-blocks-delete {
+	display: none;
+}
+
+#dialog-blocks-import {
+	display: none;
+}
+
+#dialog-blocks-import-invalid {
+	display: none;
+}
+
+#dialog-edit-block-scheduled-break-warning {
+	display: none;
+}
+
+@keyframes savePulse {
+	0% { box-shadow: 0 0 0 0px rgba(101, 163, 13, 0.4); }
+	100% { box-shadow: 0 0 0 12px rgba(101, 163, 13, 0); }
+}
+
+.save-pulse {
+	animation: savePulse 2s infinite;
+}
+
+.toggle-bold-text > div:after {
+	font-weight: bold;
+}
+

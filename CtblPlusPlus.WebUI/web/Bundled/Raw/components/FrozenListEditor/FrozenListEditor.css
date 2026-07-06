@@ -1,0 +1,15 @@
+
+.edit-frozen-timer-static-height {
+	height: 90px;
+}
+
+.edit-frozen-timer-static-height-autostart {
+	height: 220px;
+}
+
+.frozen-start-button {
+	position: absolute;
+	right: 15px;
+	margin-top: 12px;
+	min-width: 80px;
+}

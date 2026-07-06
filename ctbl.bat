@@ -2,7 +2,7 @@
 setlocal enabledelayedexpansion
 
 :: ================================================================
-::  CTBL++ v0.0.0.2 — Build / Manage
+::  CTBL++ v0.2.1.2 — Build / Manage
 :: ================================================================
 
 set "ROOT=%~dp0"
@@ -10,7 +10,7 @@ set "ROOT=%~dp0"
 :menu
 echo.
 echo  ================================================
-echo   CTBL++ v0.0.0.2
+echo   CTBL++ v0.2.1.2
 echo  ================================================
 echo   [1] Build           -- compile all projects
 echo   [2] Installer       -- launch the Installer

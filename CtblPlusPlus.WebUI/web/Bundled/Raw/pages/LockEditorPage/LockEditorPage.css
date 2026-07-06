@@ -1,0 +1,408 @@
+/* ============================================================
+   LOCK EDITOR PAGE
+   Extracted from custom.css - #edit-lock-* and #dialog-edit-lock-* styles
+   ============================================================ */
+
+#edit-lock-for {
+	width: 190px;
+	margin-right: 20px;
+	margin-top: 10px;
+	border-radius: 5px;
+	padding: 4px;
+	padding-left: 10px;
+}
+#edit-lock-timer-datetime {
+	width: 220px;
+	padding-top: 10px;
+}
+#edit-lock-timer-datetime input {
+	height: 30px;
+	border-radius: 0px;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	padding: 4px;
+	padding-left: 10px;
+}
+#edit-lock-randomText input {
+	width: 48px;
+	padding: 4px;
+	text-align: center;
+	border-radius: 5px;
+	margin-top: -5px;
+	margin-right: 5px;
+	margin-left: 5px;
+}
+#edit-lock-randomText-type {
+	width: 165px;
+	padding: 4px;
+	padding-left: 10px;
+	border-radius: 5px;
+	margin-right: 5px;
+	margin-top: -5px;
+	margin-bottom: 5px;
+	margin-left: 5px;
+}
+#edit-lock-randomText-errors {
+	width: 80px;
+	padding: 4px;
+	padding-left: 10px;
+	border-radius: 5px;
+	margin-top: 5px;
+	margin-right: 5px;
+	margin-bottom: 10px;
+}
+#edit-lock-randomText-clear {
+	width: 85px;
+	padding: 4px;
+	padding-left: 10px;
+	border-radius: 5px;
+	margin-top: 5px;
+	margin-right: 5px;
+	margin-bottom: 10px;
+	margin-left: 5px;
+}
+#edit-lock-randomText-example {
+	height: 100px;
+	padding: 4px;
+	padding-left: 10px;
+	border-radius: 5px;
+	margin-top: 5px;
+	overflow-y: auto;
+	word-wrap: break-word;
+}
+#edit-lock-delay input {
+	width: 48px;
+	padding: 4px;
+	text-align: center;
+	border-radius: 5px;
+	margin-top: -5px;
+	margin-bottom: 15px;
+	margin-left: 5px;
+}
+#edit-lock-delay-unit {
+	width: 100px;
+	padding: 4px;
+	padding-left: 10px;
+	border-radius: 5px;
+	margin-right: 5px;
+	margin-top: -5px;
+	margin-bottom: 15px;
+	margin-left: 5px;
+}
+#edit-lock-schedule-before {
+	width: 145px;
+	padding: 4px;
+	padding-left: 10px;
+	border-radius: 5px;
+	margin-right: 5px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	margin-left: 5px;
+}
+#edit-lock-password input {
+	width: 300px;
+	padding: 4px;
+	padding-left: 10px;
+	text-align: left;
+	border-radius: 5px;
+	margin-top: 10px;
+}
+#dialog-edit-lock .day-selector {
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+#dialog-edit-lock .edit-lock-window-checkbox {
+	display: inline;
+	padding-right: 10px;
+}
+#dialog-edit-lock .edit-lock-window-checkbox label {
+	margin-right: 10px;
+	float: left;
+	width: auto;
+	cursor: pointer;
+}
+#dialog-edit-lock .edit-lock-window-checkbox input {
+	float: left;
+	margin-top: 4px;
+}
+#dialog-edit-lock .edit-lock-window-checkbox input:disabled ~ label {
+	cursor: default;
+}
+#edit-lock-window-end {
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+#edit-lock-window-start {
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+#edit-lock-window input {
+	border-radius: 0px;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	padding: 4px;
+	padding-left: 10px;
+}
+#edit-lock-window .to {
+	padding-top: 9px;
+}
+#edit-lock-window .next-day-warning {
+	padding-top: 9px;
+}
+#edit-lock-window select {
+	width: 95px;
+	padding: 4px;
+	padding-left: 10px;
+	border-radius: 5px;
+	margin-top: -5px;
+}
+#edit-lock-networks select {
+	width: 95px;
+	padding: 4px;
+	padding-left: 10px;
+	border-radius: 5px;
+	margin-top: -5px;
+}
+#dialog-edit-lock .toggle {
+	margin-top: 5px;
+}
+#edit-lock-for {
+	width: 190px;
+	margin-right: 20px;
+	margin-top: 10px;
+	border-radius: 5px;
+	padding: 4px;
+	padding-left: 10px;
+}
+
+#edit-lock-timer-datetime {
+	width: 220px;
+	padding-top: 10px;
+}
+
+#edit-lock-timer-datetime input {
+	height: 30px;
+	border-radius: 0px;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	padding: 4px;
+	padding-left: 10px;
+}
+
+#edit-lock-randomText input {
+	width: 48px;
+	padding: 4px;
+	text-align: center;
+	border-radius: 5px;
+	margin-top: -5px;
+	margin-right: 5px;
+	margin-left: 5px;
+}
+
+#edit-lock-randomText-type {
+	width: 165px;
+	padding: 4px;
+	padding-left: 10px;
+	border-radius: 5px;
+	margin-right: 5px;
+	margin-top: -5px;
+	margin-bottom: 5px;
+	margin-left: 5px;
+}
+
+#edit-lock-randomText-errors {
+	width: 80px;
+	padding: 4px;
+	padding-left: 10px;
+	border-radius: 5px;
+	margin-top: 5px;
+	margin-right: 5px;
+	margin-bottom: 10px;
+}
+
+#edit-lock-randomText-clear {
+	width: 85px;
+	padding: 4px;
+	padding-left: 10px;
+	border-radius: 5px;
+	margin-top: 5px;
+	margin-right: 5px;
+	margin-bottom: 10px;
+	margin-left: 5px;
+}
+
+#edit-lock-randomText-example {
+	height: 100px;
+	padding: 4px;
+	padding-left: 10px;
+	border-radius: 5px;
+	margin-top: 5px;
+	overflow-y: auto;
+	word-wrap: break-word;
+}
+
+#edit-lock-delay input {
+	width: 48px;
+	padding: 4px;
+	text-align: center;
+	border-radius: 5px;
+	margin-top: -5px;
+	margin-bottom: 15px;
+	margin-left: 5px;
+}
+
+#edit-lock-delay-unit {
+	width: 100px;
+	padding: 4px;
+	padding-left: 10px;
+	border-radius: 5px;
+	margin-right: 5px;
+	margin-top: -5px;
+	margin-bottom: 15px;
+	margin-left: 5px;
+}
+
+#edit-lock-schedule-before {
+	width: 145px;
+	padding: 4px;
+	padding-left: 10px;
+	border-radius: 5px;
+	margin-right: 5px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	margin-left: 5px;
+}
+
+#edit-lock-password input {
+	width: 300px;
+	padding: 4px;
+	padding-left: 10px;
+	text-align: left;
+	border-radius: 5px;
+	margin-top: 10px;
+}
+
+#dialog-edit-lock .day-selector {
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+#dialog-edit-lock .edit-lock-window-checkbox {
+	display: inline;
+	padding-right: 10px;
+}
+
+#dialog-edit-lock .edit-lock-window-checkbox label {
+	margin-right: 10px;
+	float: left;
+	width: auto;
+	cursor: pointer;
+}
+
+#dialog-edit-lock .edit-lock-window-checkbox input {
+	float: left;
+	margin-top: 4px;
+}
+
+#dialog-edit-lock .edit-lock-window-checkbox input:disabled ~ label {
+	cursor: default;
+}
+
+#edit-lock-window-end {
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+
+#edit-lock-window-start {
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+
+#edit-lock-window input {
+	border-radius: 0px;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	padding: 4px;
+	padding-left: 10px;
+}
+
+#edit-lock-window .to {
+	padding-top: 9px;
+}
+
+#edit-lock-window .next-day-warning {
+	padding-top: 9px;
+}
+
+#edit-lock-window select {
+	width: 95px;
+	padding: 4px;
+	padding-left: 10px;
+	border-radius: 5px;
+	margin-top: -5px;
+}
+
+#edit-lock-networks select {
+	width: 95px;
+	padding: 4px;
+	padding-left: 10px;
+	border-radius: 5px;
+	margin-top: -5px;
+}
+
+#dialog-edit-lock .toggle {
+	margin-top: 5px;
+}
+
+#dialog-edit-lock {
+	display: none;
+}
+
+#dialog-edit-lock-networks-empty {
+	display: none;
+}
+
+#dialog-edit-lock-delay-error-invalid {
+	display: none;
+}
+
+#dialog-edit-lock-schedule-error-invalid {
+	display: none;
+}
+
+#dialog-edit-lock-randomText-error-invalid {
+	display: none;
+}
+
+#dialog-edit-lock-time-range-help {
+	display: none;
+}
+
+#dialog-edit-lock-password-error-match {
+	display: none;
+}
+
+#dialog-edit-lock-password-error-invalid {
+	display: none;
+}
+
+#dialog-edit-lock-timer-error-invalid {
+	display: none;
+}
+
+#dialog-edit-lock-window-invalid {
+	display: none;
+}
+
+#dialog-edit-lock-window-invalid-range {
+	display: none;
+}
+
+#dialog-edit-lock-starting-blocked-warning {
+	display: none;
+}
+
+
+.edit-lock-static-height {
+	height: 220px;
+}

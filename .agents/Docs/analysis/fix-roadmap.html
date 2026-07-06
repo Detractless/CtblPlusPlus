@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CTBL++ Fix Roadmap</title>
+<style>
+:root {
+  --bg: #fafaf9;
+  --card: #ffffff;
+  --border: #e4e4e7;
+  --text: #1c1c1c;
+  --text2: #555;
+  --text3: #888;
+  --accent: #2563eb;
+  --green: #16a34a;
+  --amber: #d97706;
+  --red: #dc2626;
+  --purple: #7c3aed;
+  --teal: #0d9488;
+  --pink: #db2777;
+  --coral: #ea580c;
+  --tag-engine: #dbeafe;
+  --tag-engine-text: #1e40af;
+  --tag-watchdog: #fce7f3;
+  --tag-watchdog-text: #9d174d;
+  --tag-file: #f3e8ff;
+  --tag-file-text: #6b21a8;
+  --tag-html: #ccfbf1;
+  --tag-html-text: #115e59;
+  --tag-skill: #fef3c7;
+  --tag-skill-text: #92400e;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; padding: 2rem; max-width: 1100px; margin: 0 auto; }
+h1 { font-size: 1.75rem; font-weight: 600; margin-bottom: 0.25rem; }
+h1 + p { color: var(--text2); margin-bottom: 2rem; font-size: 0.95rem; }
+h2 { font-size: 1.25rem; font-weight: 600; margin: 2.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--border); }
+h3 { font-size: 1.05rem; font-weight: 600; margin: 1.5rem 0 0.75rem; color: var(--text2); }
+
+.filters { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; position: sticky; top: 0; background: var(--bg); padding: 0.75rem 0; z-index: 10; border-bottom: 1px solid var(--border); }
+.filter-btn { padding: 0.35rem 0.85rem; border-radius: 6px; border: 1px solid var(--border); background: var(--card); cursor: pointer; font-size: 0.82rem; font-weight: 500; transition: all 0.15s; }
+.filter-btn:hover { border-color: var(--accent); }
+.filter-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+.filter-label { font-size: 0.78rem; color: var(--text3); align-self: center; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-right: 0.25rem; }
+
+.group { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; margin-bottom: 1rem; }
+.group-title { font-weight: 600; font-size: 1rem; margin-bottom: 0.15rem; }
+.group-why { font-size: 0.85rem; color: var(--text2); margin-bottom: 0.75rem; }
+.group-diff { display: inline-block; font-size: 0.72rem; font-weight: 600; padding: 0.2rem 0.6rem; border-radius: 4px; margin-bottom: 0.75rem; }
+.diff-easy { background: #dcfce7; color: #166534; }
+.diff-medium { background: #fef9c3; color: #854d0e; }
+.diff-hard { background: #fee2e2; color: #991b1b; }
+.diff-complex { background: #f3e8ff; color: #6b21a8; }
+
+.finding { padding: 0.5rem 0; border-top: 1px solid #f4f4f5; font-size: 0.88rem; }
+.finding:first-child { border-top: none; }
+.finding-id { font-weight: 600; color: var(--accent); font-size: 0.8rem; }
+.finding-sev { font-size: 0.7rem; font-weight: 600; padding: 0.1rem 0.4rem; border-radius: 3px; margin-left: 0.35rem; vertical-align: 1px; }
+.sev-critical { background: #fee2e2; color: #991b1b; }
+.sev-high { background: #ffedd5; color: #9a3412; }
+.sev-medium { background: #fef9c3; color: #854d0e; }
+.sev-low { background: #f0fdf4; color: #166534; }
+.finding-text { color: var(--text2); }
+
+.tags { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-top: 0.35rem; }
+.tag { font-size: 0.7rem; font-weight: 600; padding: 0.15rem 0.5rem; border-radius: 4px; }
+.tag-engine { background: var(--tag-engine); color: var(--tag-engine-text); }
+.tag-watchdog { background: var(--tag-watchdog); color: var(--tag-watchdog-text); }
+.tag-file { background: var(--tag-file); color: var(--tag-file-text); }
+.tag-html { background: var(--tag-html); color: var(--tag-html-text); }
+.tag-skill { background: var(--tag-skill); color: var(--tag-skill-text); }
+
+.toc { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; margin-bottom: 2rem; }
+.toc a { color: var(--accent); text-decoration: none; font-size: 0.9rem; }
+.toc a:hover { text-decoration: underline; }
+.toc ul { list-style: none; padding-left: 0; }
+.toc li { padding: 0.2rem 0; }
+.toc li::before { content: ""; }
+.count-badge { font-size: 0.72rem; background: #f4f4f5; color: var(--text3); padding: 0.1rem 0.45rem; border-radius: 3px; margin-left: 0.35rem; }
+
+.legend { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1rem; font-size: 0.82rem; color: var(--text2); }
+.legend-item { display: flex; align-items: center; gap: 0.35rem; }
+.legend-dot { width: 10px; height: 10px; border-radius: 3px; }
+
+.hidden { display: none !important; }
+</style>
+</head>
+<body>
+
+<h1>CTBL++ Fix Roadmap</h1>
+<p>Consolidated from sonnet 4.6 code review (190 findings) + opus 4.8 security review (7 findings). Grouped into optimal fix batches, ordered easy to hard, tagged by area.</p>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background: var(--tag-engine)"></div> Engine (C# backend)</div>
+  <div class="legend-item"><div class="legend-dot" style="background: var(--tag-watchdog)"></div> Watchdog</div>
+  <div class="legend-item"><div class="legend-dot" style="background: var(--tag-file)"></div> File &amp; folder structure</div>
+  <div class="legend-item"><div class="legend-dot" style="background: var(--tag-html)"></div> HTML / JS frontend</div>
+  <div class="legend-item"><div class="legend-dot" style="background: var(--tag-skill)"></div> Skill files</div>
+</div>
+
+<div class="filters">
+  <span class="filter-label">Filter:</span>
+  <button class="filter-btn active" data-filter="all">All</button>
+  <button class="filter-btn" data-filter="engine">Engine</button>
+  <button class="filter-btn" data-filter="watchdog">Watchdog</button>
+  <button class="filter-btn" data-filter="file">File &amp; folder</button>
+  <button class="filter-btn" data-filter="html">HTML / JS</button>
+  <button class="filter-btn" data-filter="skill">Skill files</button>
+  <span class="filter-label" style="margin-left: 1rem;">Difficulty:</span>
+  <button class="filter-btn" data-diff="easy">Easy</button>
+  <button class="filter-btn" data-diff="medium">Medium</button>
+  <button class="filter-btn" data-diff="hard">Hard</button>
+  <button class="filter-btn" data-diff="complex">Complex</button>
+</div>
+
+<nav class="toc">
+  <strong>Contents</strong> (19 fix groups, easy &rarr; hard)
+  <ul>
+    <li><a href="#g1">1. Quick deletes &amp; dead code removal</a><span class="count-badge">8 findings</span></li>
+    <li><a href="#g2">2. Add .gitignore + remove tracked artifacts</a><span class="count-badge">4 findings</span></li>
+    <li><a href="#g3">3. Fix documentation errors</a><span class="count-badge">5 findings</span></li>
+    <li><a href="#g4">4. Skill file consistency fixes</a><span class="count-badge">8 findings</span></li>
+    <li><a href="#g5">5. One-liner C# safety fixes</a><span class="count-badge">8 findings</span></li>
+    <li><a href="#g6">6. CSS cleanup &amp; deduplication</a><span class="count-badge">8 findings</span></li>
+    <li><a href="#g7">7. Build script hardening</a><span class="count-badge">9 findings</span></li>
+    <li><a href="#g8">8. HMAC + crypto consistency</a><span class="count-badge">5 findings + SecA</span></li>
+    <li><a href="#g9">9. CORS + JSONP + API auth removal</a><span class="count-badge">6 findings + SecB,C</span></li>
+    <li><a href="#g10">10. Resource disposal &amp; handle leaks</a><span class="count-badge">6 findings</span></li>
+    <li><a href="#g11">11. JS prototype &amp; global namespace cleanup</a><span class="count-badge">6 findings</span></li>
+    <li><a href="#g12">12. Logging unification</a><span class="count-badge">5 findings</span></li>
+    <li><a href="#g13">13. Watchdog resurrection &amp; PidBroker fix</a><span class="count-badge">6 findings</span></li>
+    <li><a href="#g14">14. Registry + enforcer race condition fixes</a><span class="count-badge">5 findings + SecD</span></li>
+    <li><a href="#g15">15. Cold Turkey integration hardening</a><span class="count-badge">6 findings</span></li>
+    <li><a href="#g16">16. Frontend render performance</a><span class="count-badge">8 findings + SecF</span></li>
+    <li><a href="#g17">17. ACL + data directory hardening</a><span class="count-badge">3 findings + SecA,G</span></li>
+    <li><a href="#g18">18. Block type architecture</a><span class="count-badge">11 findings + SecE</span></li>
+    <li><a href="#g19">19. New skill files</a><span class="count-badge">12 findings</span></li>
+  </ul>
+</nav>
+
+<!-- ============ GROUP 1 ============ -->
+<div class="group" id="g1" data-tags="file,html,engine">
+  <div class="group-diff diff-easy">Easy</div>
+  <div class="group-title">1. Quick deletes &amp; dead code removal</div>
+  <div class="group-why">Pure deletions. No behavioral change. No dependencies. Can each be done independently in minutes.</div>
+  <div class="finding" data-tag="file"><span class="finding-id">F-09</span><span class="finding-sev sev-low">Low</span> <span class="finding-text">Delete empty CSS/JS placeholder files (FrozenAutostartEditor.css, RandomTextBreakModal.css, etc.) and their link tags</span><div class="tags"><span class="tag tag-file">File &amp; folder</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-46</span><span class="finding-sev sev-low">Low</span> <span class="finding-text">Remove IE8 CSS rules from MainLayout.css and manual ?v=2 cache-busting strings from index.html</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-44</span><span class="finding-sev sev-low">Low</span> <span class="finding-text">Replace deprecated jQuery .bind() with .on(); replace DOMMouseScroll with "wheel"</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-48</span><span class="finding-sev sev-low">Low</span> <span class="finding-text">Fix dead ternary in WatchdogHeartbeat.cs:189 (both branches identical Task.Delay 5000)</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-43</span><span class="finding-sev sev-low">Low</span> <span class="finding-text">Remove dead Name property from enforcers (no interface consumes it)</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-30</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Delete hardcoded C:\Users\Public\Desktop from FileSystemWatchdogService.cs (already covered by GetFolderPath)</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">BC-22</span><span class="finding-sev sev-low">Low</span> <span class="finding-text">Remove unused setlocal enabledelayedexpansion from ctbl.bat</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-50</span><span class="finding-sev sev-low">Low</span> <span class="finding-text">Remove "Phase X" comments throughout — history belongs in git commits</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+</div>
+
+<!-- ============ GROUP 2 ============ -->
+<div class="group" id="g2" data-tags="file">
+  <div class="group-diff diff-easy">Easy</div>
+  <div class="group-title">2. Add .gitignore + remove tracked artifacts</div>
+  <div class="group-why">One .gitignore file + git rm --cached. Blocks all future artifact commits. Do together because they're the same concern.</div>
+  <div class="finding" data-tag="file"><span class="finding-id">F-04</span><span class="finding-sev sev-high">High</span> <span class="finding-text">Add .gitignore covering bin/, obj/, _payload/, Payload.zip, WebPayload.zip, node_modules/, Bundled/</span><div class="tags"><span class="tag tag-file">File &amp; folder</span></div></div>
+  <div class="finding" data-tag="file"><span class="finding-id">F-05</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Remove Bundled/ from tracking (346KB bundle.js doubles every diff)</span><div class="tags"><span class="tag tag-file">File &amp; folder</span></div></div>
+  <div class="finding" data-tag="file"><span class="finding-id">F-06</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Remove .claude/settings.local.json from repo (leaks dev machine paths)</span><div class="tags"><span class="tag tag-file">File &amp; folder</span></div></div>
+  <div class="finding" data-tag="file"><span class="finding-id">F-07</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Remove node_modules/ from tracking (platform-specific shims committed)</span><div class="tags"><span class="tag tag-file">File &amp; folder</span></div></div>
+</div>
+
+<!-- ============ GROUP 3 ============ -->
+<div class="group" id="g3" data-tags="file,skill">
+  <div class="group-diff diff-easy">Easy</div>
+  <div class="group-title">3. Fix documentation errors</div>
+  <div class="group-why">Text-only fixes. Wrong references, wrong port numbers, missing files. All independent 5-minute edits.</div>
+  <div class="finding" data-tag="file"><span class="finding-id">BC-05</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">CONTRIBUTING.md references non-existent menu option [5] Split/Combine &mdash; actually "Clean project"</span><div class="tags"><span class="tag tag-file">File &amp; folder</span></div></div>
+  <div class="finding" data-tag="file"><span class="finding-id">F-11</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Both architect skills reference ARCHITECTURE.md which doesn't exist &mdash; fix refs or create file</span><div class="tags"><span class="tag tag-file">File &amp; folder</span><span class="tag tag-skill">Skill files</span></div></div>
+  <div class="finding" data-tag="skill"><span class="finding-id">CC-19</span><span class="finding-sev sev-low">Low</span> <span class="finding-text">amazon-vm-ie-webview-fix.md misattributes port 58123 to Cold Turkey (it's CTBL++ Engine)</span><div class="tags"><span class="tag tag-skill">Skill files</span></div></div>
+  <div class="finding" data-tag="skill"><span class="finding-id">AS-14</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Html Architect references styles/tokens.css which doesn't exist</span><div class="tags"><span class="tag tag-skill">Skill files</span></div></div>
+  <div class="finding" data-tag="file"><span class="finding-id">F-03</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Add global.json to pin .NET SDK version (prevents confusing framework errors)</span><div class="tags"><span class="tag tag-file">File &amp; folder</span></div></div>
+</div>
+
+<!-- ============ GROUP 4 ============ -->
+<div class="group" id="g4" data-tags="skill">
+  <div class="group-diff diff-easy">Easy</div>
+  <div class="group-title">4. Skill file consistency fixes</div>
+  <div class="group-why">Fix internal contradictions, add missing fields, update references. All within .agents/ markdown files.</div>
+  <div class="finding" data-tag="skill"><span class="finding-id">AS-13</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Fix ARCHITECTURE.md references in both skill verification checklists</span><div class="tags"><span class="tag tag-skill">Skill files</span></div></div>
+  <div class="finding" data-tag="skill"><span class="finding-id">AS-15</span><span class="finding-sev sev-low">Low</span> <span class="finding-text">Add routes/ and store/ to Html Architect's folder pattern</span><div class="tags"><span class="tag tag-skill">Skill files</span></div></div>
+  <div class="finding" data-tag="skill"><span class="finding-id">AS-16</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Resolve Html Architect self-contradiction: defers naming to missing skill, then defines naming rules</span><div class="tags"><span class="tag tag-skill">Skill files</span></div></div>
+  <div class="finding" data-tag="skill"><span class="finding-id">AS-17</span><span class="finding-sev sev-low">Low</span> <span class="finding-text">Add formal trigger fields to skill frontmatter</span><div class="tags"><span class="tag tag-skill">Skill files</span></div></div>
+  <div class="finding" data-tag="skill"><span class="finding-id">AS-18</span><span class="finding-sev sev-low">Low</span> <span class="finding-text">Tighten vague trigger clauses ("bleeding into each other", "after a sprint")</span><div class="tags"><span class="tag tag-skill">Skill files</span></div></div>
+  <div class="finding" data-tag="skill"><span class="finding-id">AS-20</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Add "no violations found" exit path to C# Architect to prevent false positives</span><div class="tags"><span class="tag tag-skill">Skill files</span></div></div>
+  <div class="finding" data-tag="skill"><span class="finding-id">AS-21</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Add clean-result exit path to Html Architect</span><div class="tags"><span class="tag tag-skill">Skill files</span></div></div>
+  <div class="finding" data-tag="skill"><span class="finding-id">AS-24</span><span class="finding-sev sev-low">Low</span> <span class="finding-text">Add inputs, output-format, and version fields to skill frontmatter</span><div class="tags"><span class="tag tag-skill">Skill files</span></div></div>
+</div>
+
+<!-- ============ GROUP 5 ============ -->
+<div class="group" id="g5" data-tags="engine">
+  <div class="group-diff diff-easy">Easy</div>
+  <div class="group-title">5. One-liner C# safety fixes</div>
+  <div class="group-why">Each is 1-5 lines of code. Independent of each other. Fix the most dangerous silent failures.</div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-05</span><span class="finding-sev sev-critical">Critical</span> <span class="finding-text">DpapiHmacProvider: throw TimeoutException when mutex WaitOne times out instead of proceeding unguarded</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-10</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Filter OperationCanceledException in PidBroker/WatchdogHeartbeat catch blocks</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-11</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Add logging to PersistenceEnforcer.EnforceAcls catch block (currently bare catch {})</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-13</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Log and propagate secedit.exe failures in PrivilegeEnforcer.RunSecedit</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-25</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Fix DecodeHexWithOffset to use (value - offset + 256) % 256 instead of unchecked cast</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-36</span><span class="finding-sev sev-low">Low</span> <span class="finding-text">Narrow bare catch {} in SqliteBaseRepository to catch (SqliteException)</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-08</span><span class="finding-sev sev-high">High</span> <span class="finding-text">VaultRecoveryService: log CryptographicException distinctly from file-not-found instead of returning null for both</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-17</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">TimeEnforcer.ExecuteAsync: replace return with continue so enforcement doesn't permanently stop</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+</div>
+
+<!-- ============ GROUP 6 ============ -->
+<div class="group" id="g6" data-tags="html">
+  <div class="group-diff diff-easy">Easy</div>
+  <div class="group-title">6. CSS cleanup &amp; deduplication</div>
+  <div class="group-why">All CSS-only. Delete duplicate blocks, fix accessibility. No JS changes. Each is independent.</div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-03</span><span class="finding-sev sev-critical">Critical</span> <span class="finding-text">Delete duplicate ~200 lines in base.css (two copies have already diverged)</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-10</span><span class="finding-sev sev-high">High</span> <span class="finding-text">Delete duplicate 103 lines in Toggle.css and duplicate rules in Modal.css</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-06</span><span class="finding-sev sev-critical">Critical</span> <span class="finding-text">Fix a:focus { outline: 0 } &mdash; use :focus-visible to preserve keyboard navigation ring</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-29</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Replace !important margin overrides in BlockCard.css with parent-scoped selectors</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-37</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Remove body-level user-select: none (prevents copying block names and URLs)</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-48</span><span class="finding-sev sev-low">Low</span> <span class="finding-text">Remove font-size: 14px !important on body (IE workaround, WebView2 doesn't need it)</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-50</span><span class="finding-sev sev-low">Low</span> <span class="finding-text">Rename .green/.red/.bold to intent-based names (.text-success, .text-error) or prefix .ctbl-</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">BC-18</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Change webpack target from IE 11 to chrome: '90' (WebView2 is Chromium)</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+</div>
+
+<!-- ============ GROUP 7 ============ -->
+<div class="group" id="g7" data-tags="engine,file">
+  <div class="group-diff diff-medium">Medium</div>
+  <div class="group-title">7. Build script hardening</div>
+  <div class="group-why">All in ctbl.bat, Deploy.ps1, and InstallationOrchestrator.cs. Fix silent failures, stale payloads, unsafe defaults. Group together because they affect the same build pipeline.</div>
+  <div class="finding" data-tag="engine"><span class="finding-id">BC-03</span><span class="finding-sev sev-high">High</span> <span class="finding-text">Change dotnet publish from -c Debug to -c Release for payload binaries</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">BC-04</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Clean _payload/ directory before each build to prevent stale binary mixing</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">BC-07</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Detect missing/stale Payload.zip before Installer publish (or auto-rebuild)</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">BC-10</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Deploy.ps1: use exit 1 on failure paths (currently exits with 0)</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">BC-11</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Add -ErrorAction Stop to Deploy.ps1 file operations (backup/delete/copy)</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">BC-13</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Deploy.ps1: use -ExecutionPolicy RemoteSigned instead of Bypass</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">BC-15</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">InstallationOrchestrator.RunCmd: check process.ExitCode after WaitForExit</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">BC-20</span><span class="finding-sev sev-low">Low</span> <span class="finding-text">Remove -v quiet from dotnet commands (swallows all build diagnostics)</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">BC-02</span><span class="finding-sev sev-critical">Critical</span> <span class="finding-text">Replace hardcoded password "123" for CTBLAdmin with RandomNumberGenerator at install time</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+</div>
+
+<!-- ============ GROUP 8 ============ -->
+<div class="group" id="g8" data-tags="engine,watchdog">
+  <div class="group-diff diff-medium">Medium</div>
+  <div class="group-title">8. HMAC + crypto consistency</div>
+  <div class="group-why">All touch the same HMAC signing/verification path. Do together to ensure the entire chain is consistent. Includes security review Finding A (queue integrity bypass).</div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CC-02</span><span class="finding-sev sev-high">High</span> <span class="finding-text">Extract IHmacProvider.VerifyHmac using FixedTimeEquals everywhere (pipe currently uses plain string ==)</span><div class="tags"><span class="tag tag-engine">Engine</span><span class="tag tag-watchdog">Watchdog</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-31</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Extract HMAC parse/verify (SIG:hmac:payload) to shared TryParseSignedMessage helper (duplicated 3x)</span><div class="tags"><span class="tag tag-engine">Engine</span><span class="tag tag-watchdog">Watchdog</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CC-05</span><span class="finding-sev sev-high">High</span> <span class="finding-text">Add backup/escrow path for system.key (deletion silently invalidates all pending queue entries)</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">Sec-A3</span><span class="finding-sev sev-critical">Critical</span> <span class="finding-text">BackfillKinds re-signs rows without verifying existing signature &mdash; signing oracle for forged queue entries. Verify legacy sig before re-signing.</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">Sec-Lat1</span><span class="finding-sev sev-high">High</span> <span class="finding-text">ComputeHmac returns "" when key isn't loaded &mdash; fail-open. Attacker sends empty sig, "" != "" is false, accepted. Throw instead.</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+</div>
+
+<!-- ============ GROUP 9 ============ -->
+<div class="group" id="g9" data-tags="engine,html">
+  <div class="group-diff diff-medium">Medium</div>
+  <div class="group-title">9. CORS + JSONP removal + API authentication</div>
+  <div class="group-why">All relate to the unauthenticated HTTP API on port 58123. JSONP removal, CORS restriction, and API auth are one coherent security fix. Includes security review Findings B and C.</div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-06 / CC-01</span><span class="finding-sev sev-critical">Critical</span> <span class="finding-text">Remove Access-Control-Allow-Origin: * and restrict to file:// or null origin</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-03</span><span class="finding-sev sev-critical">Critical</span> <span class="finding-text">Remove JSONP support entirely (or validate callback against ^[a-zA-Z_$][a-zA-Z0-9_.]*$)</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-14</span><span class="finding-sev sev-high">High</span> <span class="finding-text">Replace all JSONP calls in CtblApiClient.js with standard fetch() POST</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-15</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Fix inconsistent URL encoding in CtblApiClient (some params encoded, some not)</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">Sec-B</span><span class="finding-sev sev-critical">Critical</span> <span class="finding-text">App Control allow/disable bypasses delay queue entirely and is unauthenticated. Route through delay queue or apply IsAnyBlockLocked guard.</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">Sec-C</span><span class="finding-sev sev-high">High</span> <span class="finding-text">Add per-boot token or HMAC signature requirement to mutating HTTP API routes (pipe has auth, HTTP doesn't)</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+</div>
+
+<!-- ============ GROUP 10 ============ -->
+<div class="group" id="g10" data-tags="engine">
+  <div class="group-diff diff-medium">Medium</div>
+  <div class="group-title">10. Resource disposal &amp; handle leaks</div>
+  <div class="group-why">All are IDisposable / handle-leak issues. Same pattern, same fix (using var + CloseHandle). Independent but similar work.</div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-19</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">CloseHandle leaked hToken in NativeMethods.SetCriticalProcess</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-20</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Add using var to Process objects in CtblCliClient.ExecuteCommand and KillService</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-21</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Override StopAsync in LocalWebServerService to call _listener.Abort()</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-45</span><span class="finding-sev sev-low">Low</span> <span class="finding-text">Implement IDisposable on BinaryFileLockService (holds List of FileStream)</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-23</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Replace WaitForExit(3000) with await WaitForExitAsync in CtblCliClient</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-24</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Add timeout to WaitForExit() calls in KillService (currently blocks indefinitely)</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+</div>
+
+<!-- ============ GROUP 11 ============ -->
+<div class="group" id="g11" data-tags="html">
+  <div class="group-diff diff-medium">Medium</div>
+  <div class="group-title">11. JS prototype &amp; global namespace cleanup</div>
+  <div class="group-why">All affect JS global state. Do together to clean up the global namespace in one pass. Includes the critical innerHTML += fix.</div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-01</span><span class="finding-sev sev-critical">Critical</span> <span class="finding-text">Replace innerHTML += with insertAdjacentHTML('beforeend') in TemplateLoader (destroys all jQuery listeners)</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-12</span><span class="finding-sev sev-high">High</span> <span class="finding-text">Remove all 4 String.prototype mutations (including trimEnd override of native ES2019 method)</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-31</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Move ~20 window.* function assignments into single window.CTBL namespace object</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-32</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Replace window.onerror alert() with errorTracker logging (blocks UI every second on recurring errors)</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-02</span><span class="finding-sev sev-critical">Critical</span> <span class="finding-text">Fix shortenOverviewBlockName &mdash; references 3 undeclared variables (width, prefix, suffix). Add as params or delete.</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-05</span><span class="finding-sev sev-critical">Critical</span> <span class="finding-text">Guard window.external calls with null check (crashes in any non-WebView2 context)</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+</div>
+
+<!-- ============ GROUP 12 ============ -->
+<div class="group" id="g12" data-tags="engine,watchdog">
+  <div class="group-diff diff-medium">Medium</div>
+  <div class="group-title">12. Logging unification</div>
+  <div class="group-why">Six parallel logging mechanisms, private Log() methods in 6 enforcers, unsynchronized File.AppendAllText. One coherent migration to finish the EngineLogger work.</div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-41</span><span class="finding-sev sev-low">Low</span> <span class="finding-text">Complete EngineLogger migration: remove 6 private Log() methods from enforcers</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-26</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Add synchronization to EngineLogger/LockdownLogger (concurrent File.AppendAllText produces torn lines)</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-29</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Standardize on DateTime.UtcNow everywhere (queue entries currently double-timestamped in different zones)</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CC-14</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Consolidate 6 logging mechanisms into one (ILogger, EngineLogger, StartupLog, LockdownLogger, Console.WriteLine, private Log)</span><div class="tags"><span class="tag tag-engine">Engine</span><span class="tag tag-watchdog">Watchdog</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-42</span><span class="finding-sev sev-low">Low</span> <span class="finding-text">Rename SCREAMING_SNAKE_CASE fields to C# conventions in 3 enforcers</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+</div>
+
+<!-- ============ GROUP 13 ============ -->
+<div class="group" id="g13" data-tags="engine,watchdog">
+  <div class="group-diff diff-hard">Hard</div>
+  <div class="group-title">13. Watchdog resurrection &amp; PidBroker fix</div>
+  <div class="group-why">CS-02 is the #1 most-flagged bug (5 sweepers). All findings here are in the same PidBroker/WatchdogHeartbeat code. Fix together because they interact.</div>
+  <div class="finding" data-tag="watchdog"><span class="finding-id">CS-02</span><span class="finding-sev sev-critical">Critical</span> <span class="finding-text">HandleDeathAsync launches wrong binary (watchdog's own exe instead of Engine). Derive Engine exe path explicitly.</span><div class="tags"><span class="tag tag-watchdog">Watchdog</span><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-04</span><span class="finding-sev sev-high">High</span> <span class="finding-text">Store fire-and-forget health monitor task, await in StopAsync, add try/catch inside loop</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-07</span><span class="finding-sev sev-high">High</span> <span class="finding-text">Add per-watchdog resurrection flag to prevent dual Process.Start race</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-16</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Update PID fields immediately on resurrection (prevents spurious re-resurrections during re-registration gap)</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-15</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Switch pipe to PipeTransmissionMode.Message or implement length-prefixed framing (single read assumes complete message)</span><div class="tags"><span class="tag tag-engine">Engine</span><span class="tag tag-watchdog">Watchdog</span></div></div>
+  <div class="finding" data-tag="watchdog"><span class="finding-id">CS-09</span><span class="finding-sev sev-high">High</span> <span class="finding-text">Fix vault subfolder contract mismatch between WatchdogHeartbeat and PidBroker</span><div class="tags"><span class="tag tag-watchdog">Watchdog</span><span class="tag tag-engine">Engine</span></div></div>
+</div>
+
+<!-- ============ GROUP 14 ============ -->
+<div class="group" id="g14" data-tags="engine">
+  <div class="group-diff diff-hard">Hard</div>
+  <div class="group-title">14. Registry + enforcer race condition fixes</div>
+  <div class="group-why">ACE accumulation, registry write races, and AppControl split-brain all touch the same enforcer/ACL layer. Fix together to avoid re-breaking.</div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-01</span><span class="finding-sev sev-critical">Critical</span> <span class="finding-text">AclHelper accumulates duplicate ACEs every pulse &mdash; DACL overflows in ~3 hours. Check existing rules before AddAccessRule.</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-18</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">AccountEnforcer/FactoryResetEnforcer: atomic read-modify-write on SettingsPageVisibility (concurrent 60s ticks overwrite each other)</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-40</span><span class="finding-sev sev-low">Low</span> <span class="finding-text">Extract duplicated RemoveToken logic from AccountEnforcer/FactoryResetEnforcer into shared helper</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-22</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Fix DateTime race in TimeEnforcer fire-and-forget task (non-atomic 8-byte struct assignment on separate thread)</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">Sec-D</span><span class="finding-sev sev-high">High</span> <span class="finding-text">AppControlEnabled has two uncoordinated writers (API sets true, CtblStateEnforcer overwrites to false from block.Enabled every 45s). One source of truth needed.</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+</div>
+
+<!-- ============ GROUP 15 ============ -->
+<div class="group" id="g15" data-tags="engine">
+  <div class="group-diff diff-hard">Hard</div>
+  <div class="group-title">15. Cold Turkey integration hardening</div>
+  <div class="group-why">All touch the CT database or install path. Do together because changes to the CT interaction model affect all of these.</div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CC-03</span><span class="finding-sev sev-high">High</span> <span class="finding-text">Resolve CT install path from registry once into shared constant (hardcoded in 6 locations)</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CC-06</span><span class="finding-sev sev-high">High</span> <span class="finding-text">Add version detection before writing CT's database (CTB17 encoding is reverse-engineered, no fallback on format change)</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CC-07</span><span class="finding-sev sev-high">High</span> <span class="finding-text">Add runtime CT version check before operating on its DB/process/web directory</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-32</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">KillWriteRestart: restart CT even if DB write fails (currently leaves CT dead with no blocking)</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CC-13</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Add retry/backoff for CT database locks (SQLITE_BUSY throws with no retry)</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CC-04</span><span class="finding-sev sev-high">High</span> <span class="finding-text">Replace CTBL_QUEUED_DELAY magic string with shared constant across JS and C#</span><div class="tags"><span class="tag tag-engine">Engine</span><span class="tag tag-html">HTML</span></div></div>
+</div>
+
+<!-- ============ GROUP 16 ============ -->
+<div class="group" id="g16" data-tags="html">
+  <div class="group-diff diff-hard">Hard</div>
+  <div class="group-title">16. Frontend render performance &amp; state management</div>
+  <div class="group-why">All stem from one root cause: clock-driven full re-renders with no dirty-checking. Security review Finding F identifies this as the concentrated vanilla cost. Fix the render loop, then clean up the symptoms.</div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-18</span><span class="finding-sev sev-high">High</span> <span class="finding-text">Add dirty-key render guard to updateBlocks (full DOM teardown every second destroys focus/dropdowns)</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-24</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Separate event-binding from value-update in updateSettings (~50 DOM queries + event rebinds every second)</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-25</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Coordinate refreshQueuedDelayState with $.when() (currently fires two sequential updateBlocks)</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-34</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Debounce save() with 200-300ms delay (currently serializes entire settings object on every keystroke)</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-08</span><span class="finding-sev sev-critical">Critical</span> <span class="finding-text">Fix AppState moment() dates (frozen at module load, permanently stale after midnight)</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-42</span><span class="finding-sev sev-low">Low</span> <span class="finding-text">Store polling interval handle; add guard to skip tick if previous hasn't finished</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-23</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">pollingService: log exceptions instead of swallowing silently (frozen UI with no indication)</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">Sec-F</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Add change-detection layer (~30 lines): compute cheap state signature, skip DOM rebuild when unchanged. Covers updateBlocks, updateSettings, updateOverview.</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+</div>
+
+<!-- ============ GROUP 17 ============ -->
+<div class="group" id="g17" data-tags="engine">
+  <div class="group-diff diff-hard">Hard</div>
+  <div class="group-title">17. ACL + data directory hardening</div>
+  <div class="group-why">Security review's #1 finding: the files that authorize unlocks (system.key, ctblplusplus.db) are unprotected. This is the single most important security gap. Also covers ScorchedEarth documentation and the offline lockdown recovery gap.</div>
+  <div class="finding" data-tag="engine"><span class="finding-id">Sec-A1/A2</span><span class="finding-sev sev-critical">Critical</span> <span class="finding-text">ACL %ProgramData%\CtblPlusPlus to SYSTEM-only. Add read-deny on system.key for Admin/Users (currently LocalMachine DPAPI, any process can read + unprotect). This protects the key, the DB, and Anti-TM.txt at once.</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CC-10</span><span class="finding-sev sev-high">High</span> <span class="finding-text">Document ScorchedEarth system tool deletions in user-facing docs (bcdedit, reagentc, msconfig permanently deleted with no disclosure)</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">Sec-G4</span><span class="finding-sev sev-high">High</span> <span class="finding-text">Add offline recovery path for false-positive lockdown (permanently firewalled machine is currently unrecoverable)</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+</div>
+
+<!-- ============ GROUP 18 ============ -->
+<div class="group" id="g18" data-tags="html,engine">
+  <div class="group-diff diff-complex">Complex</div>
+  <div class="group-title">18. Block type architecture</div>
+  <div class="group-why">Structural refactor across both C# and JS. Security review Finding E: the native/custom block-type boundary is UI-only. These all need to move together because they define the extension contract.</div>
+  <div class="finding" data-tag="engine"><span class="finding-id">BT-01</span><span class="finding-sev sev-high">High</span> <span class="finding-text">Extension types parasitize CT's password field via sentinel. Need proper type identity in CtblBlock.Extension.</span><div class="tags"><span class="tag tag-engine">Engine</span><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">BT-10</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">CtblBlock.Extension field exists but is read/written by nothing. Write type id into it on save.</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">BT-02</span><span class="finding-sev sev-high">High</span> <span class="finding-text">Extension type identity lives in AppState only, lost on restart. Make self-describing in config via Extension field.</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">BT-03</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Block categories identified by name prefix at 4+ call sites. Extract isFrozenBlock() / isFocusedBlock() helpers.</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">BT-04</span><span class="finding-sev sev-high">High</span> <span class="finding-text">No registry for block categories (adding one requires 11+ file edits). Add C# IExtensionLockType registry mirroring JS descriptor.</span><div class="tags"><span class="tag tag-html">HTML</span><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">BT-05</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Scheduling types ("continuous"/"scheduled") are a closed list in 4+ files with no registry.</span><div class="tags"><span class="tag tag-html">HTML</span><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">BT-06</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">getContinuousBreakText/getScheduledBreakText are ~190-line near-duplicates. Extract shared break renderer.</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">BT-07</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Parallel lock display chains in blockStateCalculator and OverviewRenderers. Extend registry hooks beyond password type.</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">BT-08</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Lock type descriptor interface not formally declared. Add JSDoc @typedef and validation in registerLockType().</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">BT-09</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">LockEditorPage._parseState still has hardcoded else-if branch at line 260 alongside registry.</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">Sec-E</span><span class="finding-sev sev-high">High</span> <span class="finding-text">Native/custom block-type boundary is UI-only. Config layer uses sentinel convention, enforcement layer uses hardcoded switch. Need unified 3-layer contract.</span><div class="tags"><span class="tag tag-html">HTML</span><span class="tag tag-engine">Engine</span></div></div>
+</div>
+
+<!-- ============ GROUP 19 ============ -->
+<div class="group" id="g19" data-tags="skill">
+  <div class="group-diff diff-complex">Complex</div>
+  <div class="group-title">19. New skill files to create</div>
+  <div class="group-why">Coverage gaps identified by both reviews. These are new .md files in .agents/Skills/. Ordered by priority (highest first).</div>
+  <div class="finding" data-tag="skill"><span class="finding-id">AS-05</span><span class="finding-sev sev-high">High</span> <span class="finding-text">webui-build-boundary skill: Raw/ vs Bundled/ distinction. Prevent agents from editing webpack output. Highest priority.</span><div class="tags"><span class="tag tag-skill">Skill files</span></div></div>
+  <div class="finding" data-tag="skill"><span class="finding-id">AS-01</span><span class="finding-sev sev-critical">Critical</span> <span class="finding-text">Cross-stack feature skill: every CTBL++ feature spans C# + WebUI. No skill covers the end-to-end path.</span><div class="tags"><span class="tag tag-skill">Skill files</span></div></div>
+  <div class="finding" data-tag="skill"><span class="finding-id">AS-02</span><span class="finding-sev sev-critical">Critical</span> <span class="finding-text">CTBL++-specific architecture skill: Engine, Installer, Wd1, Wd2 don't map to existing 4-layer model.</span><div class="tags"><span class="tag tag-skill">Skill files</span></div></div>
+  <div class="finding" data-tag="skill"><span class="finding-id">AS-06</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">engine-api-contract skill: guidance for keeping HTTP API contract consistent across C# and JS.</span><div class="tags"><span class="tag tag-skill">Skill files</span></div></div>
+  <div class="finding" data-tag="skill"><span class="finding-id">AS-04</span><span class="finding-sev sev-high">High</span> <span class="finding-text">Security skill: DPAPI, HMAC, queue integrity invariants.</span><div class="tags"><span class="tag tag-skill">Skill files</span></div></div>
+  <div class="finding" data-tag="skill"><span class="finding-id">AS-07</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">queue-mutation-rules skill: HMAC-signed invariants for the core feature.</span><div class="tags"><span class="tag tag-skill">Skill files</span></div></div>
+  <div class="finding" data-tag="skill"><span class="finding-id">AS-08</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">csharp-behavior-reviewer skill: logic correctness, error handling, race conditions.</span><div class="tags"><span class="tag tag-skill">Skill files</span></div></div>
+  <div class="finding" data-tag="skill"><span class="finding-id">AS-09</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">watchdog-constraints skill: Wd1/Wd2 rules (Domain-only refs, critical process, mutual monitoring).</span><div class="tags"><span class="tag tag-skill">Skill files</span></div></div>
+  <div class="finding" data-tag="skill"><span class="finding-id">AS-10</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Testing skill: test file placement, unit vs integration strategy.</span><div class="tags"><span class="tag tag-skill">Skill files</span></div></div>
+  <div class="finding" data-tag="skill"><span class="finding-id">AS-11</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Build/deployment skill: ctbl.bat sequencing, Raw/Bundled/Payload/WebPayload relationships.</span><div class="tags"><span class="tag tag-skill">Skill files</span></div></div>
+  <div class="finding" data-tag="skill"><span class="finding-id">AS-12</span><span class="finding-sev sev-low">Low</span> <span class="finding-text">Convert amazon-vm-ie-webview-fix.md into a proper skill with trigger, or move to docs/.</span><div class="tags"><span class="tag tag-skill">Skill files</span></div></div>
+  <div class="finding" data-tag="skill"><span class="finding-id">AS-03</span><span class="finding-sev sev-high">High</span> <span class="finding-text">Naming Reviewer skill (referenced by Html Architect "When NOT to use" but doesn't exist).</span><div class="tags"><span class="tag tag-skill">Skill files</span></div></div>
+</div>
+
+<!-- ============ REMAINING ITEMS NOT IN GROUPS ============ -->
+<h2>Additional findings (not grouped above)</h2>
+<p style="color: var(--text2); font-size: 0.9rem; margin-bottom: 1rem;">These are lower-priority or standalone items that don't naturally batch with the groups above.</p>
+
+<div class="group" data-tags="file,engine">
+  <div class="group-title">Structural &amp; project-level</div>
+  <div class="finding" data-tag="file"><span class="finding-id">F-01</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">No .sln file at repo root (IDE refactoring across projects is broken)</span><div class="tags"><span class="tag tag-file">File &amp; folder</span></div></div>
+  <div class="finding" data-tag="file"><span class="finding-id">F-02</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">No Directory.Build.props (shared settings duplicated across .csproj files)</span><div class="tags"><span class="tag tag-file">File &amp; folder</span></div></div>
+  <div class="finding" data-tag="file"><span class="finding-id">F-08</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Third-party binaries committed to assets/ (ColdTurkey_Installer.exe, WebView2Setup.exe). Download at install time instead.</span><div class="tags"><span class="tag tag-file">File &amp; folder</span></div></div>
+  <div class="finding" data-tag="file"><span class="finding-id">F-10</span><span class="finding-sev sev-low">Low</span> <span class="finding-text">Namespace/folder mismatch: Enforcers/ folder vs Security.Enforcers namespace</span><div class="tags"><span class="tag tag-file">File &amp; folder</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">BC-06</span><span class="finding-sev sev-high">High</span> <span class="finding-text">Services not self-contained; .NET 10 not installed by the installer. Add --self-contained or runtime check.</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">BC-08</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Fresh clone fails on Installer build (Payload.zip doesn't exist yet). Add BeforeBuild diagnostic.</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">BC-09</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">WebPayload.zip can diverge from Deploy.ps1 output silently. Add hash check.</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">BC-16</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">GenerateSystemKey shells out to PowerShell unnecessarily (DpapiHmacProvider.InitializeCryptoKey does it in C#)</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">BC-17</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Nullable reference warnings silenced globally (CS8600, CS8604, CS8618, CS8625). Fix individually.</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">BC-21</span><span class="finding-sev sev-low">Low</span> <span class="finding-text">Hardcoded C:\Users\Public\Desktop in installer (use GetFolderPath instead)</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">BC-23</span><span class="finding-sev sev-low">Low</span> <span class="finding-text">ctbl.bat: no admin rights check before elevation-required operations</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CC-08</span><span class="finding-sev sev-critical">Critical</span> <span class="finding-text">No test projects exist anywhere in the solution. Every behavior is verified only in production.</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CC-09</span><span class="finding-sev sev-critical">Critical</span> <span class="finding-text">Three irreversible paths have no test coverage: DPAPI round-trip, Kill-Write-Restart, ScorchedEarth targeting.</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+</div>
+
+<div class="group" data-tags="engine">
+  <div class="group-title">Additional C# engine findings</div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-12</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">IntegrityVerificationService: hash read IOException triggers spurious vault restore (fights BinaryFileLockService)</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-14</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Thread.Sleep blocking thread-pool threads in async call chain (QueueBatchContext, PidBroker)</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-27</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">ScorchedEarthPurgeService: synchronous recursive walk of System32+WinSxS every 60s on thread pool</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-28</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">SqliteQueueRepository: static migration flags redundant on singleton class</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-33</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Port 58123 conflict silently treated as normal shutdown (no retry, no alert)</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-34</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">InternetTimeSource failure at boot triggers lockdown identical to clock tampering (false positive on network outage)</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-35</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">net localgroup Administrators parsing is locale-sensitive (breaks on non-English Windows)</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-37</span><span class="finding-sev sev-low">Low</span> <span class="finding-text">Two pipe connections per 5-second heartbeat (HEARTBEAT + GET_PIDS). Combine into single request.</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-38</span><span class="finding-sev sev-low">Low</span> <span class="finding-text">BinaryFileLockService.ReleaseLocks called twice during shutdown (harmless but lifecycle confusion)</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-39</span><span class="finding-sev sev-low">Low</span> <span class="finding-text">Wd1/Wd2 Program.cs are 28-line clones (1-line difference). Extract shared WatchdogHostBuilder.</span><div class="tags"><span class="tag tag-engine">Engine</span><span class="tag tag-watchdog">Watchdog</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-44</span><span class="finding-sev sev-low">Low</span> <span class="finding-text">_isDirtyFlag is a misleading name (represents unclean shutdown, not dirty data)</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-46</span><span class="finding-sev sev-low">Low</span> <span class="finding-text">HideColdTurkeyWindowAsync: polling loop with no CancellationToken (200 wake-ups per call, overlapping instances)</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-47</span><span class="finding-sev sev-low">Low</span> <span class="finding-text">Unexplained await Task.Delay(500) in QueueDispatcher.ProcessQueueAsync</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CS-49</span><span class="finding-sev sev-low">Low</span> <span class="finding-text">N+1 repository calls in AppControlQueueHandler (GetAllApps() per loop iteration)</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CC-11</span><span class="finding-sev sev-low">Low</span> <span class="finding-text">WinSxS deletion may corrupt Windows component store (servicing stack references deleted files)</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CC-12</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Pipe protocol is positional with no versioning (adding a field requires updating both files simultaneously)</span><div class="tags"><span class="tag tag-engine">Engine</span><span class="tag tag-watchdog">Watchdog</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CC-15</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">DPAPI LocalMachine scope unexplained. CurrentUser would restrict to service account identity.</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CC-16</span><span class="finding-sev sev-low">Low</span> <span class="finding-text">Three load-bearing architectural decisions have no recorded rationale (port 58123, 0x1F delimiter, V1 retained)</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">CC-17</span><span class="finding-sev sev-low">Low</span> <span class="finding-text">CTB17 encoding constants unexplained (no version context, no guidance on prefix check failure)</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+</div>
+
+<div class="group" data-tags="html">
+  <div class="group-title">Additional HTML / JS findings</div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-04</span><span class="finding-sev sev-critical">Critical</span> <span class="finding-text">SettingsPage.js committed partially minified (31.8KB, unreadable). Replace with unminified source.</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-07</span><span class="finding-sev sev-critical">Critical</span> <span class="finding-text">Three files exceed 100KB of HTML/template content (BlockModal.html = 104.7KB). Split by logical boundary.</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-09</span><span class="finding-sev sev-high">High</span> <span class="finding-text">Sidebar inline onclick calls globals that must exist at parse time (fails if bundle errors before assignment)</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-11</span><span class="finding-sev sev-high">High</span> <span class="finding-text">No CSS color tokens. Hardcoded hex scattered everywhere. Need :root custom properties.</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-13</span><span class="finding-sev sev-high">High</span> <span class="finding-text">Four distinct C#/JS communication channels with no shared error handling. Document and create bridge.js.</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-16</span><span class="finding-sev sev-high">High</span> <span class="finding-text">Sidebar: no nav landmark, no aria-current, no focus styles. Add nav + aria-current + :focus-visible.</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-17</span><span class="finding-sev sev-high">High</span> <span class="finding-text">Modal close button hidden via display:none. No keyboard escape path except Escape key.</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-19</span><span class="finding-sev sev-high">High</span> <span class="finding-text">BlockCard XSS: manual toHtml() escaping inconsistently applied. Some data-* attributes unescaped.</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-20</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">BlockCard 600-char string template. Replace with tagged template literal for auto-escaping.</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-21</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Three DOM strategies coexist (template HTML, jQuery helpers, string concat) with no rule for when to use each.</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-22</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Six raw window/document event bindings with no teardown. Group in initGlobalEvents() with namespaced events.</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-26</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Unlock state stored as composite string keys with backslash delimiters. Encapsulate in makeUnlockKey/isUnlocked.</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-27</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">window.settings accessed directly at hundreds of call sites with no abstraction layer.</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-28</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Boolean settings stored as strings "true"/"false" with 100+ fragile comparisons. Add isTrue() helper.</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-30</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">blockStateCalculator.js (200+ lines) and SecurityModal.js are god files. Split into focused modules.</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-33</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">updateBlocks empties and rebuilds list with no aria-live region. Screen readers can't detect changes.</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-35</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Two bridge mechanisms for same backend (window.external COM + JSONP localhost). Decide on one and migrate.</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-36</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">JSONP allows port-race injection. Any process binding port 58123 first can inject code into WebView.</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-38</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Object.defineProperty bridge for window.settings is opaque and undocumented. Add explanatory comment.</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-39</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Circular imports between pages and components. Move shared callbacks to dedicated event module.</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-40</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">coldTurkeyAPI.js deprecated stub. window.external calls scattered across tree with no inventory.</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-41</span><span class="finding-sev sev-low">Low</span> <span class="finding-text">DOM used as state for sort order. Sort data first, then render.</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-43</span><span class="finding-sev sev-low">Low</span> <span class="finding-text">OverviewRenderers.js 36.9KB of HTML strings in JS. Extract to named template functions.</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-45</span><span class="finding-sev sev-low">Low</span> <span class="finding-text">AppState.lastRefreshedMinute written by 3 modules. Should be single-owner in polling service.</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-47</span><span class="finding-sev sev-low">Low</span> <span class="finding-text">Port 58123 hardcoded in two files with inconsistent form (127.0.0.1 vs localhost). Define once as constant.</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">FE-49</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">TemplateLoader uses synchronous XHR (blocks main thread). Switch to Promise.all batch async loading.</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">BT-11</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">BlockModal.html has no component model. New block category requires new hardcoded div.</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+  <div class="finding" data-tag="html"><span class="finding-id">CC-18</span><span class="finding-sev sev-low">Low</span> <span class="finding-text">Vendored JS libraries (jQuery, Bootstrap, Flot) have no version manifest or update mechanism.</span><div class="tags"><span class="tag tag-html">HTML</span></div></div>
+</div>
+
+<div class="group" data-tags="engine,skill">
+  <div class="group-title">Additional cross-cutting &amp; CI</div>
+  <div class="finding" data-tag="engine"><span class="finding-id">BC-01</span><span class="finding-sev sev-high">High</span> <span class="finding-text">No GitHub Actions CI pipeline. Zero automated build verification.</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">BC-12</span><span class="finding-sev sev-low">Low</span> <span class="finding-text">Deploy.ps1 backup directories grow unboundedly. Add max-5 pruning.</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">BC-14</span><span class="finding-sev sev-low">Low</span> <span class="finding-text">Deploy.ps1 Read-Host and pause block unattended execution. Add -NonInteractive switch.</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">BC-19</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Comment-Driven Access Control has 4 unaddressed edge cases (edit-restart, delete-no-cancel, double-eval, no-confirmation).</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+  <div class="finding" data-tag="skill"><span class="finding-id">AS-22</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Neither skill defines structured output format. Multi-skill chaining is broken.</span><div class="tags"><span class="tag tag-skill">Skill files</span></div></div>
+  <div class="finding" data-tag="skill"><span class="finding-id">AS-23</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Both skills ask model to perform checks that could be run by scripts (dotnet list reference, grep, jscpd).</span><div class="tags"><span class="tag tag-skill">Skill files</span></div></div>
+  <div class="finding" data-tag="skill"><span class="finding-id">AS-25</span><span class="finding-sev sev-low">Low</span> <span class="finding-text">Filename vs frontmatter name mismatch (Skill_Csharp_Architect.md vs csharp-architect).</span><div class="tags"><span class="tag tag-skill">Skill files</span></div></div>
+  <div class="finding" data-tag="skill"><span class="finding-id">AS-19</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Html Architect can misfire on Bundled/ directory files (applies structural guidance to webpack output).</span><div class="tags"><span class="tag tag-skill">Skill files</span></div></div>
+  <div class="finding" data-tag="engine"><span class="finding-id">Sec-Lat2</span><span class="finding-sev sev-medium">Med</span> <span class="finding-text">Schedule-to-continuous switch silently clears schedule lock (delay-gated but surprising side effect).</span><div class="tags"><span class="tag tag-engine">Engine</span></div></div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  let activeTag = 'all';
+  let activeDiff = null;
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      const filter = this.dataset.filter;
+      const diff = this.dataset.diff;
+
+      if (filter) {
+        document.querySelectorAll('[data-filter]').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        activeTag = filter;
+      }
+      if (diff) {
+        if (activeDiff === diff) {
+          this.classList.remove('active');
+          activeDiff = null;
+        } else {
+          document.querySelectorAll('[data-diff]').forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          activeDiff = diff;
+        }
+      }
+      applyFilters();
+    });
+  });
+
+  function applyFilters() {
+    document.querySelectorAll('.group').forEach(group => {
+      const tags = group.dataset.tags || '';
+      const diffEl = group.querySelector('.group-diff');
+      const groupDiff = diffEl ? (diffEl.classList.contains('diff-easy') ? 'easy' : diffEl.classList.contains('diff-medium') ? 'medium' : diffEl.classList.contains('diff-hard') ? 'hard' : 'complex') : null;
+
+      let tagMatch = activeTag === 'all' || tags.split(',').includes(activeTag);
+      let diffMatch = !activeDiff || groupDiff === activeDiff;
+
+      if (activeTag !== 'all' && tagMatch) {
+        group.querySelectorAll('.finding').forEach(f => {
+          const ft = f.dataset.tag;
+          f.style.display = (ft === activeTag) ? '' : 'none';
+        });
+      } else {
+        group.querySelectorAll('.finding').forEach(f => f.style.display = '');
+      }
+
+      group.style.display = (tagMatch && diffMatch) ? '' : 'none';
+    });
+  }
+});
+</script>
+
+</body>
+</html>
