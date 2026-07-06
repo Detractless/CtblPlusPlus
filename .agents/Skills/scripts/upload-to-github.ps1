@@ -1,18 +1,25 @@
 # upload-to-github.ps1
-# Uploads a large local folder to a GitHub branch in batches of 90 files.
+# Uploads a large local folder to a GitHub branch in batches of N files.
 # Handles Windows OOM (pack-objects signal 127), index.lock conflicts, and push retries.
+#
+# Compatible with PowerShell 5.1+ (Windows PowerShell) and PowerShell 7+.
+# IMPORTANT: This file must be saved as ASCII or UTF-8 with BOM for PS 5.1.
+# Do NOT use special Unicode characters (em-dashes, curly quotes, etc.) anywhere
+# in this file -- PS 5.1 reads scripts as Windows-1252 by default and will
+# misinterpret multi-byte UTF-8 sequences as string delimiters, causing parse errors.
+#
 # Usage: powershell -ExecutionPolicy Bypass -File .\upload-to-github.ps1
 
 $ErrorActionPreference = "Continue"
 
-# --- CONFIGURE THESE ---
-$repo         = "D:\Users\Calibro\Downloads\CtblPlusPlus-main17\CtblPlusPlus-main\CtblPlusPlus-main"
-$remoteUrl    = "https://github.com/Detractless/CtblPlusPlus.git"
-$branchName   = "upload-branch"
-$batchSize    = 90
-$maxRetries   = 8
-$retryWaitSec = 12
-# -----------------------
+# --- CONFIGURE THESE ---------------------------------------------------------
+$repo         = "C:\full\path\to\folder"                   # Full path to the folder to upload
+$remoteUrl    = "https://github.com/YourUser/YourRepo.git" # GitHub repo URL
+$branchName   = "upload-branch"                            # New branch name (NOT main)
+$batchSize    = 90                                         # Files per commit (keep at or below 90)
+$maxRetries   = 8                                          # Push retry attempts per batch
+$retryWaitSec = 12                                         # Seconds between retries
+# ------------------------------------------------------------------------------
 
 Set-Location $repo
 Write-Host "=== GitHub Large Folder Upload ===" -ForegroundColor Cyan
@@ -56,7 +63,9 @@ for ($i = 0; $i -lt $totalFiles; $i += $batchSize) {
     # Remove stale lock file left behind when a previous git process crashed
     Remove-Item ".git\index.lock" -Force -ErrorAction SilentlyContinue
 
-    # Write paths without BOM via .NET, then feed to git add
+    # Write file paths to a temp file WITHOUT a UTF-8 BOM, then pass to git add.
+    # PS 5.1's Set-Content -Encoding UTF8 writes a BOM which corrupts the first
+    # filename. Using .NET directly avoids this.
     $tmpFile = [System.IO.Path]::GetTempFileName()
     $enc = [System.Text.UTF8Encoding]::new($false)
     [System.IO.File]::WriteAllLines($tmpFile, $batch, $enc)
@@ -76,17 +85,24 @@ for ($i = 0; $i -lt $totalFiles; $i += $batchSize) {
         continue
     }
 
-    # Push with retries - direct git push, no Start-Process, no 2>&1
+    # Push with retries.
+    # IMPORTANT: Call git push directly -- do NOT use Start-Process.
+    # Start-Process runs git in a detached subprocess where:
+    #   - stderr (error messages) is invisible
+    #   - $LASTEXITCODE is not set (must use $proc.ExitCode instead)
+    #   - credential helper interactions can break
+    # Also do NOT append 2>&1 -- in PS 5.1 this wraps stderr lines in
+    # ErrorRecord objects that can corrupt parsing of subsequent statements.
     $pushed = $false
     for ($r = 1; $r -le $maxRetries; $r++) {
         git push origin $branchName
         $pushExit = $LASTEXITCODE
         if ($pushExit -eq 0) {
-            Write-Host "  Pushed batch $batchNum ok on retry $r" -ForegroundColor Green
+            Write-Host "  Pushed batch $batchNum ok (attempt $r)" -ForegroundColor Green
             $pushed = $true
             break
         }
-        Write-Host "  Push failed exit=$pushExit retry $r of $maxRetries waiting ${retryWaitSec}s" -ForegroundColor Yellow
+        Write-Host "  Push failed exit=$pushExit (attempt $r of $maxRetries) waiting ${retryWaitSec}s" -ForegroundColor Yellow
         Start-Sleep -Seconds $retryWaitSec
     }
     if (-not $pushed) {
