@@ -1,0 +1,165 @@
+name: Source Access Requests
+
+# Automates private-repo access grants as described in CONTRIBUTING.md.
+#
+# Commands (posted as comments on the pinned access issue):
+#   [Username]::Request Full Access  -> starts a 7-day countdown
+#   [Username]::Forget Full Access   -> cancels a pending countdown, or
+#                                       revokes access if already granted
+#
+# Grants are executed by the scheduled scan once the 7-day window elapses.
+#
+# Required configuration:
+#   secret  ACCESS_ADMIN_TOKEN  - PAT (classic: repo scope / fine-grained:
+#                                 Administration read-write on the private
+#                                 repo). Used to invite/remove collaborators.
+#   variable ACCESS_ISSUE_NUMBER - issue number of the pinned access issue.
+#   variable PRIVATE_REPO        - target repo, e.g. Detractless/CtblPlusPlus-Private
+
+on:
+  issue_comment:
+    types: [created]
+  schedule:
+    - cron: "0 */2 * * *" # scan every 2 hours for elapsed countdowns
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+concurrency:
+  group: source-access
+  cancel-in-progress: false
+
+jobs:
+  access:
+    runs-on: ubuntu-latest
+    # For comment events, only react to the pinned issue and ignore our own bot replies.
+    if: >-
+      github.event_name != 'issue_comment' ||
+      (github.event.issue.number == fromJSON(vars.ACCESS_ISSUE_NUMBER) &&
+       !startsWith(github.event.comment.user.login, 'github-actions'))
+    steps:
+      - name: Process access commands
+        uses: actions/github-script@v7
+        env:
+          ADMIN_TOKEN: ${{ secrets.ACCESS_ADMIN_TOKEN }}
+          PRIVATE_REPO: ${{ vars.PRIVATE_REPO }}
+          ACCESS_ISSUE_NUMBER: ${{ vars.ACCESS_ISSUE_NUMBER }}
+        with:
+          script: |
+            const WAIT_DAYS = 7;
+            const issue_number = Number(process.env.ACCESS_ISSUE_NUMBER);
+            const [privOwner, privRepo] = process.env.PRIVATE_REPO.split('/');
+            const admin = new (github.constructor)({ auth: process.env.ADMIN_TOKEN });
+
+            const { owner, repo } = context.repo;
+
+            const reply = async (body) => {
+              await github.rest.issues.createComment({ owner, repo, issue_number, body });
+              core.info(`Replied: ${body}`);
+            };
+
+            const fmtDate = (d) => d.toISOString().replace('T', ' ').slice(0, 16) + ' UTC';
+
+            // --- Thread-derived state ------------------------------------
+            // The bot's own replies are the source of truth:
+            //   "[user]::Countdown Started - Access scheduled for <date>"
+            //   "[user]::Countdown Cancelled"
+            //   "[user]::Access Granted <date>"
+            //   "[user]::Access Revoked"
+            const comments = await github.paginate(github.rest.issues.listComments, {
+              owner, repo, issue_number, per_page: 100,
+            });
+
+            const isBot = (c) => c.user.type === 'Bot' && c.user.login.startsWith('github-actions');
+
+            // Latest bot status per user, in thread order.
+            const state = {}; // user -> { status, scheduledFor }
+            for (const c of comments) {
+              if (!isBot(c)) continue;
+              let m;
+              if ((m = c.body.match(/^\[([^\]]+)\]::Countdown Started - Access scheduled for (.+)$/m))) {
+                state[m[1]] = { status: 'pending', scheduledFor: new Date(m[2].replace(' UTC', 'Z').replace(' ', 'T')) };
+              } else if ((m = c.body.match(/^\[([^\]]+)\]::Countdown Cancelled$/m))) {
+                state[m[1]] = { status: 'none' };
+              } else if ((m = c.body.match(/^\[([^\]]+)\]::Access Granted .+$/m))) {
+                state[m[1]] = { status: 'granted' };
+              } else if ((m = c.body.match(/^\[([^\]]+)\]::Access Revoked$/m))) {
+                state[m[1]] = { status: 'none' };
+              }
+            }
+
+            const hasCollaboratorAccess = async (username) => {
+              try {
+                await admin.rest.repos.checkCollaborator({ owner: privOwner, repo: privRepo, username });
+                return true;
+              } catch { return false; }
+            };
+
+            const removeAccess = async (username) => {
+              // Remove collaborator if present.
+              if (await hasCollaboratorAccess(username)) {
+                await admin.rest.repos.removeCollaborator({ owner: privOwner, repo: privRepo, username });
+                return 'revoked';
+              }
+              // Otherwise cancel any outstanding (unaccepted) invitation.
+              const invites = await admin.paginate(admin.rest.repos.listInvitations, { owner: privOwner, repo: privRepo });
+              const inv = invites.find((i) => i.invitee && i.invitee.login.toLowerCase() === username.toLowerCase());
+              if (inv) {
+                await admin.rest.repos.deleteInvitation({ owner: privOwner, repo: privRepo, invitation_id: inv.id });
+                return 'revoked';
+              }
+              return 'none';
+            };
+
+            // --- Immediate path: a new comment ---------------------------
+            if (context.eventName === 'issue_comment') {
+              const body = context.payload.comment.body.trim();
+              const author = context.payload.comment.user.login;
+
+              const m = body.match(/^\[([^\]]+)\]::(Request Full Access|Forget Full Access)$/);
+              if (!m) return core.info('Comment is not an access command; ignoring.');
+
+              const [, username, command] = m;
+              // Server-side identity check: login must match the username in the text.
+              if (username.toLowerCase() !== author.toLowerCase()) {
+                return core.warning(`Identity mismatch: comment by ${author} names ${username}; ignoring.`);
+              }
+
+              const current = state[username] || { status: 'none' };
+
+              if (command === 'Request Full Access') {
+                if (current.status === 'pending') return core.info('Countdown already running; ignoring duplicate.');
+                if (current.status === 'granted' || await hasCollaboratorAccess(username)) {
+                  return core.info(`${username} already has access; ignoring.`);
+                }
+                const scheduled = new Date(Date.now() + WAIT_DAYS * 24 * 60 * 60 * 1000);
+                await reply(`[${username}]::Countdown Started - Access scheduled for ${fmtDate(scheduled)}`);
+              } else { // Forget Full Access
+                const removed = await removeAccess(username);
+                if (removed === 'revoked' || current.status === 'granted') {
+                  await reply(`[${username}]::Access Revoked`);
+                } else if (current.status === 'pending') {
+                  await reply(`[${username}]::Countdown Cancelled`);
+                } else {
+                  core.info(`${username} has nothing to forget; ignoring.`);
+                }
+              }
+              return;
+            }
+
+            // --- Scheduled path: grant elapsed countdowns -----------------
+            const now = new Date();
+            for (const [username, s] of Object.entries(state)) {
+              if (s.status !== 'pending') continue;
+              if (isNaN(s.scheduledFor) || s.scheduledFor > now) continue;
+
+              try {
+                await admin.rest.repos.addCollaborator({
+                  owner: privOwner, repo: privRepo, username, permission: 'push',
+                });
+                await reply(`[${username}]::Access Granted ${fmtDate(now)}`);
+              } catch (e) {
+                core.error(`Failed to grant access to ${username}: ${e.message}`);
+              }
+            }
