@@ -135,7 +135,7 @@ jobs:
               if (command === 'Request Full Access') {
                 if (current.status === 'pending') return core.info('Countdown already running; ignoring duplicate.');
                 if (current.status === 'granted' || await hasCollaboratorAccess(username)) {
-                  return core.info(`${username} already has access; ignoring.`);
+                  return reply(`[${username}]::Access Already Granted`);
                 }
                 const scheduled = new Date(Date.now() + WAIT_DAYS * 24 * 60 * 60 * 1000);
                 await reply(`[${username}]::Countdown Started - Access scheduled for ${fmtDate(scheduled)}`);
