@@ -23,7 +23,7 @@ CTBL++ is MIT-licensed and split across two repos:
 
 Public clones build and run without the private repo for most work. Changes touching watchdogs, the vault, or HMAC signing require private repo access before you can build or test locally.
 
-Access is managed through a single GitHub issue: **[Source Access Requests](#)** *(link to the pinned issue)*.
+Access is managed through a single GitHub issue: **[Source Access Requests](#)** *([link to the pinned issue](https://github.com/Detractless/CtblPlusPlus/issues/9))*.
 
 ### How it works
 
