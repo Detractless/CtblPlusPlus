@@ -7,7 +7,7 @@
   <img src="https://img.shields.io/badge/status-beta-8B5CF6?style=for-the-badge" alt="Status: beta">
   <img src="https://img.shields.io/badge/requires-Cold%20Turkey%20Pro-DC2626?style=for-the-badge" alt="Requires Cold Turkey Pro">
   <img src="https://img.shields.io/badge/license-MIT-22C55E?style=for-the-badge" alt="License: MIT">
-  <img src="https://img.shields.io/badge/stars-2-eac54f?style=for-the-badge&logo=github&logoColor=white" alt="Stars">
+  <img src="https://img.shields.io/badge/stars-9-eac54f?style=for-the-badge&logo=github&logoColor=white" alt="Stars">
 </p>
 
 > [!IMPORTANT]
@@ -26,15 +26,15 @@ Cold Turkey is one of the best blocking tools out there, but there are features 
 
 <table>
 <tr>
-  <td width="190"><b>Queued Delay lock</b><br><sub><code>shipped</code></sub></td>
+  <td width="190"><b>Queued Delay lock (shipped)</b><br><sub><code>available now</code></sub></td>
   <td>Cold Turkey normally requires a block to be <i>off</i> before you can change it — its most vulnerable moment and the easiest point to relapse. The Queued Delay lock type removes that moment entirely: instead of unlocking to make a change, you <b>queue</b> the change and it executes after a delay you chose <i>in advance</i>. There's nothing to re-lock and no instant access for an impulse to act on.</td>
 </tr>
 <tr>
-  <td><b>Tamper resistance</b><br><sub><code>shipped</code></sub></td>
+  <td><b>Tamper resistance (shipped)</b><br><sub><code>available now</code></sub></td>
   <td>A background Engine service backed by two cross-monitoring watchdogs (Wd1 / Wd2). They watch the Engine and each other, restart on death, and mark themselves critical, making the enforcement layer hard to simply kill.</td>
 </tr>
 <tr>
-  <td><b>Local AI categorization</b><br><sub><code>planned</code></sub></td>
+  <td><b>Local AI categorization (planned)</b><br><sub><code>not shipped yet</code></sub></td>
   <td>A local AI feature that automatically categorizes sites, searches, and apps against your stated goals and adds them to the right blocklist without you having to manage it manually. Considering using TurboQuant, Gemma 4 E2B, Lfm2.5 1.2B or Gemma 3 1B, also -> scratch-blocks</td>
 </tr>
 </table>
