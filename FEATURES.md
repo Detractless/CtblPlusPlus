@@ -20,20 +20,24 @@ Features the community has asked for. Vote by reacting to the linked issue, or [
 
 | Feature | Description |
 |---|---|
-| **Reading gate** | Unlock a block by reading aloud from a book, paragraph, or quote. Tracks your place so you can turn pages and continue where you left off. Meet your reading quota to unlock. Supports PDFs, DOCX, EPUB, and plain pasted text. Verifies actions via local diction engine.|
+| **Reading gate** | Unlock a block by reading aloud from a book, paragraph, or quote. Tracks your place so you can turn pages and continue where you left off. Meet your reading quota to unlock. Supports PDFs, DOCX, EPUB, and plain pasted text. Verifies actions via local diction engine. |
 | **Exercise gate** | Unlock a block by completing a physical exercise like pushups, pullups, or squats. Choose the exercise, number of sets, and reps per set. Verifies actions via webcam with tensor or another body tracking system. Local only. |
+| **Step-count gate** | Unlock a block or earn computer usage allowances by meeting a physical step quota. Connects directly to your phone via local webhook or health integration. Features monotonic counter verification to prevent clock spoofing. |
 
 ### Enforcement
 
 | Feature | Description |
 |---|---|
-| | |
+| **Continuous behavioral profiling** | Passively estimate which user is operating the computer on shared accounts using keystroke timing dynamics, click cadences, and interaction habits. Automatically enforces or lifts specific user blocklists without requiring manual profile switching. |
+| **Engagement & distraction scoring** | Detect whether you are actively working or wasting time on unknown websites without heavy AI overhead. Uses deterministic heuristics (scroll velocity, typing-to-dwell ratios, leaky bucket decay) to trigger interventions on mindless doomscrolling. |
+| **Retroactive distraction calibration** | Review your day on an interactive timeline to select past blocks where you were distracted. The system studies your telemetry during those flagged intervals to tailor its future distraction detection model specifically to your personal habits. |
 
 ### App Control
 
 | Feature | Description |
 |---|---|
-| | |
+| **Non-destructive app blocking** | Block distraction from active applications without forcefully killing the underlying process. Overlays a secure blackout or blur canvas and disables window interaction via native input interception, allowing background compilation, audio playback, or downloads to continue uninterrupted. |
+| **Smart block suggestions** | Passively audit your usage to recommend additions to your blocklists. Detects compulsive micro-visits (rapidly opening and closing sites or apps throughout the day) and low-engagement background tabs, prompting you to add them with one click. |
 
 ### UI
 
