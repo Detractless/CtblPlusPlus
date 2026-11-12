@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CTBL++ Setup — four-step concept</title>
+  <link rel="stylesheet" href="../../../CtblPlusPlus.Installer/wwwroot/styles.css">
+  <link rel="stylesheet" href="installer-four-step.css">
+  <script src="installer-four-step.js" defer></script>
+</head>
+<body>
+  <div class="canvas">
+    <main class="window" aria-label="CTBL++ Setup concept">
+      <header class="topbar">
+        <span class="product">CTBL++ Setup</span>
+        <span class="counter" id="counter">Step 1 of 4</span>
+      </header>
+      <div class="track" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></div>
+
+      <div class="panel-body">
+        <section class="screen" data-page="1">
+          <h1>Do more with Cold Turkey.</h1>
+          <p>CTBL++ runs alongside Cold Turkey Blocker Pro. It adds new block types and ways to manage your blocks, and can make enforcement stricter when you want it to be.</p>
+          <p class="note">Setup can change Windows services and account permissions. Nothing changes until the last step.</p>
+        </section>
+
+        <section class="screen" data-page="2" hidden>
+          <h1>Pick a protection level.</h1>
+          <p>Higher levels stay on after you close the app. You can move up later; moving down is intentionally slower.</p>
+          <div class="levels" role="radiogroup" aria-label="Protection level">
+            <label class="level">
+              <input type="radio" name="level" value="test" checked>
+              <span><b>Test</b><small>Makes fewer Windows changes and is removed with the normal Windows uninstaller.</small></span>
+            </label>
+            <label class="level">
+              <input type="radio" name="level" value="protected">
+              <span><b>Protected</b><small>Adds the background service and watchdogs. Removal needs the separate CTBL++ uninstaller.</small></span>
+            </label>
+            <label class="level">
+              <input type="radio" name="level" value="locked">
+              <span><b>Locked</b><small>Adds the admin seal and removes admin rights from your account. No uninstaller; recovery details are the only way back.</small></span>
+            </label>
+          </div>
+        </section>
+
+        <section class="screen" data-page="3" hidden>
+          <h1>Agree to what setup changes.</h1>
+          <p>Review what this level changes. Check every item to continue.</p>
+          <div class="agreements" id="agreements" role="group" aria-label="Setup agreements"></div>
+        </section>
+
+        <section class="screen" data-page="4" hidden>
+          <h1>Confirm this setup.</h1>
+          <div class="summary">
+            <span>Protection level</span>
+            <b id="summaryLevel">Test</b>
+            <p id="summaryCopy">Blocks your list while the app is open. Nothing is locked in place.</p>
+          </div>
+          <label class="confirm" for="confirmInput">Type <b>I understand</b> to unlock setup.</label>
+          <input id="confirmInput" type="text" autocomplete="off" spellcheck="false" placeholder="I understand">
+        </section>
+      </div>
+
+      <footer class="bottombar">
+        <button class="btn ghost" id="back" type="button" hidden>Back</button>
+        <span class="hint" id="hint" aria-live="polite">Nothing on this PC changes until the last step</span>
+        <button class="btn primary" id="next" type="button">Next</button>
+        <div class="installer" id="installer" role="status" hidden>
+          <span class="spinner" aria-hidden="true"></span>
+          <span id="installText">Installing…</span>
+        </div>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
